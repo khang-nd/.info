@@ -1,0 +1,99 @@
+$primary: #7ac2b9;
+$secondary: #a3d3cd;
+$light: #c3e5e1;
+$border: 3px solid;
+$shadow: 2px 2px #000;
+
+.Classic {
+  &#desktop {
+    background: $primary;
+  }
+
+  .link {
+    display: flex;
+    flex-direction: column;
+    font-size: 110%;
+    background: initial;
+    color: initial;
+    border: $border #000;
+
+    &:hover {
+      background: $secondary;
+
+      > span {
+        transform: none;
+      }
+    }
+
+    > span {
+      &:first-child {
+        background-size: 60%;
+      }
+
+      &:last-child {
+        height: initial;
+        margin-top: 10px;
+      }
+    }
+  }
+
+  .minimized {
+    .link > span:last-child {
+      display: none;
+    }
+  }
+
+  &#taskbar {
+    background: $secondary;
+    border-top: $border #000;
+    color: #000;
+  }
+
+  #menu {
+    background: $light;
+    border: $border #000;
+    border-radius: 10px;
+    box-shadow: $shadow;
+
+    > .active {
+      border: 2px solid #000;
+      background: initial;
+    }
+  }
+
+  .item:not(.right) {
+    background: initial;
+    border: 2px solid #000;
+    border-top: 0;
+    border-bottom: 0;
+    box-shadow: $shadow;
+  }
+
+  .window {
+    background: $secondary;
+    border: $border;
+    box-shadow: 4px 4px #000;
+    border-radius: 15px;
+  }
+
+  .titlebar {
+    background: none;
+    border-bottom: $border;
+
+    .title {
+      color: #000;
+    }
+
+    .close {
+      background: initial;
+      color: #000;
+      font-size: 300%;
+
+      &::after {
+        content: "×";
+        margin-top: -15px;
+        display: block;
+      }
+    }
+  }
+}

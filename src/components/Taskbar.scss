@@ -1,0 +1,69 @@
+#taskbar {
+  height: $taskbar-h;
+  background: $primary;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  position: relative;
+  color: #fff;
+
+  > div:not(.right) {
+    margin-left: 2vh;
+  }
+}
+
+.item {
+  &:not(:last-child) {
+    background: $dark;
+    height: 100%;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    margin-top: -2px;
+    border-bottom: 2px solid $secondary;
+
+    > img {
+      height: 80%;
+      width: auto;
+      margin-right: 15px;
+    }
+  }
+
+  &.right {
+    margin: 0 1vh 0 auto;
+  }
+}
+
+#start {
+  width: $taskbar-h - 2vh;
+  height: $taskbar-h - 2vh;
+  background: no-repeat center;
+  background-size: contain;
+  cursor: pointer;
+}
+
+#menu {
+  background: $primary;
+  position: absolute;
+  bottom: 100%;
+  list-style: none;
+  margin: 0 0 1vh 1vh;
+  padding: 0;
+
+  > li {
+    width: 15vmax;
+    margin: 0.5vh 2vh;
+    padding: 1vmax;
+    cursor: pointer;
+    text-align: center;
+
+    &.active {
+      background: $dark;
+    }
+
+    > img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}

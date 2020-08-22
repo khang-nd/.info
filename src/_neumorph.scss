@@ -1,0 +1,97 @@
+$primary: #f2f3f7;
+$secondary: #292a38;
+$button: #0886d3;
+$shadow-outer: inset 3px 3px 6px transparent, inset -3px -3px 6px transparent,
+  3px 3px 6px #ccccdf, -3px -3px 6px #fff;
+$shadow-inner: inset 3px 3px 6px #ccccdf, inset -3px -3px 6px #fff,
+  3px 3px 6px transparent, -3px -3px 6px transparent;
+
+.Neumorphism {
+  &#desktop {
+    background: $primary;
+  }
+
+  .link {
+    display: flex;
+    flex-direction: column;
+    font-size: 110%;
+    background: initial;
+    color: initial;
+    box-shadow: $shadow-outer;
+    border-radius: 8px;
+    transition: 0.5s box-shadow, 0.4s width;
+
+    &:hover {
+      box-shadow: $shadow-inner;
+
+      > span {
+        transform: none;
+      }
+    }
+
+    > span {
+      &:first-child {
+        background-size: 60%;
+      }
+
+      &:last-child {
+        height: initial;
+        margin-top: 10px;
+      }
+    }
+  }
+
+  .minimized {
+    .link > span:last-child {
+      display: none;
+    }
+  }
+
+  &#taskbar {
+    background: $secondary;
+  }
+
+  #menu {
+    background: $primary;
+    box-shadow: $shadow-outer;
+    border-radius: 5px;
+    color: #000;
+
+    > .active {
+      background: initial;
+      box-shadow: $shadow-inner;
+    }
+  }
+
+  .item:not(.right) {
+    background: $button;
+    border: 0;
+    height: 80%;
+    border-radius: 6px;
+    box-shadow: inset 2px 2px 0 $button, inset -2px -2px 0 $button,
+      inset 3px 3px 10px rgba(0, 0, 0, 0.5),
+      inset -3px -3px 10px rgba(255, 255, 255, 0.6);
+  }
+
+  .window {
+    background: $primary;
+    box-shadow: $shadow-outer;
+    border-radius: 10px;
+  }
+
+  .titlebar {
+    background: none;
+    box-shadow: $shadow-outer;
+
+    .title {
+      color: #000;
+      text-align: center;
+    }
+
+    .close {
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
