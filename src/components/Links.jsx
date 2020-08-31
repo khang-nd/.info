@@ -1,17 +1,23 @@
 import React from "react";
+import "./Links.scss";
 import { useLocation, Link } from "react-router-dom";
 import { Icon } from "../assets";
-import links from "../links.json";
+import pages from "../pages";
 
 function Links({ theme }) {
-  let { pathname } = useLocation();
-  pathname = pathname.slice(1);
+  const { pathname } = useLocation();
+  const _path = pathname.slice(1);
   return (
-    <div className={`wrapper${pathname ? " minimized" : ""}`}>
-      {Object.keys(links).map((key) => (
-        <Link key={key} to={key} className="link">
-          <span style={{ backgroundImage: `url(${Icon(key, theme)})` }}></span>
-          <span>{links[key]}</span>
+    <div className={`wrapper${_path ? " minimized" : ""}`}>
+      {Object.keys(pages).map((path) => (
+        <Link
+          key={path}
+          to={path}
+          className={path === _path ? "link active" : "link"}
+          onClick={(e) => (path === _path ? e.preventDefault() : null)}
+        >
+          <span style={{ backgroundImage: `url(${Icon(path, theme)})` }}></span>
+          <span>{pages[path].title}</span>
         </Link>
       ))}
     </div>

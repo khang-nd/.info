@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
+import "./Taskbar.scss";
 import { useLocation } from "react-router-dom";
 import { Icon, themes } from "../assets";
-import links from "../links.json";
+import pages from "../pages";
 
 function Taskbar({ theme, setTheme }) {
-  const [menu, showMenu] = useState(false);
+  const [menu, showMenu] = React.useState(false);
   const { pathname } = useLocation();
-  const key = pathname.slice(1);
+  const path = pathname.slice(1);
   return (
     <div id="taskbar" className={theme}>
-      <ul id="menu" hidden={!menu}>
+      <ul id="menu" className={menu ? "" : "hidden"}>
         {Object.keys(themes).map((key) => (
           <li
             key={key}
@@ -22,14 +23,15 @@ function Taskbar({ theme, setTheme }) {
         ))}
       </ul>
       <div
-        id="start"
+        id="settings"
+        className={menu ? "active" : ""}
         style={{ backgroundImage: `url(${Icon("settings", theme)})` }}
         onClick={() => showMenu(!menu)}
       ></div>
-      {key && (
+      {path && (
         <div className="item">
-          <img src={Icon(key, theme)} alt="" />
-          <label>{links[key]}</label>
+          <img src={Icon(path, theme)} alt="" />
+          <label>{pages[path].title}</label>
         </div>
       )}
       <div className="item right">Copyright &copy; 2020 KhangND</div>

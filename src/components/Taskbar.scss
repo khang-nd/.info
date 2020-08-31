@@ -1,3 +1,5 @@
+@import "../vars";
+
 #taskbar {
   height: $taskbar-h;
   background: $primary;
@@ -6,10 +8,6 @@
   align-items: center;
   position: relative;
   color: #fff;
-
-  > div:not(.right) {
-    margin-left: 2vh;
-  }
 }
 
 .item {
@@ -19,6 +17,7 @@
     padding: 0 20px;
     display: flex;
     align-items: center;
+    margin: 0 1vh;
     margin-top: -2px;
     border-bottom: 2px solid $secondary;
 
@@ -34,12 +33,18 @@
   }
 }
 
-#start {
+#settings {
   width: $taskbar-h - 2vh;
   height: $taskbar-h - 2vh;
+  margin-left: 1vh;
   background: no-repeat center;
   background-size: contain;
   cursor: pointer;
+  transition: transform 0.5s;
+
+  &.active {
+    transform: rotate(120deg);
+  }
 }
 
 #menu {
@@ -47,8 +52,14 @@
   position: absolute;
   bottom: 100%;
   list-style: none;
-  margin: 0 0 1vh 1vh;
   padding: 0;
+  margin: 0 0 1vh 1vh;
+  transform: initial;
+  transition: transform 0.5s ease-out;
+
+  &.hidden {
+    transform: translateX(-105%);
+  }
 
   > li {
     width: 15vmax;

@@ -1,0 +1,39 @@
+.skill {
+  width: 15%;
+  margin: 15px;
+}
+
+.icon {
+  position: relative;
+
+  > img,
+  > label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.5s;
+    backface-visibility: hidden;
+  }
+
+  > img {
+    width: 45%;
+    height: auto;
+  }
+
+  > label {
+    font-size: 150%;
+    font-weight: bold;
+    opacity: 0;
+  }
+
+  &:hover {
+    > img {
+      opacity: 0;
+    }
+
+    > label {
+      opacity: 1;
+    }
+  }
+}

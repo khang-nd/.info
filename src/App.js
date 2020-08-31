@@ -1,50 +1,50 @@
 import "./App.scss";
-import React, { useState } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import React from "react";
+import { HashRouter, Route, Switch } from "react-router-dom";
 import Taskbar from "./components/Taskbar";
 import Links from "./components/Links";
-import About from "./pages/About";
-import Work from "./pages/Work";
-import Skills from "./pages/Skills";
-import Education from "./pages/Education";
+import TabLink from "./components/TabLink";
 import { Social } from "./assets";
+import pages from "./pages";
 
 const mouseOver = ({ target }) => (target.src = Social[target.alt][1]);
 const mouseOut = ({ target }) => (target.src = Social[target.alt][0]);
+const SocialLinks = {
+  Github: "https://github.com/khang-nd",
+  Linkedin: "https://www.linkedin.com/in/khangnd",
+  Fandom: "https://dev.fandom.com/wiki/User:KhangND",
+};
 
 function App() {
-  const [theme, setTheme] = useState("Flat");
+  const [theme, setTheme] = React.useState("Flat");
   return (
-    <BrowserRouter>
+    <HashRouter hashType="noslash">
       <div id="desktop" className={theme}>
         <Links theme={theme} />
         <div className="social-media">
-          <a href="https://dev.fandom.com/wiki/User:KhangND">
-            <img
-              src={Social.Fandom[0]}
-              alt="Fandom"
-              onMouseOver={mouseOver}
-              onMouseOut={mouseOut}
-            />
-          </a>
-          <a href="https://github.com/khang-nd">
-            <img
-              src={Social.Github[0]}
-              alt="Github"
-              onMouseOver={mouseOver}
-              onMouseOut={mouseOut}
-            />
-          </a>
+          {Object.keys(SocialLinks).map((key) => (
+            <TabLink key={key} className="social-link" href={SocialLinks[key]}>
+              <img
+                src={Social[key][0]}
+                alt={key}
+                onMouseOver={mouseOver}
+                onMouseOut={mouseOut}
+              />
+            </TabLink>
+          ))}
         </div>
         <Switch>
-          <Route path="/about" component={About} />
-          <Route path="/work" component={Work} />
-          <Route path="/skills" component={Skills} />
-          <Route path="/edu" component={Education} />
+          {Object.keys(pages).map((path) => (
+            <Route
+              key={path}
+              path={"/" + path}
+              component={pages[path].component}
+            />
+          ))}
         </Switch>
       </div>
       <Taskbar theme={theme} setTheme={(theme) => setTheme(theme)} />
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

@@ -1,22 +1,26 @@
-$primary: #7ac2b9;
-$secondary: #a3d3cd;
-$light: #c3e5e1;
-$border: 3px solid;
-$shadow: 2px 2px #000;
-
 .Classic {
+  $primary: #7ac2b9;
+  $secondary: #a3d3cd;
+  $light: #c3e5e1;
+  $border: 3px solid;
+  $shadow: 2px 2px #000;
+
   &#desktop {
     background: $primary;
+  }
+
+  .wrapper {
+    transition: none;
   }
 
   .link {
     display: flex;
     flex-direction: column;
-    font-size: 110%;
     background: initial;
     color: initial;
     border: $border #000;
 
+    &.active,
     &:hover {
       background: $secondary;
 
@@ -49,11 +53,16 @@ $shadow: 2px 2px #000;
     color: #000;
   }
 
+  #settings {
+    transition: none;
+  }
+
   #menu {
     background: $light;
     border: $border #000;
     border-radius: 10px;
     box-shadow: $shadow;
+    transition: none;
 
     > .active {
       border: 2px solid #000;
@@ -74,17 +83,18 @@ $shadow: 2px 2px #000;
     border: $border;
     box-shadow: 4px 4px #000;
     border-radius: 15px;
+    transition: transform 0.3s;
   }
 
-  .titlebar {
+  .window__titlebar {
     background: none;
     border-bottom: $border;
 
-    .title {
+    .window__title {
       color: #000;
     }
 
-    .close {
+    .window__close {
       background: initial;
       color: #000;
       font-size: 300%;

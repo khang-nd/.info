@@ -1,13 +1,13 @@
-// Global variables
-$taskbar-h: 9vh;
-$primary: #2c3e50;
-$secondary: #1abc9c;
-$light: #f8f9fa;
-$dark: #17263b;
-$red: #ed4c5a;
+@import "./vars";
+@import "./utils";
+
+// Themes
+@import "./themes/classic";
+@import "./themes/neumorph";
 
 body {
   margin: 0;
+  overflow: hidden;
 }
 
 #desktop {
@@ -15,25 +15,21 @@ body {
   background: $secondary center;
   background-size: cover;
   position: relative;
-
-  .social-media {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-
-    img {
-      width: 4vmax;
-      height: auto;
-      margin: 3px;
-    }
-  }
 }
 
-// Components
-@import "./components//Links.scss";
-@import "./components/Taskbar.scss";
-@import "./components/Window.scss";
+.social-media {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
 
-// Themes
-@import "./classic";
-@import "./neumorph";
+.social-link {
+  margin: 3px;
+  width: 4vmax;
+  display: block;
+
+  > img {
+    width: 100%;
+    height: auto;
+  }
+}

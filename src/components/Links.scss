@@ -1,3 +1,5 @@
+@import "../vars";
+
 .wrapper {
   display: grid;
   grid-template-columns: auto auto;
@@ -6,18 +8,34 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  &.minimized {
+    grid-template-columns: auto;
+    gap: 1vmax;
+    transform: initial;
+    top: 1vmax;
+    left: 1vmax;
+    transition: top 1s;
+
+    > .link {
+      width: 6vmax;
+      height: 6vmax;
+      font-size: 1vmax;
+    }
+  }
 }
 
 .link {
   background: $primary;
   width: 15vmax;
   height: 15vmax;
-  font-size: 140%;
+  font-size: 2vmax;
   text-align: center;
   text-decoration: none;
   color: #fff;
   overflow: hidden;
 
+  &.active,
   &:hover {
     > span {
       transform: translateY(-100%);
@@ -27,7 +45,6 @@
   > span {
     width: 100%;
     height: 100%;
-    font-size: 120%;
     transition: 0.5s transform;
     display: flex;
     justify-content: center;
@@ -37,19 +54,5 @@
       background: no-repeat center;
       background-size: 80%;
     }
-  }
-}
-
-.minimized {
-  grid-template-columns: auto;
-  gap: 1vmax;
-  transform: initial;
-  top: 1vmax;
-  left: 1vmax;
-
-  > .link {
-    width: 6vmax;
-    height: 6vmax;
-    font-size: 80%;
   }
 }

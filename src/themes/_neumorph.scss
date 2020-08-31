@@ -1,12 +1,12 @@
-$primary: #f2f3f7;
-$secondary: #292a38;
-$button: #0886d3;
-$shadow-outer: inset 3px 3px 6px transparent, inset -3px -3px 6px transparent,
-  3px 3px 6px #ccccdf, -3px -3px 6px #fff;
-$shadow-inner: inset 3px 3px 6px #ccccdf, inset -3px -3px 6px #fff,
-  3px 3px 6px transparent, -3px -3px 6px transparent;
-
 .Neumorphism {
+  $primary: #f2f3f7;
+  $secondary: #292a38;
+  $button: #1f735f;
+  $shadow-outer: inset 3px 3px 6px transparent, inset -3px -3px 6px transparent,
+    3px 3px 6px #ccccdf, -3px -3px 6px #fff;
+  $shadow-inner: inset 3px 3px 6px #ccccdf, inset -3px -3px 6px #fff,
+    3px 3px 6px transparent, -3px -3px 6px transparent;
+
   &#desktop {
     background: $primary;
   }
@@ -14,13 +14,13 @@ $shadow-inner: inset 3px 3px 6px #ccccdf, inset -3px -3px 6px #fff,
   .link {
     display: flex;
     flex-direction: column;
-    font-size: 110%;
     background: initial;
     color: initial;
     box-shadow: $shadow-outer;
     border-radius: 8px;
-    transition: 0.5s box-shadow, 0.4s width;
+    transition: 0.5s box-shadow;
 
+    &.active,
     &:hover {
       box-shadow: $shadow-inner;
 
@@ -68,9 +68,9 @@ $shadow-inner: inset 3px 3px 6px #ccccdf, inset -3px -3px 6px #fff,
     border: 0;
     height: 80%;
     border-radius: 6px;
-    box-shadow: inset 2px 2px 0 $button, inset -2px -2px 0 $button,
+    box-shadow: inset 3px 3px 0 $button, inset -3px -3px 0 $button,
       inset 3px 3px 10px rgba(0, 0, 0, 0.5),
-      inset -3px -3px 10px rgba(255, 255, 255, 0.6);
+      inset -3px -3px 10px rgba(255, 255, 255, 0.5);
   }
 
   .window {
@@ -79,19 +79,36 @@ $shadow-inner: inset 3px 3px 6px #ccccdf, inset -3px -3px 6px #fff,
     border-radius: 10px;
   }
 
-  .titlebar {
+  .window__titlebar {
     background: none;
     box-shadow: $shadow-outer;
 
-    .title {
+    .window__title {
       color: #000;
       text-align: center;
     }
 
-    .close {
+    .window__close {
       border-radius: 50%;
       width: 20px;
       height: 20px;
+    }
+  }
+
+  .avatar {
+    border-color: transparent;
+    box-shadow: $shadow-outer;
+  }
+
+  button,
+  .button {
+    border: none;
+    border-radius: 3px;
+    background: $button;
+    color: #fff;
+
+    &::before {
+      content: none;
     }
   }
 }

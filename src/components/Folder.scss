@@ -1,0 +1,51 @@
+@mixin absolute {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.folder {
+  height: auto;
+  position: relative;
+  cursor: pointer;
+  perspective: 800px;
+  transition: opacity 1s, transform 1s;
+
+  .active > &,
+  &:hover {
+    > .folder__front {
+      transform: rotateX(-33deg);
+    }
+  }
+
+  > div:not(:first-child) {
+    @include absolute();
+  }
+}
+
+.folder__front {
+  position: relative;
+  transition: transform 0.5s;
+  transform-origin: bottom;
+  z-index: 2;
+
+  > img {
+    @include absolute();
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.folder__back > svg {
+  fill: #caa968;
+}
+
+.folder__file > svg {
+  fill: #fff;
+}
+
+.folder__front > svg {
+  fill: #ddba75;
+}

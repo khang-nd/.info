@@ -1,16 +1,7 @@
 const r = require.context("./assets");
 const assets = r.keys().map(r);
-
-// preload assets
-const div = document.createElement("div");
-div.id = "preload";
-div.hidden = true;
-document.body.prepend(div);
-assets.forEach((img) => {
-  const elem = document.createElement("img");
-  elem.src = img;
-  div.append(elem);
-});
+export const Avatar =
+  "https://gravatar.com/avatar/7a054fbf58c9fe4f7dadb07091fe4cff?s=230";
 
 export const Icon = (key, type = "flat") => {
   let _type = type.toLowerCase();
@@ -22,17 +13,33 @@ export const Icon = (key, type = "flat") => {
 
 export const Social = {
   Github: [
-    require("./assets/social-github.png"),
-    require("./assets/social-github-active.png"),
+    require("./assets/social-github.webp"),
+    require("./assets/social-github-active.webp"),
+  ],
+  Linkedin: [
+    require("./assets/social-linkedin.webp"),
+    require("./assets/social-linkedin-active.webp"),
   ],
   Fandom: [
-    require("./assets/social-fandom.png"),
-    require("./assets/social-fandom-active.png"),
+    require("./assets/social-fandom.webp"),
+    require("./assets/social-fandom-active.webp"),
   ],
 };
 
-export const themes = {
-  Flat: require("./assets/theme-flat.png"),
-  Classic: require("./assets/theme-classic.png"),
-  Neumorphism: require("./assets/theme-neumorph.png"),
+export const Logo = {
+  Bosch: require("./assets/logo-bosch.webp"),
+  Cathay: require("./assets/logo-cathay.webp"),
+  Fandom: require("./assets/logo-fandom.webp"),
+  FandomDev: require("./assets/logo-fandom-dev.webp"),
+  Win7: require("./assets/logo-win7.webp"),
 };
+
+export const themes = {
+  Flat: require("./assets/theme-flat.webp"),
+  Neumorphism: require("./assets/theme-neumorph.webp"),
+  Classic: require("./assets/theme-classic.webp"),
+};
+
+// preload assets
+assets.push(Avatar);
+assets.forEach((img) => (new Image().src = img));

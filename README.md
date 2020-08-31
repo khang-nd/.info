@@ -1,7 +1,7 @@
 
-# Winpor
+# Winport
 
-A window-styled portfolio (hence _Winpor_) built on [ReactJS](https://reactjs.org/), this is my first ever portfolio built and designed from scratch which I am pretty proud of.
+A window-styled portfolio (hence the name _Winport_) built on [ReactJS](https://reactjs.org/), fully responsive and followed the Mobile First Design's principles. This is my first ever portfolio built and designed from scratch which I am pretty pleased and proud of 🌼.
 
 ## Technology Stacks
 
