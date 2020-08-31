@@ -1,10 +1,18 @@
 import React from "react";
-import { render } from "react-snapshot";
+import { hydrate, render } from "react-dom";
 import App from "./App";
 
-render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+const root = document.getElementById("root");
+root.hasChildNodes()
+  ? hydrate(
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>,
+      root
+    )
+  : render(
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>,
+      root
+    );
