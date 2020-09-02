@@ -16,8 +16,8 @@ const SocialLinks = {
   Fandom: "https://dev.fandom.com/wiki/User:KhangND",
 };
 const storeKey = {
-  theme: "khangnd-theme",
-  welcome: "khangnd-welcome",
+  theme: "theme",
+  welcome: "welcome",
 };
 
 function App() {
@@ -54,7 +54,7 @@ function App() {
           {Object.keys(pages).map((path) => (
             <Route
               key={path}
-              path={"/" + path}
+              path={`/${path}/`}
               component={pages[path].component}
             />
           ))}

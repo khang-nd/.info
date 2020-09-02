@@ -1,5 +1,13 @@
 .window__skills {
   display: initial;
+
+  @for $index from 1 through 3 {
+    > .col:nth-child(#{$index}) {
+      opacity: 0;
+      transform: translateY(50px);
+      animation: #{$index}s forwards 1s reset;
+    }
+  }
 }
 
 .skills {
