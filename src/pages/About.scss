@@ -1,9 +1,20 @@
 @import "../vars";
 @import "../utils";
 
-.col:nth-child(even) {
-  background: $lightblue;
-  height: 100%;
+.window__about > .col {
+  &:first-child,
+  &:last-child {
+    opacity: 0;
+    animation: 1s forwards 1s reset;
+  }
+
+  &:first-child {
+    transform: translateX(-50px);
+  }
+
+  &:last-child {
+    transform: translateY(50px);
+  }
 }
 
 .title {

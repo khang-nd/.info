@@ -10,6 +10,7 @@
   display: none;
   overflow: auto;
   text-align: justify;
+  background: none;
 
   &.active {
     display: block;
@@ -62,11 +63,26 @@
 }
 
 @media only screen and (min-width: 600px) {
+  .window__works > .col {
+    &:first-child,
+    &:last-child {
+      opacity: 0;
+      animation: 1s forwards 1s reset;
+    }
+
+    &:first-child {
+      transform: translateX(-50px);
+    }
+
+    &:last-child {
+      transform: translateY(50px);
+    }
+  }
+
   #works,
   #details {
     display: initial;
     transition: 1s width;
-    backface-visibility: hidden;
 
     &.active {
       width: 100%;
@@ -83,7 +99,7 @@
     &.active > *:not(:first-child) {
       transform: translateY(15px);
       opacity: 0;
-      animation: 1.5s 1s forwards float-in;
+      animation: 1.5s 1s forwards reset;
     }
   }
 }

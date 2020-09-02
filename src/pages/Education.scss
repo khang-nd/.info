@@ -1,0 +1,70 @@
+@import "../vars";
+
+.window__edu {
+  display: initial;
+  padding-left: 80px;
+}
+
+.container {
+  margin: 30px 0;
+  position: relative;
+  padding: 0 10px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 100%;
+    left: -40px;
+    width: 6px;
+    background: $secondary;
+    animation: 1s forwards 1s draw-line;
+  }
+
+  > *:not(:first-child) {
+    transform: translateX(-50px);
+    opacity: 0;
+    animation: 1s forwards 1s reset;
+  }
+
+  > .icon {
+    position: absolute;
+    left: -62px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 4px solid $secondary;
+    background: $primary;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 130%;
+  }
+
+  > .time {
+    background: $lightblue;
+    border-radius: 20px;
+    display: inline-block;
+    padding: 4px 10px;
+    margin: 10px 0;
+  }
+
+  > .degree {
+    font-size: 125%;
+  }
+
+  > .place {
+    color: #777;
+  }
+
+  > .description {
+    margin-top: 10px;
+  }
+}
+
+@keyframes draw-line {
+  to {
+    bottom: -30px;
+  }
+}

@@ -7,6 +7,8 @@ A window-styled portfolio (hence the name _Winport_) built on [ReactJS](https://
 
 * [ReactJS](https://reactjs.org/)
 * [React Router](https://reactrouter.com/)
+* [local-storage](https://github.com/bevacqua/local-storage)
+* [React Icons](https://react-icons.github.io/react-icons/)
 * [Sass](https://sass-lang.com/)
 
 ## Themes

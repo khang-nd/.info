@@ -15,7 +15,7 @@ function Window({ title, children, bodyClass }) {
         <div className="window__title">{title}</div>
         <Link className="window__close" to="/" />
       </div>
-      <div className={"window__content " + bodyClass}>{children}</div>
+      <div className={"window__content " + (bodyClass || "")}>{children}</div>
     </div>
   );
 }

@@ -39,7 +39,3 @@ export const themes = {
   Neumorphism: require("./assets/theme-neumorph.webp"),
   Classic: require("./assets/theme-classic.webp"),
 };
-
-// preload assets
-assets.push(Avatar);
-assets.forEach((img) => (new Image().src = img));

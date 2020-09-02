@@ -1,11 +1,12 @@
 import "./App.scss";
 import React from "react";
-import { HashRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Taskbar from "./components/Taskbar";
 import Links from "./components/Links";
 import TabLink from "./components/TabLink";
 import { Social } from "./assets";
 import pages from "./pages";
+import * as storage from "local-storage";
 
 const mouseOver = ({ target }) => (target.src = Social[target.alt][1]);
 const mouseOut = ({ target }) => (target.src = Social[target.alt][0]);
@@ -14,11 +15,27 @@ const SocialLinks = {
   Linkedin: "https://www.linkedin.com/in/khangnd",
   Fandom: "https://dev.fandom.com/wiki/User:KhangND",
 };
+const storeKey = {
+  theme: "khangnd-theme",
+  welcome: "khangnd-welcome",
+};
 
 function App() {
-  const [theme, setTheme] = React.useState("Flat");
+  const storedTheme = storage.get(storeKey.theme) || "flat";
+  const shouldWelcome = storage.get(storeKey.welcome) !== false ? true : false;
+
+  const [theme, setTheme] = React.useState(storedTheme);
+  const [welcome, showWelcome] = React.useState(shouldWelcome);
+  setTimeout(() => {
+    storage.set(storeKey.welcome, false);
+    showWelcome(false);
+  }, 3000);
+
   return (
-    <HashRouter hashType="noslash">
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <div id="welcome" className={welcome ? "" : "hidden"}>
+        <big>WELCOME</big>
+      </div>
       <div id="desktop" className={theme}>
         <Links theme={theme} />
         <div className="social-media">
@@ -43,8 +60,14 @@ function App() {
           ))}
         </Switch>
       </div>
-      <Taskbar theme={theme} setTheme={(theme) => setTheme(theme)} />
-    </HashRouter>
+      <Taskbar
+        theme={theme}
+        setTheme={(theme) => {
+          storage.set(storeKey.theme, theme);
+          setTheme(theme);
+        }}
+      />
+    </BrowserRouter>
   );
 }
 

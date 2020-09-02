@@ -18,12 +18,17 @@ export default {
         "Actively review and improve individual skills competency over the time",
         "Tools used: Visual Studio Code, IBM ELM tools, Balsamiq Mockups, MS Office, Skype",
       ],
-      techs: "HTML, CSS, Sass, JS, jQuery, ReactJS, $2, $3, $4",
+      techs: "HTML, CSS, Sass, JS, jQuery, ReactJS, $2, $3, $4, $5, $6",
       links: {
         $1: ["IBM ELM toolsuite", "https://jazz.net/products/elm/"],
         $2: ["DXL", "https://en.wikipedia.org/wiki/DOORS_Extension_Language"],
         $3: ["OSLC", "https://open-services.net/"],
         $4: ["OpenSocial", "https://en.wikipedia.org/wiki/OpenSocial"],
+        $5: ["ag-Grid", "https://www.ag-grid.com/"],
+        $6: [
+          "vis-network",
+          "https://visjs.github.io/vis-network/docs/network/",
+        ],
       },
     },
     {
@@ -117,9 +122,11 @@ export default {
       title: "Winport",
       logo: Icon("about"),
       timeline: "2020",
-      description: "(Now seeing) A window-styled portfolio",
-      remark: `My first website portfolio, the core design is inspired by Microsoft's Windows.
-      Icons are provided by $1. Source code is available on $2.`,
+      description: "A window-styled, multi-theming portfolio",
+      remark: `What you are seeing right now is my first website portfolio.
+      The core design is inspired by Microsoft's Windows, with icons provided by $1.
+      Feel free to check out the source code I made publicly available on $2,
+      and do not hesitate to put a star if you like it.`,
       techs: "HTML, Sass, JS, ReactJS, React Router",
       links: {
         $1: ["Freepik", "https://www.freepik.com/"],
@@ -139,14 +146,20 @@ export default {
       title: "Wikiu",
       logo: "",
       timeline: "2020",
-      description: "(Work-in-progress) A utility collection for Fandom wikis",
-      remark: `Another side project in an attempt to apply what I have learned,
-      it is built from an idea of collecting utilities outside of what the $1 could offer.`,
-      techs: "HTML, CSS, JS, ReactJS, React Router",
+      description: "A utility collection for Fandom wikis",
+      remark: `Another side project in an attempt to apply what I have learned.
+      The idea is to build a collection of utilities from what the $1 could offer,
+      using a more advanced JS library to ease development and lift certain limitations of jQuery.
+      It is still an in-progress project, but feel free to check out the source code on $2.`,
+      techs: "HTML, CSS, JS, ReactJS, React Router, MediaWiki API",
       links: {
         $1: [
           "MediaWiki API",
           "https://doc.wikimedia.org/mediawiki-core/master/js/#!/api/mw.Api",
+        ],
+        $2: [
+          "Github",
+          "https://github.com/khang-nd/wikiu/tree/master/src/services",
         ],
       },
     },

@@ -1,39 +1,58 @@
+@mixin rotate-hide {
+  transform: translate(-50%, -50%) rotateY(180deg);
+  opacity: 0;
+}
+
+@mixin rotate-show {
+  transform: translate(-50%, -50%) rotateY(0);
+  opacity: 1;
+}
+
 .skill {
   width: 15%;
   margin: 15px;
+  color: initial;
+  text-decoration: none;
+
+  &:hover > .icon {
+    img {
+      @include rotate-show;
+    }
+
+    span {
+      @include rotate-hide;
+    }
+  }
 }
 
 .icon {
   position: relative;
 
   > img,
-  > label {
+  > span {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    transition: opacity 0.5s;
-    backface-visibility: hidden;
+    transition: opacity 0.4s, transform 0.5s;
   }
 
   > img {
     width: 45%;
     height: auto;
+    @include rotate-hide;
   }
 
-  > label {
-    font-size: 150%;
+  > span {
+    font-size: 2.5vmax;
     font-weight: bold;
-    opacity: 0;
+    @include rotate-show;
   }
+}
 
-  &:hover {
-    > img {
-      opacity: 0;
-    }
+.CircularProgressbar-path {
+  transition: stroke-dashoffset 1s ease-out;
+}
 
-    > label {
-      opacity: 1;
-    }
-  }
+.CircularProgressbar-trail {
+  stroke: #eee;
 }

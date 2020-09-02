@@ -1,38 +1,36 @@
 import React from "react";
 import "./Skill.scss";
+import TabLink from "./TabLink";
 import { CircularProgressbar } from "react-circular-progressbar";
 import { Icon } from "../assets";
-import skills from "../data/skills";
 
-function Skill({ name, value = 50 }) {
+function Skill({ data }) {
+  const { name, value, label, url, color } = data;
   const [percent, setPercent] = React.useState(0);
   const [triggered, setTrigger] = React.useState(false);
   const timer = setTimeout(() => setTrigger(true), 1000);
   if (triggered) {
     clearTimeout(timer);
     requestAnimationFrame(() => {
-      const newPercent = percent + 1;
-      if (newPercent < value) setPercent(newPercent);
+      const newPercent = percent + 5;
+      if (newPercent <= value) setPercent(newPercent);
     });
   }
 
   return (
     <>
-      <div className="skill">
+      <TabLink className="skill" href={url}>
         <div className="icon">
           <CircularProgressbar
             value={percent}
             strokeWidth={8}
-            styles={{
-              path: { stroke: skills[name].color },
-              trail: { stroke: "#eee" },
-            }}
+            styles={{ path: { stroke: color } }}
           />
-          <img alt={name} src={Icon(name, "skill")} />
-          <label>{value}%</label>
+          <img alt={label} src={Icon(name, "skill")} />
+          <span>{value}%</span>
         </div>
-        <label>{skills[name].label}</label>
-      </div>
+        <span>{label}</span>
+      </TabLink>
     </>
   );
 }

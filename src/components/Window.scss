@@ -12,6 +12,12 @@
   transition: transform 1s;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+
+  &.zooming {
+    transform: translate(-50%, -50%) scale(0.4);
+    backface-visibility: hidden;
+  }
 }
 
 .window__titlebar {
@@ -48,12 +54,6 @@
   .window {
     width: 80%;
     max-height: 95%;
-    will-change: transform;
-
-    &.zooming {
-      transform: translate(-50%, -50%) scale(0.4);
-      backface-visibility: hidden;
-    }
   }
 }
 

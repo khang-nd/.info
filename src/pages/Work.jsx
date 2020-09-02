@@ -6,25 +6,10 @@ import Folder from "../components/Folder";
 import TabLink from "../components/TabLink";
 import Works from "../data/works";
 import pages from "../pages";
+import { parseLinks } from "../_utils";
 
 function getDetails(title) {
   return [...Object.values(Works)].flat().find((work) => work.title === title);
-}
-
-function parseLinks(data, workObj) {
-  const { links } = workObj;
-  return !links
-    ? data
-    : data.split(/(\$\d+)/g).map((s, i) => {
-        const link = links[s];
-        return !link ? (
-          s
-        ) : (
-          <TabLink key={i} href={link[1]}>
-            {link[0]}
-          </TabLink>
-        );
-      });
 }
 
 function Work() {
@@ -33,7 +18,7 @@ function Work() {
   const activeWork = getDetails(active);
   return (
     <Window title={pages[pathname.slice(1)].title} bodyClass="window__works">
-      <div id="details" className={active ? "active" : ""}>
+      <div id="details" className={"col " + (active ? "active" : "")}>
         {activeWork ? (
           <>
             <div className="text--right">
@@ -44,17 +29,17 @@ function Work() {
               <span>{activeWork.timeline}</span>
             </div>
             <div className="paragraph">
-              <i>{parseLinks(activeWork.description, activeWork)}</i>
+              <i>{parseLinks(activeWork.description, activeWork.links)}</i>
             </div>
             <div className="paragraph">
-              {parseLinks(activeWork.remark, activeWork)}
+              {parseLinks(activeWork.remark, activeWork.links)}
             </div>
             <div className="paragraph">
               {activeWork.activities && [
                 "My main activities include:",
                 <ul key={null}>
                   {activeWork.activities.map((act, i) => (
-                    <li key={i}>{parseLinks(act, activeWork)}</li>
+                    <li key={i}>{parseLinks(act, activeWork.links)}</li>
                   ))}
                 </ul>,
               ]}
@@ -62,7 +47,7 @@ function Work() {
             <div className="paragraph">
               {activeWork.techs && [
                 "Technology stacks: ",
-                parseLinks(activeWork.techs, activeWork),
+                parseLinks(activeWork.techs, activeWork.links),
               ]}
             </div>
           </>
@@ -70,7 +55,7 @@ function Work() {
           <span className="placeholder">Select a folder</span>
         )}
       </div>
-      <div id="works" className={active ? "" : "active"}>
+      <div id="works" className={"col " + (active ? "" : "active")}>
         {Object.keys(Works).map((key) => (
           <React.Fragment key={key}>
             <h3 className="group">{key}</h3>

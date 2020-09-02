@@ -1,6 +1,11 @@
 .col {
   position: relative;
   padding: 15px;
+
+  &:nth-child(even) {
+    background: $lightblue;
+    height: 100%;
+  }
 }
 
 .text--center {
@@ -29,7 +34,7 @@ h3 {
 }
 
 /* ANIMATIONS */
-@keyframes float-in {
+@keyframes reset {
   to {
     opacity: 1;
     transform: initial;

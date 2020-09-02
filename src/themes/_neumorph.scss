@@ -81,10 +81,15 @@
 
   .window__titlebar {
     background: none;
-    box-shadow: $shadow-outer;
+    padding: 0 8px 0 0;
 
     .window__title {
-      color: #000;
+      color: #fff;
+      background: #c0cbdd;
+      padding: 8px 20%;
+      border-radius: 0 0 30px 30px;
+      width: auto;
+      margin-left: auto;
       text-align: center;
     }
 
@@ -95,6 +100,10 @@
     }
   }
 
+  .col {
+    background: none !important;
+  }
+
   .avatar {
     border-color: transparent;
     box-shadow: $shadow-outer;
@@ -103,12 +112,58 @@
   button,
   .button {
     border: none;
+    color: initial;
     border-radius: 3px;
-    background: $button;
-    color: #fff;
+    box-shadow: $shadow-outer;
+    transition: box-shadow 0.5s;
+
+    &:hover {
+      color: initial;
+      box-shadow: $shadow-inner;
+    }
 
     &::before {
       content: none;
+    }
+  }
+
+  .button-group {
+    &::before,
+    &::after {
+      box-shadow: $shadow-outer;
+      border: none;
+      border-radius: 3px;
+    }
+  }
+
+  #details {
+    box-shadow: $shadow-inner;
+  }
+
+  .CircularProgressbar {
+    box-shadow: $shadow-outer;
+    border-radius: 50%;
+  }
+
+  .CircularProgressbar-trail {
+    stroke: transparent;
+  }
+
+  .window__edu {
+    > .container::before {
+      background: $button;
+    }
+
+    .icon {
+      background: $primary;
+      box-shadow: $shadow-inner;
+      border-color: transparent;
+      color: $secondary;
+    }
+
+    .time {
+      box-shadow: $shadow-outer;
+      background: none;
     }
   }
 }

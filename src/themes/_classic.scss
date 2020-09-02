@@ -9,10 +9,6 @@
     background: $primary;
   }
 
-  .wrapper {
-    transition: none;
-  }
-
   .link {
     display: flex;
     flex-direction: column;
@@ -53,16 +49,11 @@
     color: #000;
   }
 
-  #settings {
-    transition: none;
-  }
-
   #menu {
     background: $light;
     border: $border #000;
     border-radius: 10px;
     box-shadow: $shadow;
-    transition: none;
 
     > .active {
       border: 2px solid #000;
@@ -83,7 +74,6 @@
     border: $border;
     box-shadow: 4px 4px #000;
     border-radius: 15px;
-    transition: transform 0.3s;
   }
 
   .window__titlebar {
@@ -104,6 +94,66 @@
         margin-top: -15px;
         display: block;
       }
+    }
+  }
+
+  button,
+  .button {
+    border-color: #000;
+    box-shadow: $shadow;
+    color: unset;
+
+    &:hover {
+      background: $light;
+      color: unset;
+
+      &::before {
+        content: none;
+      }
+    }
+  }
+
+  .avatar {
+    border-color: #000;
+    box-shadow: $shadow;
+  }
+
+  .button-group {
+    &::before,
+    &::after {
+      border-color: #000;
+      box-shadow: $shadow;
+    }
+  }
+
+  .col {
+    background: none !important;
+  }
+
+  .CircularProgressbar-path {
+    stroke: #000 !important;
+  }
+
+  .CircularProgressbar-trail {
+    stroke: rgba(0, 0, 0, 0.05);
+  }
+
+  .window__edu {
+    > .container::before {
+      background: #000;
+      width: 3px;
+    }
+
+    .icon {
+      border: $border;
+      background: $secondary;
+      color: #000;
+    }
+
+    .time {
+      background: none;
+      border: 1px solid;
+      border-radius: 0;
     }
   }
 }
