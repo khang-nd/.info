@@ -3,10 +3,10 @@ import "./Work.scss";
 import { useLocation } from "react-router-dom";
 import Window from "../components/Window";
 import Folder from "../components/Folder";
-import TabLink from "../components/TabLink";
 import Works from "../data/works";
 import pages from "../pages";
 import { parseLinks } from "../_utils";
+import { BsArrowBarLeft } from "react-icons/bs";
 
 function getDetails(title) {
   return [...Object.values(Works)].flat().find((work) => work.title === title);
@@ -21,10 +21,10 @@ function Work() {
       <div id="details" className={"col " + (active ? "active" : "")}>
         {activeWork ? (
           <>
-            <div className="text--right">
-              <TabLink click={() => setActive(null)}>Collapse</TabLink>
-            </div>
             <div className="title">
+              <big className="collapse float--right">
+                <BsArrowBarLeft onClick={() => setActive(null)} />
+              </big>
               <big>{activeWork.title}</big>
               <span>{activeWork.timeline}</span>
             </div>

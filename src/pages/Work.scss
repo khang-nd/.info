@@ -37,6 +37,15 @@
   }
 }
 
+.collapse > svg {
+  cursor: pointer;
+  transition: transform 0.5s;
+
+  &:hover {
+    transform: translateX(-6px);
+  }
+}
+
 .group {
   padding: 0 15px;
   margin: 15px 0;
@@ -96,7 +105,7 @@
   #details {
     width: 100px;
 
-    &.active > *:not(:first-child) {
+    &.active > * {
       transform: translateY(15px);
       opacity: 0;
       animation: 1.5s 1s forwards reset;
