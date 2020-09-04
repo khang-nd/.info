@@ -9,7 +9,7 @@ function Taskbar({ theme, setTheme }) {
   const { pathname } = useLocation();
   const path = pathname.slice(1);
   return (
-    <div id="taskbar" className={theme}>
+    <>
       <ul id="menu" className={menu ? "" : "hidden"}>
         {Object.keys(themes).map((key) => (
           <li
@@ -22,20 +22,22 @@ function Taskbar({ theme, setTheme }) {
           </li>
         ))}
       </ul>
-      <div
-        id="settings"
-        className={menu ? "active" : ""}
-        style={{ backgroundImage: `url(${Icon("settings", theme)})` }}
-        onClick={() => showMenu(!menu)}
-      ></div>
-      {path && (
-        <div className="item">
-          <img src={Icon(path, theme)} alt="" />
-          <label>{pages[path].title}</label>
-        </div>
-      )}
-      <div className="item right">Copyright &copy; 2020 KhangND</div>
-    </div>
+      <div id="taskbar" className={theme}>
+        <div
+          id="settings"
+          className={menu ? "active" : ""}
+          style={{ backgroundImage: `url(${Icon("settings", theme)})` }}
+          onClick={() => showMenu(!menu)}
+        ></div>
+        {path && (
+          <div className="item">
+            <img src={Icon(path, theme)} alt="" />
+            <label>{pages[path].title}</label>
+          </div>
+        )}
+        <div className="item right">Copyright &copy; 2020 KhangND</div>
+      </div>
+    </>
   );
 }
 

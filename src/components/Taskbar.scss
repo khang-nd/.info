@@ -8,6 +8,7 @@
   align-items: center;
   position: relative;
   color: #fff;
+  overflow: hidden;
 }
 
 .item {
@@ -49,11 +50,12 @@
 
 #menu {
   background: $primary;
-  position: absolute;
-  bottom: 100%;
+  position: fixed;
+  bottom: $taskbar-h;
   list-style: none;
+  color: #fff;
   padding: 0;
-  margin: 0 0 1vh 1vh;
+  margin: 0 0 0 1vh;
   transform: initial;
   transition: transform 0.5s ease-out;
 
