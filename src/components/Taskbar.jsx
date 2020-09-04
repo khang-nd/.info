@@ -10,7 +10,7 @@ function Taskbar({ theme, setTheme }) {
   const path = pathname.slice(1);
   return (
     <>
-      <ul id="menu" className={menu ? "" : "hidden"}>
+      <ul id="menu" className={theme + (menu ? "" : " hidden")}>
         {Object.keys(themes).map((key) => (
           <li
             key={key}

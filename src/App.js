@@ -21,7 +21,7 @@ const storeKey = {
 };
 
 function App() {
-  const storedTheme = storage.get(storeKey.theme) || "flat";
+  const storedTheme = storage.get(storeKey.theme) || "Flat";
   const shouldWelcome = storage.get(storeKey.welcome) !== false ? true : false;
 
   const [theme, setTheme] = React.useState(storedTheme);
