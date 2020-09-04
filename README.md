@@ -9,6 +9,7 @@ A window-styled portfolio (hence the name _Winport_) built on [ReactJS](https://
 * [React Router](https://reactrouter.com/)
 * [local-storage](https://github.com/bevacqua/local-storage)
 * [React Icons](https://react-icons.github.io/react-icons/)
+* [React Circular Progressbar](https://github.com/kevinsqi/react-circular-progressbar)
 * [Sass](https://sass-lang.com/)
 
 ## Themes

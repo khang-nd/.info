@@ -19,6 +19,7 @@
     box-shadow: $shadow-outer;
     border-radius: 8px;
     transition: 0.5s box-shadow;
+    font-size: 2vmax;
 
     &.active,
     &:hover {
@@ -36,7 +37,6 @@
 
       &:last-child {
         height: initial;
-        margin-top: 10px;
       }
     }
   }
