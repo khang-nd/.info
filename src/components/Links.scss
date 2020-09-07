@@ -8,6 +8,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  backface-visibility: hidden;
 
   &.minimized {
     grid-template-columns: auto;
@@ -15,7 +16,7 @@
     transform: initial;
     top: 1vmax;
     left: 1vmax;
-    transition: top 1s;
+    transition: all 1s;
 
     > .link {
       width: 6vmax;
@@ -30,7 +31,7 @@
   width: 15vmax;
   height: 15vmax;
   font-size: 2.5vmax;
-  padding: 8px;
+  padding: 6px;
   text-align: center;
   text-decoration: none;
   color: #fff;
