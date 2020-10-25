@@ -43,8 +43,11 @@
   }
 
   > span {
-    font-size: 2.5vmax;
-    font-weight: bold;
+    font: {
+      size: 2.5vmax;
+      weight: bold;
+      family: sans-serif;
+    }
     @include rotate-hide;
   }
 }

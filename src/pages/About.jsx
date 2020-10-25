@@ -18,7 +18,7 @@ function About() {
         <img className="avatar" alt="avatar" src={Avatar} />
         <div className="button-group">
           <IconContext.Provider value={{ className: "react-icons" }}>
-            <TabLink className="button" href="#">
+            <TabLink className="button" href="https://www.visualcv.com/khangnd">
               <MdDescription /> My Resume
             </TabLink>
             <TabLink

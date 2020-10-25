@@ -8,12 +8,11 @@ import { Social } from "./assets";
 import pages from "./pages";
 import * as storage from "local-storage";
 
-const mouseOver = ({ target }) => (target.src = Social[target.alt][1]);
-const mouseOut = ({ target }) => (target.src = Social[target.alt][0]);
 const SocialLinks = {
+  Fandom: "https://dev.fandom.com/wiki/User:KhangND",
   Github: "https://github.com/khang-nd",
   Linkedin: "https://www.linkedin.com/in/khangnd",
-  Fandom: "https://dev.fandom.com/wiki/User:KhangND",
+  Dev: "https://dev.to/khangnd",
 };
 const storeKey = {
   theme: "theme",
@@ -41,12 +40,7 @@ function App() {
         <div className="social-media">
           {Object.keys(SocialLinks).map((key) => (
             <TabLink key={key} className="social-link" href={SocialLinks[key]}>
-              <img
-                src={Social[key][0]}
-                alt={key}
-                onMouseOver={mouseOver}
-                onMouseOut={mouseOut}
-              />
+              <img src={Social[key]} alt={key} />
             </TabLink>
           ))}
         </div>

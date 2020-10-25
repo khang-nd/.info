@@ -14,7 +14,7 @@ export default {
       activities: [
         "Develop tools on top of the $1 to support an internal business unit",
         "Follow the Scrum framework's principles to engage in the software development process",
-        "Define, apply and continously improve the software development process to adapt and overcome challenges",
+        "Define, apply and continuously improve the software development process to adapt and overcome challenges",
         "Actively review and improve individual skills competency over the time",
         "Tools used: Visual Studio Code, IBM ELM tools, Balsamiq Mockups, MS Office, Skype",
       ],
@@ -135,12 +135,15 @@ export default {
     },
     {
       title: "Lucky Draw",
-      logo: "",
+      logo: Logo.LuckyDraw,
       timeline: "2020",
       description: "A web tool for organizing lucky drawing events",
       remark: `A side project in collaboration with my colleague,
-      this tool was built to support a customer organizing his special event.`,
+      this tool was built to support a customer organizing his special event. You can find the page $1.`,
       techs: "HTML, Bootstrap, ReactJS, React-i18n",
+      links: {
+        $1: ["here", "https://quayso.com.vn/"],
+      },
     },
     {
       title: "Wikiu",

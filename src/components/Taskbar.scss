@@ -69,6 +69,8 @@
     padding: 1vmax;
     cursor: pointer;
     text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     &.active {
       background: $dark;
