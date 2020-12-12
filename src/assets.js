@@ -12,10 +12,11 @@ export const Icon = (key, type = "flat") => {
 };
 
 export const Social = {
-  Github: require("./assets/social-github.webp"),
-  Linkedin: require("./assets/social-linkedin.webp"),
+  Github: require("./assets/social-github.svg"),
+  Linkedin: require("./assets/social-linkedin.svg"),
   Fandom: require("./assets/social-fandom.webp"),
-  Dev: require("./assets/social-dev.webp"),
+  Dev: require("./assets/social-dev.svg"),
+  Twitter: require("./assets/social-twitter.svg"),
 };
 
 export const Logo = {
@@ -25,6 +26,7 @@ export const Logo = {
   FandomDev: require("./assets/logo-fandom-dev.webp"),
   Win7: require("./assets/logo-win7.webp"),
   LuckyDraw: require("./assets/logo-luckydraw.webp"),
+  FandomUtils: require("./assets/logo-fandomutils.svg"),
 };
 
 export const themes = {

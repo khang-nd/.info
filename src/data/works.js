@@ -6,7 +6,7 @@ export default {
       title: "Bosch",
       logo: Logo.Bosch,
       timeline: "Aug 2019 - Present",
-      description: `A multinational technology company based in Germany,
+      description: `A multi-national technology company based in Germany,
         whose major business sector is mobility`,
       remark: `A company I have been working for after having finished my service for the country.
         I was able to learn a lot about processes, new techs and best practices, and apply to my daily work.
@@ -101,8 +101,8 @@ export default {
       remark: `This is the biggest side project that I have started with a lot of time and effort invested.
       At first, it was simply made for me to apply things I have learned, something I would have fun building,
       but apparently it has some unforeseen potential, as it is surprisingly well-received
-      and gets a lot of positive feedback and encouragement to advance it futher.
-      Here is a link to its $1.`,
+      and gets a lot of positive feedback and encouragement to advance it further.
+      Visit its $1.`,
       activities: [
         "Simulate the functionalities and features of Windows 7 through web technologies",
         "Integrate with Android's JS Interface, build and deploy to app store",
@@ -113,7 +113,7 @@ export default {
         "HTML, Sass, JS, VueJS, Vuex, Vue-i18n, axios, Firebase, FabricJS, Java",
       links: {
         $1: [
-          "app page",
+          "App page",
           "https://play.google.com/store/apps/details?id=com.visnalize.win7simu",
         ],
       },
@@ -123,7 +123,7 @@ export default {
       logo: Icon("about"),
       timeline: "2020",
       description: "A window-styled, multi-theming portfolio",
-      remark: `What you are seeing right now is my first website portfolio.
+      remark: `What you are viewing right now is my first website portfolio.
       The core design is inspired by Microsoft's Windows, with icons provided by $1.
       Feel free to check out the source code I made publicly available on $2,
       and do not hesitate to put a star if you like it.`,
@@ -138,32 +138,25 @@ export default {
       logo: Logo.LuckyDraw,
       timeline: "2020",
       description: "A web tool for organizing lucky drawing events",
-      remark: `A side project in collaboration with my colleague,
-      this tool was built to support a customer organizing his special event. You can find the page $1.`,
+      remark: `A side project in collaboration with my colleague, this tool was built
+      to support a customer in organizing his special event. You can visit it $1.`,
       techs: "HTML, Bootstrap, ReactJS, React-i18n",
       links: {
         $1: ["here", "https://quayso.com.vn/"],
       },
     },
     {
-      title: "Wikiu",
-      logo: "",
+      title: "Fandom Utils",
+      logo: Logo.FandomUtils,
       timeline: "2020",
-      description: "A utility collection for Fandom wikis",
-      remark: `Another side project in an attempt to apply what I have learned.
-      The idea is to build a collection of utilities from what the $1 could offer,
-      using a more advanced JS library to ease development and lift certain limitations of jQuery.
-      It is still an in-progress project, but feel free to check out the source code on $2.`,
-      techs: "HTML, CSS, JS, ReactJS, React Router, MediaWiki API",
+      description: "Useful Fandom utilities all together",
+      remark: `My first browser extension built to bring together
+      all the utilities developed by me and fellow developers at the $1.
+      The project is open-sourced, feel free to check out the source code on $2.`,
+      techs: "HTML, CSS, JS, Svelte, Web Extension Polyfill",
       links: {
-        $1: [
-          "MediaWiki API",
-          "https://doc.wikimedia.org/mediawiki-core/master/js/#!/api/mw.Api",
-        ],
-        $2: [
-          "Github",
-          "https://github.com/khang-nd/wikiu/tree/master/src/services",
-        ],
+        $1: ["Fandom Dev Wiki", "https://dev.fandom.com/"],
+        $2: ["Github", "https://github.com/khang-nd/fandom-utils"],
       },
     },
   ],

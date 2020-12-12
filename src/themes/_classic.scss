@@ -55,6 +55,7 @@
     border: $border #000;
     border-radius: 10px;
     box-shadow: $shadow;
+    color: #000;
 
     > .active {
       border: 2px solid #000;
@@ -88,7 +89,7 @@
     .window__close {
       background: initial;
       color: #000;
-      font-size: 300%;
+      font-size: 250%;
 
       &::after {
         content: "×";
@@ -129,10 +130,6 @@
 
   .col {
     background: none !important;
-  }
-
-  .CircularProgressbar-path {
-    stroke: #000 !important;
   }
 
   .CircularProgressbar-trail {

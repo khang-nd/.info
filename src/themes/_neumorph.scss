@@ -11,6 +11,14 @@
     background: $primary;
   }
 
+  .social-link {
+    border: none;
+    border-radius: 6px;
+    margin: 0.6em;
+    padding: 0.4em;
+    box-shadow: $shadow-outer;
+  }
+
   .link {
     display: flex;
     flex-direction: column;

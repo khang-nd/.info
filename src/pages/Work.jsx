@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import Window from "../components/Window";
 import Folder from "../components/Folder";
 import Works from "../data/works";
-import pages from "../pages";
+import routes from "../routes";
 import { parseLinks } from "../_utils";
 import { BsArrowBarLeft } from "react-icons/bs";
 
@@ -17,7 +17,7 @@ function Work() {
   const [active, setActive] = React.useState(null);
   const activeWork = getDetails(active);
   return (
-    <Window title={pages[pathname.slice(1)].title} bodyClass="window__works">
+    <Window title={routes[pathname.slice(1)].title} bodyClass="window__works">
       <div id="details" className={"col " + (active ? "active" : "")}>
         {activeWork ? (
           <>

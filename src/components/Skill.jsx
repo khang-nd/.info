@@ -23,11 +23,10 @@ function Skill({ data }) {
         <div className="icon">
           <CircularProgressbar
             value={percent}
-            strokeWidth={8}
+            strokeWidth={6}
             styles={{ path: { stroke: color } }}
           />
           <img alt={label} src={Icon(name, "skill")} />
-          <span>{value}%</span>
         </div>
         <span>{label}</span>
       </TabLink>

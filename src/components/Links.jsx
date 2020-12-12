@@ -2,14 +2,14 @@ import React from "react";
 import "./Links.scss";
 import { useLocation, Link } from "react-router-dom";
 import { Icon } from "../assets";
-import pages from "../pages";
+import routes from "../routes";
 
 function Links({ theme }) {
   const { pathname } = useLocation();
   const _path = pathname.slice(1);
   return (
     <div className={`wrapper${_path ? " minimized" : ""}`}>
-      {Object.keys(pages).map((path) => (
+      {Object.keys(routes).map((path) => (
         <Link
           key={path}
           to={path}
@@ -17,7 +17,7 @@ function Links({ theme }) {
           onClick={(e) => (path === _path ? e.preventDefault() : null)}
         >
           <span style={{ backgroundImage: `url(${Icon(path, theme)})` }}></span>
-          <span>{pages[path].title}</span>
+          <span>{routes[path].title}</span>
         </Link>
       ))}
     </div>

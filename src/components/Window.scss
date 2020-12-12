@@ -15,8 +15,7 @@
   overflow: hidden;
 
   &.zooming {
-    transform: translate(-50%, -50%) scale(0.4);
-    backface-visibility: hidden;
+    transform: translate(-50%, -50%) scale(0.5);
   }
 }
 

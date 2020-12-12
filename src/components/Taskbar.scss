@@ -12,32 +12,40 @@
 }
 
 .item {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
   &:not(:last-child) {
     background: $dark;
     height: 100%;
     padding: 0 20px;
     display: flex;
     align-items: center;
-    margin: 0 1vh;
+    margin: 0 0.5rem;
     margin-top: -2px;
     border-bottom: 2px solid $secondary;
 
     > img {
-      height: 80%;
+      height: 60%;
       width: auto;
       margin-right: 15px;
     }
   }
 
+  label {
+    @extend .item;
+  }
+
   &.right {
-    margin: 0 1vh 0 auto;
+    margin: 0 0.5rem 0 auto;
   }
 }
 
 #settings {
-  width: $taskbar-h - 2vh;
-  height: $taskbar-h - 2vh;
-  margin-left: 1vh;
+  width: $taskbar-h - 1.5rem;
+  height: $taskbar-h - 1.5rem;
+  margin-left: 0.5rem;
   background: no-repeat center;
   background-size: contain;
   cursor: pointer;
@@ -49,28 +57,24 @@
 }
 
 #menu {
+  width: 20vmax;
   background: $primary;
   position: fixed;
   bottom: $taskbar-h;
   list-style: none;
   color: #fff;
-  padding: 0;
-  margin: 0 0 0 1vh;
+  padding: 0.6rem;
+  margin: 0 0.5rem;
   transform: initial;
   transition: transform 0.5s ease-out;
 
   &.hidden {
-    transform: translateX(-105%);
+    transform: translateX(-110%);
   }
 
   > li {
-    width: 15vmax;
-    margin: 0.5vh 2vh;
-    padding: 1vmax;
+    padding: 0.6rem;
     cursor: pointer;
-    text-align: center;
-    overflow: hidden;
-    text-overflow: ellipsis;
 
     &.active {
       background: $dark;
@@ -80,5 +84,11 @@
       width: 100%;
       height: auto;
     }
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  #menu {
+    width: 16vmax;
   }
 }

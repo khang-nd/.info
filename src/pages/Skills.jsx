@@ -3,13 +3,13 @@ import "./Skills.scss";
 import Window from "../components/Window";
 import Skill from "../components/Skill";
 import { useLocation } from "react-router-dom";
-import pages from "../pages";
+import routes from "../routes";
 import skills from "../data/skills";
 
 function Skills() {
   const { pathname } = useLocation();
   return (
-    <Window title={pages[pathname.slice(1)].title} bodyClass="window__skills">
+    <Window title={routes[pathname.slice(1)].title} bodyClass="window__skills">
       {Object.keys(skills).map((category) => (
         <div key={category} className="col">
           <div className="title">

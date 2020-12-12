@@ -4,7 +4,7 @@ import Window from "../components/Window";
 import TabLink from "../components/TabLink";
 import { useLocation } from "react-router-dom";
 import { Avatar } from "../assets";
-import pages from "../pages";
+import routes from "../routes";
 import about from "../data/about";
 import { IconContext } from "react-icons";
 import { MdDescription, MdEmail } from "react-icons/md";
@@ -13,19 +13,19 @@ import { parseLinks } from "../_utils";
 function About() {
   const { pathname } = useLocation();
   return (
-    <Window title={pages[pathname.slice(1)].title} bodyClass="window__about">
+    <Window title={routes[pathname.slice(1)].title} bodyClass="window__about">
       <div className="col text--center">
         <img className="avatar" alt="avatar" src={Avatar} />
         <div className="button-group">
           <IconContext.Provider value={{ className: "react-icons" }}>
             <TabLink className="button" href="https://www.visualcv.com/khangnd">
-              <MdDescription /> My Resume
+              <MdDescription /> Resume
             </TabLink>
             <TabLink
               className="button"
               href="mailto:khang.nguyenduyvn@gmail.com?subject=Hey Khang!"
             >
-              <MdEmail />
+              <MdEmail /> Email
             </TabLink>
           </IconContext.Provider>
         </div>

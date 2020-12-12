@@ -5,7 +5,7 @@ import Taskbar from "./components/Taskbar";
 import Links from "./components/Links";
 import TabLink from "./components/TabLink";
 import { Social } from "./assets";
-import pages from "./pages";
+import routes from "./routes";
 import * as storage from "local-storage";
 
 const SocialLinks = {
@@ -13,6 +13,7 @@ const SocialLinks = {
   Github: "https://github.com/khang-nd",
   Linkedin: "https://www.linkedin.com/in/khangnd",
   Dev: "https://dev.to/khangnd",
+  Twitter: "https://twitter.com/_khangnd",
 };
 const storeKey = {
   theme: "theme",
@@ -45,11 +46,11 @@ function App() {
           ))}
         </div>
         <Switch>
-          {Object.keys(pages).map((path) => (
+          {Object.keys(routes).map((path) => (
             <Route
               key={path}
               path={`/${path}/`}
-              component={pages[path].component}
+              component={routes[path].component}
             />
           ))}
         </Switch>

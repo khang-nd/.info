@@ -13,11 +13,11 @@ export default {
     component: Work,
   },
   skills: {
-    title: "Skill Metrics",
+    title: "Skills",
     component: Skills,
   },
   edu: {
-    title: "Education",
+    title: "Learning",
     component: Education,
   },
 };

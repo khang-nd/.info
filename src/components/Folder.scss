@@ -1,6 +1,5 @@
 @mixin absolute {
   position: absolute;
-  width: 100%;
   top: 0;
   left: 0;
 }
@@ -21,6 +20,7 @@
 
   > div:not(:first-child) {
     @include absolute();
+    width: 100%;
   }
 }
 
@@ -39,7 +39,7 @@
 }
 
 .folder__back > svg {
-  fill: #caa968;
+  fill: #8cbad1;
 }
 
 .folder__file > svg {
@@ -47,5 +47,5 @@
 }
 
 .folder__front > svg {
-  fill: #ddba75;
+  fill: #b9dbec;
 }
