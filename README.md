@@ -1,7 +1,7 @@
 
 # Winport
 
-![Winport](src/assets/theme-flat.webp)
+<p align="center">![Winport](src/assets/theme-flat.webp)</p>
 
 A window-styled portfolio (hence the name _Winport_) built with ReactJS, fully responsive, and followed the Mobile First Design's principles.
 
