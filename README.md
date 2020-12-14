@@ -1,20 +1,22 @@
 
 # Winport
 
-A window-styled portfolio (hence the name _Winport_) built on [ReactJS](https://reactjs.org/), fully responsive and followed the Mobile First Design's principles. This is my first ever portfolio built and designed from scratch which I am pretty pleased and proud of 🌼.
+![Winport](src/assets/theme-flat.webp)
+
+A window-styled portfolio (hence the name _Winport_) built with ReactJS, fully responsive, and followed the Mobile First Design's principles.
 
 ## Technology Stacks
 
 * [ReactJS](https://reactjs.org/)
 * [React Router](https://reactrouter.com/)
-* [local-storage](https://github.com/bevacqua/local-storage)
 * [React Icons](https://react-icons.github.io/react-icons/)
 * [React Circular Progressbar](https://github.com/kevinsqi/react-circular-progressbar)
 * [Sass](https://sass-lang.com/)
+* [local-storage](https://github.com/bevacqua/local-storage)
 
 ## Themes
 
-This portfolio is meant to showcase my enthusiasm for front-end and design (none of which are where my background lies, yet I enjoy every moment that I could work on one), therefore, multiple themes are integrated in one place:
+This portfolio is meant to showcase my enthusiasm for front-end and design (none of which are where my background lies, yet I enjoy every moment that I could work on one), therefore, multiple themes are integrated:
 
 * [Flat](https://en.wikipedia.org/wiki/Flat_design)
 * Classic

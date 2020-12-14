@@ -22,21 +22,20 @@
 .window__titlebar {
   position: relative;
   background: $primary;
-  padding: 8px;
+  padding: 10px 10px 10px 15px;
   display: flex;
   align-items: center;
 
   .window__title {
     width: 100%;
     color: #fff;
-    font-size: 130%;
   }
 
   .window__close {
     text-decoration: none;
     margin-left: auto;
-    width: 30px;
-    height: 30px;
+    width: 26px;
+    height: 26px;
     background: $red;
   }
 }

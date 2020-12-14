@@ -69,10 +69,15 @@
   border: 1px solid $primary;
   box-sizing: border-box;
   position: relative;
-  transition: color 0.4s;
+  transition: 0.3s;
 
   > .react-icons {
     margin-right: 5px;
+  }
+
+  &:hover {
+    background: $primary;
+    color: $light;
   }
 }
 

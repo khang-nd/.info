@@ -12,7 +12,7 @@ function Skill({ data }) {
   if (triggered) {
     clearTimeout(timer);
     requestAnimationFrame(() => {
-      const newPercent = percent + 5;
+      const newPercent = percent + 10;
       if (newPercent <= value) setPercent(newPercent);
     });
   }

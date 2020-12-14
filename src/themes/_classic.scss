@@ -99,11 +99,11 @@
     }
   }
 
-  button,
   .button {
     border-color: #000;
     box-shadow: $shadow;
     color: unset;
+    transition: none;
 
     &:hover {
       background: $light;

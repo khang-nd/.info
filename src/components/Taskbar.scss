@@ -3,7 +3,6 @@
 #taskbar {
   height: $taskbar-h;
   background: $primary;
-  box-sizing: border-box;
   display: flex;
   align-items: center;
   position: relative;
@@ -12,17 +11,13 @@
 }
 
 .item {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-
   &:not(:last-child) {
     background: $dark;
     height: 100%;
-    padding: 0 20px;
+    padding: 0 4vh;
     display: flex;
     align-items: center;
-    margin: 0 0.5rem;
+    margin: 0 1.5vh;
     margin-top: -2px;
     border-bottom: 2px solid $secondary;
 
@@ -33,19 +28,16 @@
     }
   }
 
-  label {
-    @extend .item;
-  }
-
   &.right {
-    margin: 0 0.5rem 0 auto;
+    margin: 0 1.5vh 0 auto;
+    display: none;
   }
 }
 
 #settings {
-  width: $taskbar-h - 1.5rem;
-  height: $taskbar-h - 1.5rem;
-  margin-left: 0.5rem;
+  width: $taskbar-h - 4vh;
+  height: $taskbar-h - 4vh;
+  margin-left: 1.5vh;
   background: no-repeat center;
   background-size: contain;
   cursor: pointer;
@@ -63,8 +55,8 @@
   bottom: $taskbar-h;
   list-style: none;
   color: #fff;
-  padding: 0.6rem;
-  margin: 0 0.5rem;
+  padding: 1vmax;
+  margin: 0 0 1vmax 1vmax;
   transform: initial;
   transition: transform 0.5s ease-out;
 
@@ -73,7 +65,7 @@
   }
 
   > li {
-    padding: 0.6rem;
+    padding: 1vmax;
     cursor: pointer;
 
     &.active {
@@ -88,6 +80,10 @@
 }
 
 @media only screen and (min-width: 600px) {
+  #taskbar .right {
+    display: block;
+  }
+
   #menu {
     width: 16vmax;
   }

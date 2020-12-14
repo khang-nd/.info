@@ -6,9 +6,13 @@
 }
 
 .container {
-  margin: 30px 0;
   position: relative;
   padding: 0 10px;
+  margin: 10px 0;
+
+  &:not(:first-child) {
+    margin: 30px 0;
+  }
 
   &::before {
     content: "";
@@ -25,6 +29,7 @@
     transform: translateX(-50px);
     opacity: 0;
     animation: 1s forwards 1s reset;
+    margin: 0.5em 0;
   }
 
   > .icon {
@@ -47,7 +52,7 @@
     border-radius: 20px;
     display: inline-block;
     padding: 4px 10px;
-    margin: 10px 0;
+    margin-bottom: 0;
   }
 
   > .degree {
@@ -55,11 +60,7 @@
   }
 
   > .place {
-    color: #777;
-  }
-
-  > .description {
-    margin-top: 10px;
+    filter: opacity(0.5);
   }
 }
 
