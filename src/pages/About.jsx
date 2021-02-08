@@ -31,12 +31,12 @@ function About() {
         </div>
       </div>
       <div className="col">
-        <div className="title">
+        <h2 className="title">
           <big>
             Hello, I'm <b>Khang</b>
           </big>
           <span>{about.headline}</span>
-        </div>
+        </h2>
         <div className="intro">{about.intro}</div>
         <div className="intro">
           <h3>Some Facts</h3>

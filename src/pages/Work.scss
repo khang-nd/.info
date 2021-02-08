@@ -11,6 +11,7 @@
   overflow: auto;
   text-align: justify;
   background: none;
+  box-sizing: border-box;
 
   &.active {
     display: block;
@@ -42,8 +43,8 @@
 }
 
 .group {
-  padding: 0 15px;
-  margin: 15px 0;
+  padding: 0 2%;
+  margin: 4% 0;
 }
 
 .list {
@@ -56,12 +57,12 @@
   > li {
     width: 20%;
     height: auto;
-    margin: 15px;
+    margin: 2%;
     cursor: pointer;
   }
 
   img {
-    max-width: 50%;
+    max-width: 45%;
     height: auto;
   }
 }

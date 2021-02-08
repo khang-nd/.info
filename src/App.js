@@ -38,13 +38,13 @@ function App() {
       </div>
       <div id="desktop" className={theme}>
         <Links theme={theme} />
-        <div className="social-media">
+        <section className="social">
           {Object.keys(SocialLinks).map((key) => (
-            <TabLink key={key} className="social-link" href={SocialLinks[key]}>
+            <TabLink key={key} className="social__link" href={SocialLinks[key]}>
               <img src={Social[key]} alt={key} />
             </TabLink>
           ))}
-        </div>
+        </section>
         <Switch>
           {Object.keys(routes).map((path) => (
             <Route

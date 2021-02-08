@@ -1,12 +1,16 @@
 .Classic {
-  $primary: #7ac2b9;
-  $secondary: #a3d3cd;
-  $light: #c3e5e1;
+  $primary: #f6f6f6;
+  $secondary: #fff;
+  $light: #fff;
   $border: 3px solid;
   $shadow: 2px 2px #000;
 
   &#desktop {
     background: $primary;
+  }
+
+  .navigation.minimized > .link {
+    border-width: 2px;
   }
 
   .link {
@@ -15,6 +19,7 @@
     background: initial;
     color: initial;
     border: $border #000;
+    box-shadow: $shadow;
     font-size: 2vmax;
     padding: 0;
 
@@ -89,11 +94,12 @@
     .window__close {
       background: initial;
       color: #000;
-      font-size: 250%;
+      position: relative;
 
       &::after {
         content: "×";
-        margin-top: -15px;
+        font-size: 260%;
+        line-height: 40%;
         display: block;
       }
     }

@@ -27,6 +27,7 @@ export const Logo = {
   Win7: require("./assets/logo-win7.webp"),
   LuckyDraw: require("./assets/logo-luckydraw.webp"),
   FandomUtils: require("./assets/logo-fandomutils.svg"),
+  "7.css": require("./assets/logo-7css.webp"),
 };
 
 export const themes = {

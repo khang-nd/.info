@@ -10,13 +10,13 @@ function Window({ title, children, bodyClass }) {
   });
 
   return (
-    <div className={"window" + (zooming ? " zooming" : "")}>
-      <div className="window__titlebar">
-        <div className="window__title">{title}</div>
-        <Link className="window__close" to="/" />
-      </div>
+    <section className={"window" + (zooming ? " zooming" : "")}>
+      <h1 className="window__titlebar">
+        <span className="window__title">{title}</span>
+        <Link className="window__close" to="/" aria-label="Close" />
+      </h1>
       <div className={"window__content " + (bodyClass || "")}>{children}</div>
-    </div>
+    </section>
   );
 }
 

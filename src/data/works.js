@@ -159,5 +159,19 @@ export default {
         $2: ["Github", "https://github.com/khang-nd/fandom-utils"],
       },
     },
+    {
+      title: "7.css",
+      logo: Logo["7.css"],
+      timeline: "2020",
+      description: "A tiny CSS framework to recreate the Windows 7 UI",
+      remark: `My first published Node package where people can download
+      and use in their projects. Check it out $1. You can read more about
+      the progress and what I learned from developing it in $2.`,
+      techs: "HTML, SCSS, JS, EJS, PostCSS",
+      links: {
+        $1: ["here", "https://khang-nd.github.io/7.css"],
+        $2: ["my blog", "https://dev.to/khangnd/7-css-my-case-study-50d1"],
+      },
+    },
   ],
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import "./Folder.scss";
 
-function Folder({ icon, active }) {
+function Folder({ icon, title }) {
   return (
     <div className="folder">
       <div className="folder__back">
@@ -18,7 +18,7 @@ function Folder({ icon, active }) {
         <svg viewBox="0 0 20 16">
           <path d="M2,2h16c1.1,0,2,0.9,2,2v10c0,1.1-0.9,2-2,2H2c-1.1,0-2-0.9-2-2V4C0,2.9,0.9,2,2,2z"></path>
         </svg>
-        <img src={icon} alt="" />
+        <img src={icon} alt={title} />
       </div>
     </div>
   );

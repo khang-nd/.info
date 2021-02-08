@@ -17,35 +17,38 @@
   &.zooming {
     transform: translate(-50%, -50%) scale(0.5);
   }
-}
 
-.window__titlebar {
-  position: relative;
-  background: $primary;
-  padding: 10px 10px 10px 15px;
-  display: flex;
-  align-items: center;
+  &__titlebar {
+    position: relative;
+    background: $primary;
+    padding: 10px 10px 10px 15px;
+    margin: 0;
+    font-weight: normal;
+    font-size: initial;
+    display: flex;
+    align-items: center;
+  }
 
-  .window__title {
+  &__title {
     width: 100%;
     color: #fff;
   }
 
-  .window__close {
+  &__close {
     text-decoration: none;
     margin-left: auto;
     width: 26px;
     height: 26px;
     background: $red;
   }
-}
 
-.window__content {
-  overflow-x: hidden;
-  overflow-y: auto;
-  position: relative;
-  padding: 10px;
-  box-sizing: border-box;
+  &__content {
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+    padding: 10px;
+    box-sizing: border-box;
+  }
 }
 
 @media only screen and (min-width: 900px) {

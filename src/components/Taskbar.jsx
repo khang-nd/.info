@@ -10,17 +10,6 @@ function Taskbar({ theme, setTheme }) {
   const path = pathname.slice(1);
   return (
     <>
-      <ul id="menu" className={theme + (menu ? "" : " hidden")}>
-        {Object.keys(themes).map((key) => (
-          <li
-            key={key}
-            className={theme === key ? "active" : ""}
-            onClick={() => setTheme(key)}
-          >
-            <img src={themes[key]} alt={key}></img>
-          </li>
-        ))}
-      </ul>
       <div id="taskbar" className={theme}>
         <div
           id="settings"
@@ -36,6 +25,17 @@ function Taskbar({ theme, setTheme }) {
         )}
         <div className="item right">Copyright &copy; 2020 KhangND</div>
       </div>
+      <ul id="menu" className={theme + (menu ? "" : " hidden")}>
+        {Object.keys(themes).map((key) => (
+          <li
+            key={key}
+            className={theme === key ? "active" : ""}
+            onClick={() => setTheme(key)}
+          >
+            <img src={themes[key]} alt={key}></img>
+          </li>
+        ))}
+      </ul>
     </>
   );
 }

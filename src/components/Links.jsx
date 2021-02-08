@@ -8,7 +8,7 @@ function Links({ theme }) {
   const { pathname } = useLocation();
   const _path = pathname.slice(1);
   return (
-    <div className={`wrapper${_path ? " minimized" : ""}`}>
+    <section className={`navigation${_path ? " minimized" : ""}`}>
       {Object.keys(routes).map((path) => (
         <Link
           key={path}
@@ -20,7 +20,7 @@ function Links({ theme }) {
           <span>{routes[path].title}</span>
         </Link>
       ))}
-    </div>
+    </section>
   );
 }
 
