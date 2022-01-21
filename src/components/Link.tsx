@@ -1,6 +1,5 @@
 import NextLink from "next/link";
 import React, { ReactElement } from "react";
-import { Url } from "url";
 
 interface LinkProps {
   href: string;
