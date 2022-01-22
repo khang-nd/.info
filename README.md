@@ -1,6 +1,6 @@
 # Winport
 
-> Under reconstruction. In the meantime, check out [v1](/tree/v1) of the repo.
+> Under reconstruction. In the meantime, check out [v1](https://github.com/khang-nd/khang-nd.github.io/tree/v1) of the repo.
 
 ## Technology stack
 
