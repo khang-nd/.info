@@ -1,2 +1,1 @@
-type Theme = "flat" | "neumorphism" | "classic";
-export default Theme;
+export type Theme = "flat" | "neumorphism" | "classic";

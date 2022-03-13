@@ -1,5 +1,7 @@
 import type { Theme } from "theme-ui";
 
+export const sizes: number[] = [0, 4, 8, 12, 16, 24, 32, 40, 64, 96, 128, 256, 512];
+
 const theme: Theme = {
   colors: {
     background: "#1abc9c",
@@ -12,6 +14,8 @@ const theme: Theme = {
     red: "#ed4c5a",
   },
   breakpoints: ["600px", "1024px"],
+  sizes,
+  space: sizes,
 };
 
 export default theme;
