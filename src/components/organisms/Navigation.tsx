@@ -1,24 +1,48 @@
+import { Variants } from "framer-motion";
 import { ThemeUICSSObject } from "theme-ui";
-import routes from "../../../pages/pageRoutes";
+import routes from "../../../pages/_routes";
+import useHomepage from "../../hooks/useHomepage";
+import { MotionNav } from "../atoms/Container";
 import NavLink from "../atoms/NavLink";
 
 export default function Navigation() {
-  const style: ThemeUICSSObject = {
+  const isHomePage = useHomepage();
+  const maxWidth = isHomePage ? 400 : 150;
+
+  const motionVariants: Variants = {
+    main: {
+      maxWidth,
+      left: `calc(50% - ${maxWidth / 2}px)`,
+      transition: { duration: 0.8 },
+    },
+    sidebarInit: {
+      maxWidth,
+      left: `-${maxWidth}px`,
+    },
+    sidebar: {
+      maxWidth,
+      left: 0,
+      transition: { duration: 0.8, type: "spring" },
+    },
+  };
+
+  const containerStyle: ThemeUICSSObject = {
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "center",
-    maxWidth: 400,
     position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
   };
 
   return (
-    <nav sx={style}>
+    <MotionNav
+      sx={containerStyle}
+      variants={motionVariants}
+      animate={isHomePage ? "main" : "sidebar"}
+      initial={isHomePage ? "main" : "sidebarInit"}
+    >
       {routes.map(({ path, title }) => (
         <NavLink key={path} href={path} text={title} />
       ))}
-    </nav>
+    </MotionNav>
   );
 }

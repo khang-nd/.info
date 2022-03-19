@@ -1,5 +1,5 @@
 type TaskbarItemProps = {
-  title: string;
+  title?: string;
 };
 
 export default function TaskbarItem({ title }: TaskbarItemProps): JSX.Element {

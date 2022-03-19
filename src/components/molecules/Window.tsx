@@ -1,35 +1,33 @@
-import { ReactNode } from "react";
+import { ReactNode, useContext } from "react";
 import { ThemeUICSSObject } from "theme-ui";
+import { fadeZoomIn } from "../../animations/fade";
+import { GlobalContext } from "../../contexts/GlobalContext";
+import { Box, MotionBox } from "../atoms/Container";
+import WindowBody from "../atoms/window/Body";
+import WindowTitle from "../atoms/window/Title";
 
 type WindowProps = {
-  title: string;
+  title?: ReactNode;
   children?: ReactNode;
 };
 
 export default function Window({ title, children }: WindowProps) {
-  const containerStyle: ThemeUICSSObject = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
+  const { enableAnimation } = useContext(GlobalContext);
+
+  const style: ThemeUICSSObject = {
     maxWidth: 900,
+    minWidth: 900,
+    minHeight: "95%",
+    display: "flex",
+    flexDirection: "column",
   };
 
-  const titleStyle: ThemeUICSSObject = {
-    bg: "primary",
-    color: "white",
-    p: 3,
-  };
-
-  const bodyStyle: ThemeUICSSObject = {
-    bg: "white",
-    p: 3,
-  };
+  const Container = enableAnimation?.val ? MotionBox : Box;
 
   return (
-    <div sx={containerStyle}>
-      <h1 sx={titleStyle}>{title}</h1>
-      <div sx={bodyStyle}>{children}</div>
-    </div>
+    <Container sx={style} variants={fadeZoomIn} animate="animate" initial="initial" exit="initial">
+      <WindowTitle>{title}</WindowTitle>
+      <WindowBody>{children}</WindowBody>
+    </Container>
   );
 }

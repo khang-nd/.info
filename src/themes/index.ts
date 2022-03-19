@@ -19,3 +19,5 @@ const theme: Theme = {
 };
 
 export default theme;
+
+export const taskbarHeight = sizes[8];

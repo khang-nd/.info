@@ -1,9 +1,21 @@
 import { ThemeProvider } from "@emotion/react";
+import { NextPage } from "next";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import { GlobalProvider } from "../src/contexts/GlobalContext";
 import theme from "../src/themes";
 
-function MyApp({ Component, pageProps }: AppProps) {
+type NextPageWithLayout = NextPage & {
+  getLayout?: (page: JSX.Element) => JSX.Element;
+};
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
+
+function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+  const getLayout = Component.getLayout || ((page) => page);
+
   return (
     <ThemeProvider theme={theme}>
       <Head>
@@ -15,7 +27,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css" />
       </Head>
-      <Component {...pageProps} />
+      <GlobalProvider>
+        {getLayout(<Component {...pageProps} />)}
+      </GlobalProvider>
     </ThemeProvider>
   );
 }

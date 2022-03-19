@@ -1,33 +1,39 @@
-import { ReactNode, useState } from "react";
+import { useRouter } from "next/router";
+import { useContext, useState } from "react";
 import { ThemeUICSSObject } from "theme-ui";
+import { getRoute } from "../../../pages/_routes";
+import { fadeInUp } from "../../animations/fade";
+import { GlobalContext } from "../../contexts/GlobalContext";
+import { taskbarHeight } from "../../themes";
+import { MotionSection, Section } from "../atoms/Container";
 import ButtonConfig from "../molecules/ButtonConfig";
 import PanelConfig from "../molecules/PanelConfig";
+import TaskbarItem from "../molecules/TaskbarItem";
 
-type TaskbarProps = {
-  children?: ReactNode;
-};
-
-export default function Taskbar({ children }: TaskbarProps) {
+export default function Taskbar() {
   const [isConfigActive, setConfigActive] = useState(false);
+  const { enableAnimation } = useContext(GlobalContext);
 
   const taskbarStyle: ThemeUICSSObject = {
     background: "primary",
     color: "white",
     bottom: 0,
     width: "100%",
-    height: 8,
+    height: taskbarHeight + "px",
     display: "flex",
     alignItems: "center",
-    position: "relative",
+    position: "fixed",
     px: 2,
   };
 
+  const Container = enableAnimation?.val ? MotionSection : Section;
+
   return (
-    <section sx={taskbarStyle}>
+    <Container sx={taskbarStyle} variants={fadeInUp} animate="animate" initial="initial">
       <PanelConfig isVisible={isConfigActive} />
       <ButtonConfig isActive={isConfigActive} onClick={() => setConfigActive(!isConfigActive)} />
-      {children}
+      <TaskbarItem title={getRoute(useRouter().asPath)?.title} />
       <div sx={{ ml: "auto" }}>Copyright &copy; 2020 KhangND</div>
-    </section>
+    </Container>
   );
 }

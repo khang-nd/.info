@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { ThemeUICSSObject } from "theme-ui";
+import { taskbarHeight } from "../../themes";
 
 type DesktopProps = {
   children: ReactNode;
@@ -7,9 +8,11 @@ type DesktopProps = {
 
 export default function Desktop({ children }: DesktopProps) {
   const desktopStyle: ThemeUICSSObject = {
-    background: "secondary",
-    height: "100%",
+    height: `calc(100% - ${taskbarHeight}px)`,
     position: "relative",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   };
 
   return <section sx={desktopStyle}>{children}</section>;
