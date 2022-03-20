@@ -1,3 +1,4 @@
+import { useIsPresent } from "framer-motion";
 import { ReactNode, useContext } from "react";
 import { ThemeUICSSObject } from "theme-ui";
 import { fadeZoomIn } from "../../animations/fade";
@@ -13,6 +14,7 @@ type WindowProps = {
 
 export default function Window({ title, children }: WindowProps) {
   const { enableAnimation } = useContext(GlobalContext);
+  const isPresent = useIsPresent();
 
   const style: ThemeUICSSObject = {
     maxWidth: 900,
@@ -26,8 +28,8 @@ export default function Window({ title, children }: WindowProps) {
 
   return (
     <Container sx={style} variants={fadeZoomIn} animate="animate" initial="initial" exit="initial">
-      <WindowTitle>{title}</WindowTitle>
-      <WindowBody>{children}</WindowBody>
+      <WindowTitle>{isPresent && title}</WindowTitle>
+      <WindowBody>{isPresent && children}</WindowBody>
     </Container>
   );
 }

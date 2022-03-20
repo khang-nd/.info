@@ -3,10 +3,10 @@ import Window from "../src/components/molecules/Window";
 import Layout from "../src/components/pages/Layout";
 import { getRoute } from "./_routes";
 
-export default function Edu(): JSX.Element {
+export default function Skills(): JSX.Element {
   const { asPath } = useRouter();
 
-  return <Window title={getRoute(asPath)?.title}>Edu</Window>;
+  return <Window title={getRoute(asPath)?.title}>Skills</Window>;
 }
 
-Edu.getLayout = (page: JSX.Element) => <Layout>{page}</Layout>;
+Skills.getLayout = (page: JSX.Element) => <Layout>{page}</Layout>;

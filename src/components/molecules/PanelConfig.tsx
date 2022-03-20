@@ -1,4 +1,5 @@
 import { Variants } from "framer-motion";
+import { ForwardedRef, forwardRef } from "react";
 import { ThemeUICSSObject } from "theme-ui";
 import { MotionList } from "../atoms/Container";
 
@@ -6,7 +7,7 @@ type PanelConfigProps = {
   isVisible?: boolean;
 };
 
-export default function PanelConfig({ isVisible }: PanelConfigProps) {
+const PanelConfig = ({ isVisible }: PanelConfigProps, ref: ForwardedRef<HTMLElement>) => {
   const panelConfigStyle: ThemeUICSSObject = {
     background: "primary",
     p: 5,
@@ -22,10 +23,13 @@ export default function PanelConfig({ isVisible }: PanelConfigProps) {
 
   return (
     <MotionList
+      ref={ref}
       sx={panelConfigStyle}
       variants={variants}
       initial="default"
       animate={isVisible ? "active" : "default"}
     ></MotionList>
   );
-}
+};
+
+export default forwardRef(PanelConfig);

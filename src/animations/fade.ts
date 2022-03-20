@@ -9,7 +9,7 @@ export const fadeInUp: Variants = {
   animate: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6 },
+    transition: { duration: 0.6, when: "beforeChildren", delayChildren: 1 },
   },
 };
 
@@ -17,12 +17,12 @@ export const fadeZoomIn: Variants = {
   initial: {
     opacity: 0,
     scale: 0.9,
-    transition: { duration: 0.4 },
+    transition: { type: "tween" },
   },
   animate: {
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.4 },
+    transition: { type: "tween" },
   },
 };
 

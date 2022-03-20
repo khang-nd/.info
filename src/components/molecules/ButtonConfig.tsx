@@ -1,5 +1,5 @@
 import { Variants } from "framer-motion";
-import { MouseEventHandler } from "react";
+import { ForwardedRef, forwardRef, MouseEventHandler } from "react";
 import { MotionButton } from "../atoms/Button";
 import Icon from "../atoms/Icon";
 
@@ -8,7 +8,7 @@ type ButtonConfigProps = {
   onClick?: MouseEventHandler<HTMLButtonElement>;
 };
 
-export default function ButtonConfig({ isActive, onClick }: ButtonConfigProps) {
+const ButtonConfig = ({ isActive, onClick }: ButtonConfigProps, ref: ForwardedRef<HTMLElement>) => {
   const variants: Variants = {
     default: { rotateZ: 0 },
     active: { rotateZ: 180 },
@@ -16,8 +16,9 @@ export default function ButtonConfig({ isActive, onClick }: ButtonConfigProps) {
 
   return (
     <MotionButton
+      ref={ref}
       unsetStyle
-      style={{ size: 7 }}
+      style={{ size: 7, mr: 3 }}
       variants={variants}
       animate={isActive ? "active" : "default"}
       onClick={onClick}
@@ -25,4 +26,6 @@ export default function ButtonConfig({ isActive, onClick }: ButtonConfigProps) {
       <Icon iconName="FlatSettings" size={7} />
     </MotionButton>
   );
-}
+};
+
+export default forwardRef(ButtonConfig);

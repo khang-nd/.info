@@ -1,32 +1,60 @@
-import { motion, Variants } from "framer-motion";
+import { motion, Transition, Variants } from "framer-motion";
 import Link from "next/link";
 import { ThemeUICSSObject } from "theme-ui";
+import { Route } from "../../../pages/_routes";
 import useHomepage from "../../hooks/useHomepage";
 import { sizes } from "../../themes";
+import { MotionIcon } from "./Icon";
 
 type NavLinkProps = {
-  href: string;
-  text: string;
-  icon?: string;
+  data: Route;
 };
 
-export default function NavLink({ href, icon, text }: NavLinkProps) {
+export default function NavLink({ data }: NavLinkProps) {
   const isHomePage = useHomepage();
   const defaultSize = 160;
+  const sidebarSize = defaultSize / 2;
+  const transition: Transition = { duration: 0.6 };
 
-  const variants: Variants = {
+  const linkVariants: Variants = {
     main: {
       width: defaultSize,
       height: defaultSize,
-      transition: { delay: 0.3, duration: 0.6 },
+      transition: { duration: 0.6, delay: 0.3 },
       opacity: 1,
       margin: sizes[3],
     },
     sidebar: {
-      width: 80,
-      height: 80,
+      width: sidebarSize,
+      height: sidebarSize,
       opacity: 1,
       margin: sizes[2],
+    },
+  };
+
+  const iconVariants: Variants = {
+    main: {
+      width: sidebarSize,
+      height: sidebarSize,
+      transition: { duration: 1 },
+    },
+    sidebar: {
+      width: sidebarSize / 2,
+      height: sidebarSize / 2,
+    },
+  };
+
+  const labelVariants: Variants = {
+    main: {
+      height: "auto",
+      opacity: 1,
+      marginTop: sizes[3],
+      transition: { duration: 1 },
+    },
+    sidebar: {
+      height: 0,
+      opacity: 0,
+      margin: 0,
     },
   };
 
@@ -35,24 +63,37 @@ export default function NavLink({ href, icon, text }: NavLinkProps) {
     color: "white",
     display: "flex",
     flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
     opacity: 0,
     overflow: "hidden",
     textDecoration: "none",
-    textAlign: "center",
     size: defaultSize,
   };
 
   return (
-    <Link href={href} passHref={true}>
+    <Link href={data.path} passHref={true}>
       <motion.a
-        href={href}
+        href={data.path}
         sx={linkStyle}
-        variants={variants}
+        variants={linkVariants}
         animate={isHomePage ? "main" : "sidebar"}
         initial={isHomePage || "sidebar"}
       >
-        <span>{icon}</span>
-        <span>{text}</span>
+        <MotionIcon
+          variants={iconVariants}
+          animate={isHomePage ? "main" : "sidebar"}
+          initial="main"
+          iconName={data.icon}
+        />
+        <motion.span
+          variants={labelVariants}
+          animate={isHomePage ? "main" : "sidebar"}
+          initial={isHomePage ? "main" : "sidebar"}
+          sx={{ whiteSpace: "nowrap", fontSize: 20 }}
+        >
+          {data.title}
+        </motion.span>
       </motion.a>
     </Link>
   );

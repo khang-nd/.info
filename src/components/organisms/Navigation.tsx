@@ -40,8 +40,8 @@ export default function Navigation() {
       animate={isHomePage ? "main" : "sidebar"}
       initial={isHomePage ? "main" : "sidebarInit"}
     >
-      {routes.map(({ path, title }) => (
-        <NavLink key={path} href={path} text={title} />
+      {routes.map((route) => (
+        <NavLink key={route.path} data={route} />
       ))}
     </MotionNav>
   );

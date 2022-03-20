@@ -1,13 +1,16 @@
-type Route = {
+import { IconName } from "../src/components/atoms/Icon";
+
+export type Route = {
   path: string;
   title: string;
+  icon: IconName;
 };
 
 const routes: Route[] = [
-  { path: "/about", title: "About" },
-  { path: "/work", title: "My Work" },
-  { path: "/skill", title: "Skills" },
-  { path: "/edu", title: "Learning" },
+  { path: "/about", title: "About Me", icon: "FlatAbout" },
+  { path: "/work", title: "My Work", icon: "FlatWork" },
+  { path: "/skills", title: "Skills", icon: "FlatSkills" },
+  { path: "/edu", title: "Learning", icon: "FlatEdu" },
 ];
 
 export function getRoute(path: string) {
