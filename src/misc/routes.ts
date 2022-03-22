@@ -1,4 +1,4 @@
-import { IconName } from "../src/components/atoms/Icon";
+import { IconName } from "../components/atoms/Icon";
 
 export type Route = {
   path: string;

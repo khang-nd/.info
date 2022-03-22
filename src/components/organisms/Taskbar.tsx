@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useContext, useRef, useState } from "react";
 import { ThemeUICSSObject } from "theme-ui";
 import useOnClickOutside from "use-onclickoutside";
-import { getRoute } from "../../../pages/_routes";
+import { getRoute } from "../../misc/routes";
 import { fadeInUp } from "../../animations/fade";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import { taskbarHeight } from "../../themes";

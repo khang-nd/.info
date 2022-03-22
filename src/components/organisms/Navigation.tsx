@@ -1,6 +1,6 @@
 import { Variants } from "framer-motion";
 import { ThemeUICSSObject } from "theme-ui";
-import routes from "../../../pages/_routes";
+import routes from "../../misc/routes";
 import useHomepage from "../../hooks/useHomepage";
 import { MotionNav } from "../atoms/Container";
 import NavLink from "../atoms/NavLink";

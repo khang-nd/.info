@@ -1,5 +1,5 @@
 import { ThemeUICSSObject } from "theme-ui";
-import { Route } from "../../../pages/_routes";
+import { Route } from "../../misc/routes";
 import { slideIn } from "../../animations/slide";
 import { MotionBox } from "../atoms/Container";
 import Icon from "../atoms/Icon";

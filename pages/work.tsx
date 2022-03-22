@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import Window from "../src/components/molecules/Window";
 import Layout from "../src/components/pages/Layout";
-import { getRoute } from "./_routes";
+import { getRoute } from "../src/misc/routes";
 
 export default function Work(): JSX.Element {
   const { asPath } = useRouter();

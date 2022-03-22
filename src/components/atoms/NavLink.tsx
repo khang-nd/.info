@@ -1,7 +1,7 @@
 import { motion, Transition, Variants } from "framer-motion";
 import Link from "next/link";
 import { ThemeUICSSObject } from "theme-ui";
-import { Route } from "../../../pages/_routes";
+import { Route } from "../../misc/routes";
 import useHomepage from "../../hooks/useHomepage";
 import { sizes } from "../../themes";
 import { MotionIcon } from "./Icon";
