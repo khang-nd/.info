@@ -3,7 +3,7 @@ import { ReactNode, useContext } from "react";
 import { ThemeUICSSObject } from "theme-ui";
 import { fadeZoomIn } from "../../animations/fade";
 import { GlobalContext } from "../../contexts/GlobalContext";
-import { Box, MotionBox } from "../atoms/Container";
+import { MotionBox } from "../atoms/Container";
 import WindowBody from "../atoms/window/Body";
 import WindowTitle from "../atoms/window/Title";
 
@@ -24,12 +24,16 @@ export default function Window({ title, children }: WindowProps) {
     flexDirection: "column",
   };
 
-  const Container = enableAnimation?.val ? MotionBox : Box;
-
   return (
-    <Container sx={style} variants={fadeZoomIn} animate="animate" initial="initial" exit="initial">
+    <MotionBox
+      sx={style}
+      variants={fadeZoomIn}
+      animate={enableAnimation.val && "animate"}
+      initial={enableAnimation.val ? "initial" : "animate"}
+      exit={enableAnimation.val ? "initial" : undefined}
+    >
       <WindowTitle>{isPresent && title}</WindowTitle>
       <WindowBody>{isPresent && children}</WindowBody>
-    </Container>
+    </MotionBox>
   );
 }

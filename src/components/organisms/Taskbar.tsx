@@ -3,11 +3,11 @@ import { useRouter } from "next/router";
 import { useContext, useRef, useState } from "react";
 import { ThemeUICSSObject } from "theme-ui";
 import useOnClickOutside from "use-onclickoutside";
-import { getRoute } from "../../misc/routes";
 import { fadeInUp } from "../../animations/fade";
 import { GlobalContext } from "../../contexts/GlobalContext";
+import { getRoute } from "../../misc/routes";
 import { taskbarHeight } from "../../themes";
-import { MotionSection, Section } from "../atoms/Container";
+import { MotionSection } from "../atoms/Container";
 import ButtonConfig from "../molecules/ButtonConfig";
 import PanelConfig from "../molecules/PanelConfig";
 import TaskbarItem from "../molecules/TaskbarItem";
@@ -35,14 +35,17 @@ export default function Taskbar() {
     px: 3,
   };
 
-  const Container = enableAnimation?.val ? MotionSection : Section;
-
   return (
-    <Container sx={taskbarStyle} variants={fadeInUp} animate="animate" initial="initial">
+    <MotionSection
+      sx={taskbarStyle}
+      variants={fadeInUp}
+      animate={enableAnimation.val && "animate"}
+      initial={enableAnimation.val ? "initial" : "animate"}
+    >
       <PanelConfig isVisible={isConfigActive} ref={panelRef} />
       <ButtonConfig isActive={isConfigActive} ref={buttonRef} onClick={() => setIsConfigActive(!isConfigActive)} />
       <AnimatePresence exitBeforeEnter>{route && <TaskbarItem key={route.title} data={route} />}</AnimatePresence>
       <div sx={{ ml: "auto" }}>Copyright &copy; 2020 KhangND</div>
-    </Container>
+    </MotionSection>
   );
 }

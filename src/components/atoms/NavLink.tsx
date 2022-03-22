@@ -1,8 +1,10 @@
-import { motion, Transition, Variants } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Link from "next/link";
+import { useContext } from "react";
 import { ThemeUICSSObject } from "theme-ui";
-import { Route } from "../../misc/routes";
+import { GlobalContext } from "../../contexts/GlobalContext";
 import useHomepage from "../../hooks/useHomepage";
+import { Route } from "../../misc/routes";
 import { sizes } from "../../themes";
 import { MotionIcon } from "./Icon";
 
@@ -11,24 +13,26 @@ type NavLinkProps = {
 };
 
 export default function NavLink({ data }: NavLinkProps) {
+  const { enableAnimation } = useContext(GlobalContext);
   const isHomePage = useHomepage();
   const defaultSize = 160;
   const sidebarSize = defaultSize / 2;
-  const transition: Transition = { duration: 0.6 };
+  const transition = enableAnimation.val ? undefined : { duration: 0 };
 
   const linkVariants: Variants = {
     main: {
       width: defaultSize,
       height: defaultSize,
-      transition: { duration: 0.6, delay: 0.3 },
       opacity: 1,
       margin: sizes[3],
+      transition: enableAnimation.val ? { duration: 0.6, delay: 0.3 } : { duration: 0 },
     },
     sidebar: {
       width: sidebarSize,
       height: sidebarSize,
       opacity: 1,
       margin: sizes[2],
+      transition: transition,
     },
   };
 
@@ -36,11 +40,12 @@ export default function NavLink({ data }: NavLinkProps) {
     main: {
       width: sidebarSize,
       height: sidebarSize,
-      transition: { duration: 1 },
+      transition: { duration: enableAnimation.val ? 1 : 0 },
     },
     sidebar: {
       width: sidebarSize / 2,
       height: sidebarSize / 2,
+      transition: transition,
     },
   };
 
@@ -49,12 +54,13 @@ export default function NavLink({ data }: NavLinkProps) {
       height: "auto",
       opacity: 1,
       marginTop: sizes[3],
-      transition: { duration: 1 },
+      transition: { duration: enableAnimation.val ? 1 : 0 },
     },
     sidebar: {
       height: 0,
       opacity: 0,
       margin: 0,
+      transition: transition,
     },
   };
 

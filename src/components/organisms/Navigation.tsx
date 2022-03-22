@@ -1,11 +1,14 @@
 import { Variants } from "framer-motion";
+import { useContext } from "react";
 import { ThemeUICSSObject } from "theme-ui";
-import routes from "../../misc/routes";
+import { GlobalContext } from "../../contexts/GlobalContext";
 import useHomepage from "../../hooks/useHomepage";
+import routes from "../../misc/routes";
 import { MotionNav } from "../atoms/Container";
 import NavLink from "../atoms/NavLink";
 
 export default function Navigation() {
+  const { enableAnimation } = useContext(GlobalContext);
   const isHomePage = useHomepage();
   const maxWidth = isHomePage ? 400 : 150;
 
@@ -13,7 +16,7 @@ export default function Navigation() {
     main: {
       maxWidth,
       left: `calc(50% - ${maxWidth / 2}px)`,
-      transition: { duration: 0.8 },
+      transition: { duration: enableAnimation.val ? 0.8 : 0 },
     },
     sidebarInit: {
       maxWidth,
@@ -22,7 +25,7 @@ export default function Navigation() {
     sidebar: {
       maxWidth,
       left: 0,
-      transition: { duration: 0.8, type: "spring" },
+      transition: { duration: enableAnimation.val ? 0.8 : 0, type: "spring" },
     },
   };
 

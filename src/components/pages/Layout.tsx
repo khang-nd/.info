@@ -27,7 +27,7 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
 
   return (
     <main sx={containerStyle}>
-      <MotionConfig reducedMotion={enableAnimation?.val ? "never" : "always"}>
+      <MotionConfig reducedMotion={enableAnimation.val ? "never" : "always"}>
         <Desktop>
           <Navigation />
           <AnimatePresence exitBeforeEnter>

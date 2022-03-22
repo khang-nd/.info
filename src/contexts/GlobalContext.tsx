@@ -7,14 +7,16 @@ type BooleanContext = {
 
 type GlobalContextType = {
   isFirstLoad?: boolean;
-  enableAnimation?: BooleanContext;
+  enableAnimation: BooleanContext;
 };
 
 type GlobalProviderProps = {
   children: ReactNode;
 };
 
-export const GlobalContext = createContext<GlobalContextType>({});
+export const GlobalContext = createContext<GlobalContextType>({
+  enableAnimation: { val: true, set: () => {} },
+});
 
 export const GlobalProvider = ({ children }: GlobalProviderProps): JSX.Element => {
   const [isFirstLoad, setIsFirstLoad] = useState(true);
