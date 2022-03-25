@@ -1,13 +1,13 @@
 import { createContext, Dispatch, ReactNode, SetStateAction, useEffect, useState } from "react";
 
-type BooleanContext = {
-  val: boolean;
-  set: Dispatch<SetStateAction<boolean>>;
+type Context<T = boolean> = {
+  val: T;
+  set: Dispatch<SetStateAction<T>>;
 };
 
 type GlobalContextType = {
   isFirstLoad?: boolean;
-  enableAnimation: BooleanContext;
+  enableAnimation: Context;
 };
 
 type GlobalProviderProps = {

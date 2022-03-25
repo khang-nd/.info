@@ -25,8 +25,8 @@ const PanelConfig = ({ isVisible }: PanelConfigProps, ref: ForwardedRef<HTMLElem
   };
 
   const variants: Variants = {
-    default: { x: "-105%" },
-    active: { x: 0 },
+    default: { x: "-105%", transitionEnd: { display: "none" } },
+    active: { x: 0, display: "block" },
   };
 
   const ThemePreview = ({ image }: { image: string }) => (
@@ -55,7 +55,7 @@ const PanelConfig = ({ isVisible }: PanelConfigProps, ref: ForwardedRef<HTMLElem
       <h3>Settings</h3>
       <Toggle
         id="toggle-enableAnimation"
-        label="Enable Animation"
+        label="Enable animation"
         isChecked={enableAnimation.val}
         onChange={() => enableAnimation.set(!enableAnimation.val)}
       />

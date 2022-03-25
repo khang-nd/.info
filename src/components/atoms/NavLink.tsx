@@ -4,6 +4,8 @@ import { useContext } from "react";
 import { ThemeUICSSObject } from "theme-ui";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import useHomepage from "../../hooks/useHomepage";
+import useInBreakpoint from "../../hooks/useInBreakpoint";
+import useIsLandscape from "../../hooks/useIsLandscape";
 import { Route } from "../../misc/routes";
 import { sizes } from "../../themes";
 import { MotionIcon } from "./Icon";
@@ -15,7 +17,9 @@ type NavLinkProps = {
 export default function NavLink({ data }: NavLinkProps) {
   const { enableAnimation } = useContext(GlobalContext);
   const isHomePage = useHomepage();
-  const defaultSize = 160;
+  const isLandscape = useIsLandscape();
+  const isMobile = useInBreakpoint(0, isLandscape);
+  const defaultSize = isMobile && isLandscape ? 120 : 160;
   const sidebarSize = defaultSize / 2;
   const transition = enableAnimation.val ? undefined : { duration: 0 };
 
@@ -24,7 +28,7 @@ export default function NavLink({ data }: NavLinkProps) {
       width: defaultSize,
       height: defaultSize,
       opacity: 1,
-      margin: sizes[3],
+      margin: sizes[isMobile && isLandscape ? 2 : 3],
       transition: enableAnimation.val ? { duration: 0.6, delay: 0.3 } : { duration: 0 },
     },
     sidebar: {
@@ -66,7 +70,7 @@ export default function NavLink({ data }: NavLinkProps) {
 
   const linkStyle: ThemeUICSSObject = {
     background: "primary",
-    color: "white",
+    color: "textReverse",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -91,12 +95,13 @@ export default function NavLink({ data }: NavLinkProps) {
           animate={isHomePage ? "main" : "sidebar"}
           initial="main"
           iconName={data.icon}
+          tag="span"
         />
         <motion.span
           variants={labelVariants}
           animate={isHomePage ? "main" : "sidebar"}
           initial={isHomePage ? "main" : "sidebar"}
-          sx={{ whiteSpace: "nowrap", fontSize: 20 }}
+          sx={{ whiteSpace: "nowrap", fontSize: isMobile && isLandscape ? 16 : 20 }}
         >
           {data.title}
         </motion.span>

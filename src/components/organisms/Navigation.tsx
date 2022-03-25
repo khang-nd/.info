@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { ThemeUICSSObject } from "theme-ui";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import useHomepage from "../../hooks/useHomepage";
+import useInBreakpoint from "../../hooks/useInBreakpoint";
 import routes from "../../misc/routes";
 import { MotionNav } from "../atoms/Container";
 import NavLink from "../atoms/NavLink";
@@ -10,29 +11,30 @@ import NavLink from "../atoms/NavLink";
 export default function Navigation() {
   const { enableAnimation } = useContext(GlobalContext);
   const isHomePage = useHomepage();
-  const maxWidth = isHomePage ? 400 : 150;
+  const isMobile = useInBreakpoint(0);
 
   const motionVariants: Variants = {
     main: {
-      maxWidth,
-      left: `calc(50% - ${maxWidth / 2}px)`,
+      x: "-50%",
+      left: "50%",
+      display: isMobile && !isHomePage ? "none" : "grid",
       transition: { duration: enableAnimation.val ? 0.8 : 0 },
     },
     sidebarInit: {
-      maxWidth,
-      left: `-${maxWidth}px`,
+      x: 0,
+      left: "-10%",
     },
     sidebar: {
-      maxWidth,
-      left: 0,
+      x: 0,
+      left: 24,
+      display: "block",
       transition: { duration: enableAnimation.val ? 0.8 : 0, type: "spring" },
     },
   };
 
   const containerStyle: ThemeUICSSObject = {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center",
+    display: "grid",
+    gridTemplateColumns: "auto auto",
     position: "absolute",
   };
 
@@ -40,7 +42,7 @@ export default function Navigation() {
     <MotionNav
       sx={containerStyle}
       variants={motionVariants}
-      animate={isHomePage ? "main" : "sidebar"}
+      animate={isHomePage || isMobile ? "main" : "sidebar"}
       initial={isHomePage ? "main" : "sidebarInit"}
     >
       {routes.map((route) => (

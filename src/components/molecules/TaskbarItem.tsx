@@ -5,12 +5,14 @@ import { MotionBox } from "../atoms/Container";
 import Icon from "../atoms/Icon";
 import { useContext } from "react";
 import { GlobalContext } from "../../contexts/GlobalContext";
+import useInBreakpoint from "../../hooks/useInBreakpoint";
 
 type TaskbarItemProps = {
   data: Route;
 };
 
 export default function TaskbarItem({ data }: TaskbarItemProps): JSX.Element {
+  const isMobile = useInBreakpoint(0);
   const { enableAnimation } = useContext(GlobalContext);
   const { icon, title } = data;
 
@@ -21,13 +23,14 @@ export default function TaskbarItem({ data }: TaskbarItemProps): JSX.Element {
 
   const itemStyle: ThemeUICSSObject = {
     px: 5,
+    mr: 3,
     bg: "rgba(0, 0, 0, 0.4)",
     cursor: "default",
     borderBottom: "2px solid",
     borderBottomColor: "background",
     display: "flex",
     alignItems: "center",
-    minWidth: 180,
+    minWidth: [null, null, 180],
     height: "100%",
   };
 
@@ -42,7 +45,7 @@ export default function TaskbarItem({ data }: TaskbarItemProps): JSX.Element {
         exit={enableAnimation.val ? "initial" : undefined}
       >
         <Icon iconName={icon} size={32} />
-        <span sx={{ ml: 3 }}>{title}</span>
+        {!isMobile && <span sx={{ ml: 3 }}>{title}</span>}
       </MotionBox>
     </div>
   );

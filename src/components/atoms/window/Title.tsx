@@ -11,7 +11,7 @@ export default function WindowTitle({ children }: WindowTitleProps) {
 
   const titleStyle: ThemeUICSSObject = {
     bg: "primary",
-    color: "white",
+    color: "textReverse",
     p: 3,
     display: "flex",
     alignItems: "center",
@@ -21,7 +21,7 @@ export default function WindowTitle({ children }: WindowTitleProps) {
   const closeBtnStyle: ThemeUICSSObject = {
     bg: "red",
     border: 0,
-    color: "white",
+    color: "textReverse",
     size: 5,
     cursor: "pointer",
   };
