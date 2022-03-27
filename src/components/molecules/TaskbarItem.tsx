@@ -6,6 +6,7 @@ import Icon from "../atoms/Icon";
 import { useContext } from "react";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import useInBreakpoint from "../../hooks/useInBreakpoint";
+import { darken } from "@theme-ui/color";
 
 type TaskbarItemProps = {
   data: Route;
@@ -24,7 +25,7 @@ export default function TaskbarItem({ data }: TaskbarItemProps): JSX.Element {
   const itemStyle: ThemeUICSSObject = {
     px: 5,
     mr: 3,
-    bg: "rgba(0, 0, 0, 0.4)",
+    bg: darken("primary", 0.08),
     cursor: "default",
     borderBottom: "2px solid",
     borderBottomColor: "background",

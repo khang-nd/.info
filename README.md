@@ -11,9 +11,10 @@
 
 ## Improvements from previous version
 
-* [x] Accessibility (focusable elements, keyboard events).
-* [x] Overall visual appearanced slightly improved(?)
+* [x] Overall visual appearance slightly improved.
+* [x] Accessibility (focusable elements, keyboard events, zoom controls).
 * [x] Smoother and more natural animation with Framer Motion.
 * [x] More config options.
 * [x] Elements in pixels rather than relying on fixed viewport sizes.
 * [x] Hide config panel on click outside.
+* [x] Blogs section.

@@ -27,7 +27,7 @@ const ButtonConfig = ({ isActive, onClick }: ButtonConfigProps, ref: ForwardedRe
     <MotionButton
       ref={ref}
       unsetStyle
-      style={{ size, mr: 3 }}
+      sx={{ size, mr: 3 }}
       variants={variants}
       animate={isActive ? "active" : "default"}
       transition={enableAnimation.val ? undefined : { duration: 0 }}

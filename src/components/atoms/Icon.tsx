@@ -10,19 +10,19 @@ type IconProps = {
   iconName: IconName;
   size?: number;
   tag?: ElementType<any>;
-  style?: ThemeUICSSObject;
+  sx?: ThemeUICSSObject;
 };
 
-const Icon = ({ iconName, size = 24, tag, style }: IconProps, ref: Ref<HTMLDivElement>) => {
+const IconWithRef = ({ iconName, size = 24, tag, sx }: IconProps, ref: Ref<HTMLDivElement>) => {
   return (
-    <Box as={tag} ref={ref} sx={{ size, ...style }}>
+    <Box as={tag} ref={ref} sx={{ size, ...sx }}>
       <Image src={IconMap[iconName]} alt={iconName} layout="responsive" />
     </Box>
   );
 };
 
-const IconWithRef = forwardRef(Icon);
+const Icon = forwardRef(IconWithRef);
 
-export const MotionIcon = motion(IconWithRef);
+export const MotionIcon = motion(Icon);
 
-export default IconWithRef;
+export default Icon;

@@ -1,5 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
 import { Variants } from "framer-motion";
+import Image from "next/image";
 import { ForwardedRef, forwardRef, useContext } from "react";
 import { ThemeUICSSObject } from "theme-ui";
 import { GlobalContext } from "../../contexts/GlobalContext";
@@ -32,7 +32,7 @@ const PanelConfig = ({ isVisible }: PanelConfigProps, ref: ForwardedRef<HTMLElem
   const ThemePreview = ({ image }: { image: string }) => (
     <li>
       <Button unsetStyle>
-        <img src={`/images/theme-${image}.webp`} alt={`Theme ${image}`} width="150" />
+        <Image src={`/images/theme-${image}.webp`} alt={`Theme ${image}`} layout="fixed" width={140} height={84} />
       </Button>
     </li>
   );

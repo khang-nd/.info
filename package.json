@@ -10,15 +10,20 @@
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
+    "@loadable/component": "^5.15.2",
     "@mdx-js/react": "^1.6.22",
+    "@next/bundle-analyzer": "^12.1.1",
+    "@theme-ui/color": "^0.14.1",
     "framer-motion": "^6.2.8",
     "next": "12.0.8",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-icons": "^4.3.1",
     "react-use": "^17.3.2",
     "theme-ui": "^0.13.1"
   },
   "devDependencies": {
+    "@types/loadable__component": "^5.13.4",
     "@types/node": "17.0.8",
     "@types/react": "17.0.38",
     "eslint": "8.6.0",

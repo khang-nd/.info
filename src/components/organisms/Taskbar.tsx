@@ -8,6 +8,7 @@ import { GlobalContext } from "../../contexts/GlobalContext";
 import useInBreakpoint from "../../hooks/useInBreakpoint";
 import useTaskbarHeight from "../../hooks/useTaskbarHeight";
 import { getRoute } from "../../misc/routes";
+import { zIndex } from "../../themes/common";
 import { MotionSection } from "../atoms/Container";
 import ButtonConfig from "../molecules/ButtonConfig";
 import PanelConfig from "../molecules/PanelConfig";
@@ -39,6 +40,7 @@ export default function Taskbar() {
     alignItems: "center",
     position: "fixed",
     px: 3,
+    zIndex: zIndex.taskbar,
   };
 
   const copyrightStyle: ThemeUICSSObject = {

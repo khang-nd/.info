@@ -4,17 +4,21 @@ import { DOMAttributes, ForwardedRef, forwardRef, LegacyRef, ReactNode, useImper
 import { ThemeUICSSObject } from "theme-ui";
 import { useIsFocused } from "../../hooks/useIsFocused";
 
-type ButtonProps = DOMAttributes<HTMLAnchorElement | HTMLButtonElement> & {
+export type ButtonProps = DOMAttributes<HTMLAnchorElement | HTMLButtonElement> & {
   children: ReactNode;
   href?: string;
-  style?: ThemeUICSSObject;
+  sx?: ThemeUICSSObject;
+  /** Unset all default button style. */
   unsetStyle?: boolean;
+  /** Disable default focus style. */
+  unsetFocus?: boolean;
+  inline?: boolean;
 };
 
 type ButtonRef = ForwardedRef<HTMLAnchorElement | HTMLButtonElement>;
 
 const Button = forwardRef((props: ButtonProps, ref: ButtonRef): JSX.Element => {
-  const { children, href, style, unsetStyle, ...otherProps } = props;
+  const { children, href, sx, unsetStyle, inline, unsetFocus, ...otherProps } = props;
   const innerRef = useRef<HTMLAnchorElement | HTMLButtonElement>(null);
   useImperativeHandle(ref, () => innerRef.current as HTMLAnchorElement | HTMLButtonElement);
   const isFocused = useIsFocused(innerRef);
@@ -22,8 +26,11 @@ const Button = forwardRef((props: ButtonProps, ref: ButtonRef): JSX.Element => {
   const defaultStyle: ThemeUICSSObject = {
     all: unsetStyle ? "unset" : null,
     cursor: "pointer",
+    display: inline ? "inline-block" : "flex",
+    width: inline ? null : "100%",
+    boxSizing: "border-box",
     position: "relative",
-    ...style,
+    ...sx,
   };
 
   const innerButtonStyle: ThemeUICSSObject = {
@@ -37,10 +44,20 @@ const Button = forwardRef((props: ButtonProps, ref: ButtonRef): JSX.Element => {
     right: "-2px",
   };
 
+  const focusBox = !unsetFocus && isFocused && <span sx={innerButtonStyle} />;
+
   if (href) {
     return (
       <Link href={href}>
-        <a href={href} sx={defaultStyle} ref={innerRef as LegacyRef<HTMLAnchorElement> | undefined}>
+        <a
+          href={href}
+          target="_blank"
+          rel="noreferrer"
+          sx={defaultStyle}
+          ref={innerRef as LegacyRef<HTMLAnchorElement> | undefined}
+          {...otherProps}
+        >
+          {focusBox}
           {children}
         </a>
       </Link>
@@ -49,7 +66,7 @@ const Button = forwardRef((props: ButtonProps, ref: ButtonRef): JSX.Element => {
 
   return (
     <button ref={innerRef as LegacyRef<HTMLButtonElement> | undefined} sx={defaultStyle} {...otherProps}>
-      {isFocused && <span sx={innerButtonStyle} />}
+      {focusBox}
       {children}
     </button>
   );

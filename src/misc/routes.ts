@@ -10,7 +10,7 @@ const routes: Route[] = [
   { path: "/about", title: "About Me", icon: "FlatAbout" },
   { path: "/work", title: "My Work", icon: "FlatWork" },
   { path: "/skills", title: "Skills", icon: "FlatSkills" },
-  { path: "/edu", title: "Learning", icon: "FlatEdu" },
+  { path: "/blogs", title: "Blogs", icon: "FlatEdu" },
 ];
 
 export function getRoute(path: string) {

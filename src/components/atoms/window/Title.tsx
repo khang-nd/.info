@@ -1,6 +1,8 @@
 import { useRouter } from "next/router";
 import { ReactNode } from "react";
 import { ThemeUICSSObject } from "theme-ui";
+import useInBreakpoint from "../../../hooks/useInBreakpoint";
+import useIsLandscape from "../../../hooks/useIsLandscape";
 
 type WindowTitleProps = {
   children?: ReactNode;
@@ -8,11 +10,13 @@ type WindowTitleProps = {
 
 export default function WindowTitle({ children }: WindowTitleProps) {
   const router = useRouter();
+  const isLandscape = useIsLandscape();
+  const isMobile = useInBreakpoint(0, isLandscape);
 
   const titleStyle: ThemeUICSSObject = {
     bg: "primary",
     color: "textReverse",
-    p: 3,
+    p: isMobile && isLandscape ? 2 : 3,
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",

@@ -26,7 +26,7 @@ export default function Navigation() {
     },
     sidebar: {
       x: 0,
-      left: 24,
+      left: 8,
       display: "block",
       transition: { duration: enableAnimation.val ? 0.8 : 0, type: "spring" },
     },
