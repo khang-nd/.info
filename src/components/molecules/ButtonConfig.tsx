@@ -28,10 +28,12 @@ const ButtonConfig = ({ isActive, onClick }: ButtonConfigProps, ref: ForwardedRe
       ref={ref}
       unsetStyle
       sx={{ size, mr: 3 }}
+      focusStyle={{ borderRadius: "50%" }}
       variants={variants}
       animate={isActive ? "active" : "default"}
       transition={enableAnimation.val ? undefined : { duration: 0 }}
       onClick={onClick}
+      aria-label="Site config"
     >
       <Icon iconName="FlatSettings" size={size} />
     </MotionButton>

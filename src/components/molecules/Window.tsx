@@ -12,10 +12,9 @@ import WindowTitle from "../atoms/window/Title";
 type WindowProps = {
   title?: ReactNode;
   children?: ReactNode;
-  bodyStyle?: ThemeUICSSObject;
 };
 
-export default function Window({ title, children, bodyStyle }: WindowProps) {
+export default function Window({ title, children }: WindowProps) {
   const { enableAnimation } = useContext(GlobalContext);
   const isPresent = useIsPresent();
   const w = ["100%", null, null, 900];
@@ -39,7 +38,7 @@ export default function Window({ title, children, bodyStyle }: WindowProps) {
       exit={enableAnimation.val ? "initial" : undefined}
     >
       <WindowTitle>{isPresent && title}</WindowTitle>
-      <WindowBody style={bodyStyle}>{isPresent && children}</WindowBody>
+      <WindowBody>{children}</WindowBody>
     </MotionBox>
   );
 }

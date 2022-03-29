@@ -28,7 +28,7 @@ const LeftPanel = () => {
         <StyledButton sx={buttonStyle} iconName="AiOutlineProfile" href="https://www.visualcv.com/khangnd">
           Resume
         </StyledButton>
-        <StyledButton sx={buttonStyle} iconName="AiOutlineMail" href="mailto:khang.nguyenduyvn@gmail.com">
+        <StyledButton sx={buttonStyle} iconName="AiOutlineMail" href="mailto:khang.nguyenduyvn@gmail.com?subject=Hey Khang!">
           Email
         </StyledButton>
       </Box>
@@ -83,9 +83,11 @@ export default function About(): JSX.Element {
   };
 
   return (
-    <Window title={getRoute(asPath)?.title} bodyStyle={bodyStyle}>
-      <LeftPanel />
-      <RightPanel />
+    <Window title={getRoute(asPath)?.title}>
+      <div sx={bodyStyle}>
+        <LeftPanel />
+        <RightPanel />
+      </div>
     </Window>
   );
 }

@@ -16,3 +16,5 @@ export const parseLinks = (data: string, links: Links) => {
     );
   });
 };
+
+export const translate = (val: string | number) => ({ x: val, y: val });

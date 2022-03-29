@@ -1,24 +1,35 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { DOMAttributes, ForwardedRef, forwardRef, LegacyRef, ReactNode, useImperativeHandle, useRef } from "react";
+import {
+  AriaAttributes,
+  DOMAttributes,
+  ForwardedRef,
+  forwardRef,
+  LegacyRef,
+  ReactNode,
+  useImperativeHandle,
+  useRef,
+} from "react";
 import { ThemeUICSSObject } from "theme-ui";
 import { useIsFocused } from "../../hooks/useIsFocused";
 
-export type ButtonProps = DOMAttributes<HTMLAnchorElement | HTMLButtonElement> & {
-  children: ReactNode;
-  href?: string;
-  sx?: ThemeUICSSObject;
-  /** Unset all default button style. */
-  unsetStyle?: boolean;
-  /** Disable default focus style. */
-  unsetFocus?: boolean;
-  inline?: boolean;
-};
+export type ButtonProps = DOMAttributes<HTMLAnchorElement | HTMLButtonElement> &
+  AriaAttributes & {
+    children: ReactNode;
+    href?: string;
+    sx?: ThemeUICSSObject;
+    /** Unset all default button style. */
+    unsetStyle?: boolean;
+    /** Disable default focus style. */
+    unsetFocus?: boolean;
+    focusStyle?: ThemeUICSSObject;
+    inline?: boolean;
+  };
 
 type ButtonRef = ForwardedRef<HTMLAnchorElement | HTMLButtonElement>;
 
 const Button = forwardRef((props: ButtonProps, ref: ButtonRef): JSX.Element => {
-  const { children, href, sx, unsetStyle, inline, unsetFocus, ...otherProps } = props;
+  const { children, href, sx, unsetStyle, unsetFocus, focusStyle, inline, ...otherProps } = props;
   const innerRef = useRef<HTMLAnchorElement | HTMLButtonElement>(null);
   useImperativeHandle(ref, () => innerRef.current as HTMLAnchorElement | HTMLButtonElement);
   const isFocused = useIsFocused(innerRef);
@@ -42,6 +53,7 @@ const Button = forwardRef((props: ButtonProps, ref: ButtonRef): JSX.Element => {
     left: "-2px",
     bottom: "-2px",
     right: "-2px",
+    ...focusStyle
   };
 
   const focusBox = !unsetFocus && isFocused && <span sx={innerButtonStyle} />;

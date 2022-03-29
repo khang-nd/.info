@@ -5,6 +5,7 @@ import { GlobalContext } from "../../contexts/GlobalContext";
 import useHomepage from "../../hooks/useHomepage";
 import useInBreakpoint from "../../hooks/useInBreakpoint";
 import routes from "../../misc/routes";
+import { translate } from "../../misc/utils";
 import { MotionNav } from "../atoms/Container";
 import NavLink from "../atoms/NavLink";
 
@@ -15,18 +16,21 @@ export default function Navigation() {
 
   const motionVariants: Variants = {
     main: {
-      x: "-50%",
+      ...translate("-50%"),
+      top: "50%",
       left: "50%",
       display: isMobile && !isHomePage ? "none" : "grid",
       transition: { duration: enableAnimation.val ? 0.8 : 0 },
     },
     sidebarInit: {
-      x: 0,
+      ...translate(0),
+      top: 0,
       left: "-10%",
     },
     sidebar: {
-      x: 0,
-      left: 8,
+      ...translate(0),
+      top: 0,
+      left: 0,
       display: "block",
       transition: { duration: enableAnimation.val ? 0.8 : 0, type: "spring" },
     },

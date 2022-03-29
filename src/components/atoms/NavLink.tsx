@@ -1,5 +1,6 @@
-import { motion, Variants } from "framer-motion";
+import { motion, Transition, Variants } from "framer-motion";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useContext } from "react";
 import { ThemeUICSSObject } from "theme-ui";
 import { GlobalContext } from "../../contexts/GlobalContext";
@@ -22,6 +23,7 @@ export default function NavLink({ data }: NavLinkProps) {
   const defaultSize = isMobile && isLandscape ? 120 : 160;
   const sidebarSize = defaultSize / 2;
   const transition = enableAnimation.val ? undefined : { duration: 0 };
+  const isActive = useRouter().asPath === data.path;
 
   const linkVariants: Variants = {
     main: {
@@ -76,10 +78,21 @@ export default function NavLink({ data }: NavLinkProps) {
     alignItems: "center",
     justifyContent: "center",
     opacity: 0,
-    overflow: "hidden",
     textDecoration: "none",
     size: defaultSize,
+    position: "relative",
   };
+
+  const indicatorStyle: ThemeUICSSObject = {
+    size: sidebarSize / 9,
+    bg: "secondary",
+    borderRadius: "50%",
+    position: "absolute",
+    top: 2,
+    right: 2,
+  };
+
+  const spring: Transition = { type: "spring", duration: enableAnimation.val ? 0.5 : 0 };
 
   return (
     <Link href={data.path} passHref={true}>
@@ -90,6 +103,7 @@ export default function NavLink({ data }: NavLinkProps) {
         animate={isHomePage ? "main" : "sidebar"}
         initial={isHomePage || "sidebar"}
       >
+        {isActive && <motion.span layoutId="indicator" sx={indicatorStyle} transition={spring} />}
         <MotionIcon
           variants={iconVariants}
           animate={isHomePage ? "main" : "sidebar"}
@@ -101,7 +115,7 @@ export default function NavLink({ data }: NavLinkProps) {
           variants={labelVariants}
           animate={isHomePage ? "main" : "sidebar"}
           initial={isHomePage ? "main" : "sidebar"}
-          sx={{ whiteSpace: "nowrap", fontSize: isMobile && isLandscape ? 16 : 20 }}
+          sx={{ whiteSpace: "nowrap", overflow: "hidden", fontSize: isMobile && isLandscape ? 16 : 20 }}
         >
           {data.title}
         </motion.span>

@@ -1,4 +1,4 @@
-import { alpha, lighten } from "@theme-ui/color";
+import { alpha } from "@theme-ui/color";
 import { ThemeUICSSObject } from "theme-ui";
 import Button, { ButtonProps } from "../Button";
 import ReactIcon from "../IconReact";
@@ -10,17 +10,17 @@ type StyledButtonProps = ButtonProps & {
 
 export default function StyledButton({ iconName, children, ...props }: StyledButtonProps) {
   const buttonStyle: ThemeUICSSObject = {
-    bg: lighten("primary", 0.08),
-    color: "textReverse",
+    bg: alpha("primary", 0.06),
+    color: "text",
     borderBottom: "4px solid",
-    borderBottomColor: "primary",
+    borderBottomColor: alpha("primary", 0.1),
     transition: "0.2s ease",
     alignItems: "center",
     minWidth: 150,
 
     "&:hover, &:focus": {
       bg: "primary",
-      color: "textReverse",
+      color: "textReverse"
     },
 
     "& > span": { display: "flex" },
@@ -30,7 +30,7 @@ export default function StyledButton({ iconName, children, ...props }: StyledBut
     px: 4,
     py: 1,
     borderRight: "1px solid",
-    borderRightColor: alpha("textReverse", 0.1),
+    borderRightColor: alpha("textReverse", 0.2),
     display: "flex",
     alignItems: "center",
   };
