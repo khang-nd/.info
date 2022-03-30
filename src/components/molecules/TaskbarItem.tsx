@@ -28,7 +28,7 @@ export default function TaskbarItem({ data }: TaskbarItemProps): JSX.Element {
     bg: darken("primary", 0.08),
     cursor: "default",
     borderBottom: "2px solid",
-    borderBottomColor: "background",
+    borderBottomColor: "secondary",
     display: "flex",
     alignItems: "center",
     minWidth: [null, null, 180],

@@ -6,17 +6,18 @@ export const breakpoints = ["480px", "768px", "1024px"];
 
 const theme: Theme = {
   colors: {
-    background: "#1abc9c",
+    background: "#f2f3f5",
     highlight: "#1abc9c",
     primary: "#2c3e50",
     secondary: "#1abc9c",
     text: "#2c3e50",
     textReverse: "#fff",
     accent: "#e9f1f5",
-    muted: "rgba(0, 0, 0, 0.7)",
-    mutedReverse: "rgba(255, 255, 255, 0.7)",
+    muted: "rgba(0, 0, 0, 0.6)",
+    mutedReverse: "rgba(255, 255, 255, 0.6)",
     white: "#fff",
     red: "#ed4c5a",
+    green: "#00c851",
   },
   breakpoints,
   sizes,

@@ -12,6 +12,7 @@ import {
 } from "react";
 import { ThemeUICSSObject } from "theme-ui";
 import { useIsFocused } from "../../hooks/useIsFocused";
+import { zIndex } from "../../themes/common";
 
 export type ButtonProps = DOMAttributes<HTMLAnchorElement | HTMLButtonElement> &
   AriaAttributes & {
@@ -45,25 +46,28 @@ const Button = forwardRef((props: ButtonProps, ref: ButtonRef): JSX.Element => {
   };
 
   const innerButtonStyle: ThemeUICSSObject = {
-    border: "1px solid currentColor",
+    boxShadow: "0 0 0 1px black, 0 0 1px 3px white",
     borderRadius: 3,
     pointerEvents: "none",
     position: "absolute",
-    top: "-2px",
-    left: "-2px",
-    bottom: "-2px",
-    right: "-2px",
-    ...focusStyle
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    zIndex: zIndex.focusbox,
+    ...focusStyle,
   };
 
   const focusBox = !unsetFocus && isFocused && <span sx={innerButtonStyle} />;
 
   if (href) {
+    const isExternal = !href.startsWith("/");
+
     return (
       <Link href={href}>
         <a
           href={href}
-          target="_blank"
+          target={isExternal ? "_blank" : "_self"}
           rel="noreferrer"
           sx={defaultStyle}
           ref={innerRef as LegacyRef<HTMLAnchorElement> | undefined}

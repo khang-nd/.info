@@ -21,7 +21,7 @@ export default function SocialLinks() {
   return (
     <motion.div sx={containerStyle} custom="left" {...slideIn}>
       <SocialToggle isActive={isActive} onClick={() => setIsActive(!isActive)} />
-      <AnimatePresence>{isActive && <SocialPanel key="panel" ref={panelRef} />}</AnimatePresence>
+      <AnimatePresence>{isActive && <SocialPanel ref={panelRef} />}</AnimatePresence>
     </motion.div>
   );
 }

@@ -1,9 +1,8 @@
-import { alpha } from "@theme-ui/color";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { Box, ThemeUICSSObject } from "theme-ui";
+import { Box, Flex, ThemeUICSSObject } from "theme-ui";
 import StyledButton from "../src/components/atoms/styled/Button";
-import { H3 } from "../src/components/atoms/Typography";
+import { H2, H3, SubTitle } from "../src/components/atoms/Typography";
 import Window from "../src/components/molecules/Window";
 import Layout from "../src/components/pages/Layout";
 import about from "../src/data/about";
@@ -28,7 +27,11 @@ const LeftPanel = () => {
         <StyledButton sx={buttonStyle} iconName="AiOutlineProfile" href="https://www.visualcv.com/khangnd">
           Resume
         </StyledButton>
-        <StyledButton sx={buttonStyle} iconName="AiOutlineMail" href="mailto:khang.nguyenduyvn@gmail.com?subject=Hey Khang!">
+        <StyledButton
+          sx={buttonStyle}
+          iconName="AiOutlineMail"
+          href="mailto:khang.nguyenduyvn@gmail.com?subject=Hey Khang!"
+        >
           Email
         </StyledButton>
       </Box>
@@ -38,11 +41,10 @@ const LeftPanel = () => {
 
 const RightPanel = () => {
   const containerStyle: ThemeUICSSObject = {
-    bg: alpha("primary", 0.06),
+    bg: "background",
     p: 4,
     mt: [4, null, 0],
     ml: [null, null, 4],
-    height: "100%",
     textAlign: "justify",
   };
 
@@ -52,12 +54,14 @@ const RightPanel = () => {
     listStyle: "initial",
   };
 
+  const alignment: ThemeUICSSObject = { textAlign: ["center", null, "unset"] };
+
   return (
     <div sx={containerStyle}>
-      <h2 sx={{ fontSize: "200%", textAlign: ["center", null, "unset"] }}>
+      <H2 style={alignment}>
         Hello, I&apos;m <span sx={{ color: "red", fontWeight: "bold" }}>Khang</span>
-      </h2>
-      <p sx={{ color: "muted", mb: 5, textAlign: ["center", null, "unset"] }}>{about.headline}</p>
+      </H2>
+      <SubTitle style={alignment}>{about.headline}</SubTitle>
       <p sx={{ mb: 5 }}>{about.intro}</p>
       <H3>Some facts</H3>
       <ul sx={listStyle}>
@@ -77,17 +81,13 @@ const RightPanel = () => {
 
 export default function About(): JSX.Element {
   const { asPath } = useRouter();
-  const bodyStyle: ThemeUICSSObject = {
-    display: "flex",
-    flexDirection: ["column", null, "row"],
-  };
 
   return (
     <Window title={getRoute(asPath)?.title}>
-      <div sx={bodyStyle}>
+      <Flex sx={{ flexDirection: ["column", null, "row"], height: "100%" }}>
         <LeftPanel />
         <RightPanel />
-      </div>
+      </Flex>
     </Window>
   );
 }

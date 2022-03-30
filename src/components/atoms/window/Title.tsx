@@ -1,14 +1,15 @@
 import { useRouter } from "next/router";
 import { ReactNode } from "react";
-import { ThemeUICSSObject } from "theme-ui";
+import { Flex, ThemeUICSSObject } from "theme-ui";
 import useInBreakpoint from "../../../hooks/useInBreakpoint";
 import useIsLandscape from "../../../hooks/useIsLandscape";
 
 type WindowTitleProps = {
   children?: ReactNode;
+  onFullscreen?: () => void;
 };
 
-export default function WindowTitle({ children }: WindowTitleProps) {
+export default function WindowTitle({ children, onFullscreen }: WindowTitleProps) {
   const router = useRouter();
   const isLandscape = useIsLandscape();
   const isMobile = useInBreakpoint(0, isLandscape);
@@ -22,18 +23,23 @@ export default function WindowTitle({ children }: WindowTitleProps) {
     justifyContent: "space-between",
   };
 
-  const closeBtnStyle: ThemeUICSSObject = {
-    bg: "red",
+  const btnStyle: ThemeUICSSObject = {
     border: 0,
     color: "textReverse",
     size: 5,
     cursor: "pointer",
   };
 
+  const closeBtnStyle: ThemeUICSSObject = { bg: "red", ...btnStyle };
+  const fullscrBtnStyle: ThemeUICSSObject = { bg: "green", mr: 2, ...btnStyle };
+
   return (
     <h1 sx={titleStyle}>
       <span>{children}</span>
-      <button aria-label="Close" onClick={() => router.push("/")} sx={closeBtnStyle} />
+      <Flex>
+        <button aria-label="Fullscreen" onClick={onFullscreen} sx={fullscrBtnStyle} />
+        <button aria-label="Close" onClick={() => router.push("/")} sx={closeBtnStyle} />
+      </Flex>
     </h1>
   );
 }
