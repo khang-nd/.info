@@ -1,4 +1,4 @@
-import { createContext, Dispatch, ReactNode, SetStateAction, useEffect, useState } from "react";
+import { createContext, Dispatch, ReactNode, SetStateAction, useState } from "react";
 
 type Context<T = boolean> = {
   val: T;
@@ -6,7 +6,6 @@ type Context<T = boolean> = {
 };
 
 type GlobalContextType = {
-  isFirstLoad?: boolean;
   enableAnimation: Context;
 };
 
@@ -19,18 +18,14 @@ export const GlobalContext = createContext<GlobalContextType>({
 });
 
 export const GlobalProvider = ({ children }: GlobalProviderProps): JSX.Element => {
-  const [isFirstLoad, setIsFirstLoad] = useState(true);
   const [enableAnimation, setEnableAnimation] = useState(true);
 
   const context: GlobalContextType = {
-    isFirstLoad,
     enableAnimation: {
       val: enableAnimation,
       set: setEnableAnimation,
     },
   };
-
-  useEffect(() => setIsFirstLoad(false), []);
 
   return <GlobalContext.Provider value={context}>{children}</GlobalContext.Provider>;
 };
