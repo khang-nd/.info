@@ -33,8 +33,8 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
   return {
     revalidate: 604800,
     props: {
-      vibloArticles: vibloResponse?.data.vibloArticles,
-      devtoArticles: devtoResponse?.data.devtoArticles,
+      vibloArticles: vibloResponse.data.vibloArticles,
+      devtoArticles: devtoResponse.data.devtoArticles,
     },
   };
 };
