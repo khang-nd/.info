@@ -14,7 +14,6 @@
     "@apollo/client": "^3.5.10",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
-    "@graphql-codegen/cli": "^2.6.2",
     "@graphql-yoga/node": "^2.0.0",
     "@loadable/component": "^5.15.2",
     "@mdx-js/react": "^1.6.22",
