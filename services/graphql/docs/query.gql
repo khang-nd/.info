@@ -1,0 +1,27 @@
+query GetDevtoArticles {
+  devtoArticles {
+    id
+    slug
+    title
+    url
+    published_at
+    reading_time_minutes
+    tag_list
+  }
+}
+
+query GetVibloArticles {
+  vibloArticles {
+    id
+    slug
+    title
+    url
+    published_at
+    reading_time
+    tags {
+      data {
+        name
+      }
+    }
+  }
+}

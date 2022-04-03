@@ -18,8 +18,7 @@
 # misc
 .DS_Store
 *.pem
-.devto.cache.json
-.viblo.cache.json
+services/graphql/generated.ts
 
 # debug
 npm-debug.log*

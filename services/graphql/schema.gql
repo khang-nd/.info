@@ -1,0 +1,110 @@
+type Query {
+  devtoArticles: [DevArticle!]!
+  vibloArticles: [VibloArticle!]!
+}
+
+type DevArticle {
+  id: ID!
+  title: String!
+  slug: String!
+  url: String!
+  type_of: String
+  description: String
+  cover_image: String
+  published: Boolean
+  published_at: String
+  tag_list: [String]
+  path: String
+  canonical_url: String
+  comments_count: Int
+  positive_reactions_count: Int
+  public_reactions_count: Int
+  page_views_count: Int
+  published_timestamp: String
+  body_markdown: String
+  user: DevUser
+  reading_time_minutes: Int
+  organization: DevOrganization
+  flare_tag: DevArticleFlareTag
+}
+
+type DevUser {
+  name: String
+  username: String
+  twitter_username: String
+  github_username: String
+  website_url: String
+  profile_image: String
+  profile_image_90: String
+}
+
+type DevOrganization {
+  name: String
+  username: String
+  slug: String
+  profile_image: String
+  profile_image_90: String
+}
+
+type DevArticleFlareTag {
+  name: String
+  bg_color_hex: String
+  text_color_hex: String
+}
+
+type VibloArticle {
+  id: ID!
+  title: String!
+  slug: String!
+  url: String!
+  transliterated: String
+  user_id: Int
+  contents_short: String
+  contents: String
+  published_at: String
+  is_published: Boolean
+  is_shared: Boolean
+  updated_at: String
+  translation_source: String
+  trend_at: String
+  promoted_at: String
+  reading_time: Int
+  points: Int
+  views_count: Int
+  clips_count: Int
+  comments_count: Int
+  rated_value: String
+  promoted: Boolean
+  trending: Boolean
+  is_draft: Boolean
+  is_public: Boolean
+  locale_code: String
+  is_video: Boolean
+  thumbnail_url: String
+  user: VibloUser
+  tags: VibloTags
+}
+
+type VibloUser {
+  id: ID
+  url: String
+  avatar: String
+  name: String
+  username: String
+  followers_count: Int
+  reputation: Int
+  posts_count: Int
+  banned_at: String
+  following: Boolean
+}
+
+type VibloTags {
+  data: [VibloTag]
+}
+
+type VibloTag {
+  slug: String
+  name: String
+  primary: Boolean
+  image: String
+}
