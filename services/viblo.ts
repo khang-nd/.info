@@ -1,5 +1,5 @@
-import { VibloArticle } from "./graphql/generated";
 import { post } from "./_core";
+import { VibloArticle } from "./_type";
 
 const BASE_URL = "https://api.viblo.asia/users/khangnd";
 

@@ -1,5 +1,5 @@
-import { DevArticle } from "./graphql/generated";
 import { get } from "./_core";
+import { DevArticle } from "./_type";
 
 const BASE_URL = "https://dev.to/api";
 

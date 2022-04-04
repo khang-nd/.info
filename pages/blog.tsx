@@ -2,15 +2,9 @@ import { GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { Flex } from "theme-ui";
-import {
-  DevArticle,
-  GetDevtoArticlesDocument,
-  GetDevtoArticlesQuery,
-  GetVibloArticlesDocument,
-  GetVibloArticlesQuery,
-  VibloArticle
-} from "../services/graphql/generated";
-import client from "../services/_apollo";
+import { getArticles as getDevtoArticles } from "../services/devto";
+import { getArticles as getVibloArticles } from "../services/viblo";
+import { DevArticle, VibloArticle } from "../services/_type";
 import Window from "../src/components/molecules/Window";
 import ContentPane from "../src/components/pages/blog/ContentPane";
 import NavigationPane from "../src/components/pages/blog/NavigationPane";
@@ -24,18 +18,11 @@ type PageProps = {
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  // An overkill using GraphQL to fetch data, for learning purpose.
-  // Could achieve the same with much less effort using the REST APIs.
-  const queryVibloArticles = client.query<GetVibloArticlesQuery>({ query: GetVibloArticlesDocument });
-  const queryDevtoArticles = client.query<GetDevtoArticlesQuery>({ query: GetDevtoArticlesDocument });
-  const [vibloResponse, devtoResponse] = await Promise.all([queryVibloArticles, queryDevtoArticles]);
+  const [devtoArticles, vibloArticles] = await Promise.all([getDevtoArticles(), getVibloArticles()]);
 
   return {
     revalidate: 604800,
-    props: {
-      vibloArticles: vibloResponse.data.vibloArticles,
-      devtoArticles: devtoResponse.data.devtoArticles,
-    },
+    props: { vibloArticles, devtoArticles },
   };
 };
 

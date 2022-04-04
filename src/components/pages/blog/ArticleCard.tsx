@@ -1,7 +1,7 @@
 import { darken } from "@theme-ui/color";
 import Link from "next/link";
 import { ThemeUICSSObject } from "theme-ui";
-import { DevArticle, VibloArticle } from "../../../../services/graphql/generated";
+import { DevArticle, VibloArticle } from "../../../../services/_type";
 import { format } from "../../../misc/utils";
 import Tag from "../../atoms/Tag";
 
@@ -10,7 +10,7 @@ type ArticleCardProps = {
 };
 
 export default function ArticleCard({ article }: ArticleCardProps) {
-  const isDevArticle = article.__typename === "DevArticle";
+  const isDevArticle = new URL(article.url).origin.includes("dev.to");
   const publishedAt = format(article.published_at as string);
   const tags = isDevArticle
     ? (article as DevArticle).tag_list

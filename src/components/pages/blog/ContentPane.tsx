@@ -1,9 +1,8 @@
-import { AnimatePresence } from "framer-motion";
-import { DevArticle, VibloArticle } from "../../../../services/graphql/generated";
+import { AnimatePresence, motion } from "framer-motion";
+import { DevArticle, VibloArticle } from "../../../../services/_type";
+import { fade } from "../../../animations/fade";
 import { BlogPlatform } from "../../../misc/types";
 import ArticleCard from "./ArticleCard";
-import { motion } from "framer-motion";
-import { fade } from "../../../animations/fade";
 
 type Articles = {
   "Dev.to": DevArticle[];
