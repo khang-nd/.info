@@ -20,8 +20,7 @@ export default function ContentPane({ articles, activePlatform }: ContentPanePro
     <div
       sx={{
         bg: "background",
-        px: 5,
-        py: 4,
+        p: 4,
         flex: 1,
         zIndex: 1,
         display: "grid",

@@ -28,11 +28,11 @@ export default function ArticleCard({ article }: ArticleCardProps) {
     flexDirection: "column",
     justifyContent: "space-between",
     height: "100%",
-    transition: "0.4s",
+    transition: "background 0.4s",
     h4: { transition: "0.4s" },
+    boxShadow: "0 0 1px rgba(0, 0, 0, 0.2)",
     "&:hover": {
       bg: "white",
-      boxShadow: "0 1px 4px rgba(0, 0, 0, 0.15)",
       h4: { color: darken("secondary", 0.05) },
     },
   };

@@ -32,6 +32,7 @@ export default function Taskbar() {
 
   const taskbarStyle: ThemeUICSSObject = {
     background: "primary",
+    boxSizing: "border-box",
     color: "textReverse",
     bottom: 0,
     width: "100%",

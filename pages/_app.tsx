@@ -4,6 +4,7 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import { GlobalProvider } from "../src/contexts/GlobalContext";
 import theme from "../src/themes";
+import "../src/themes/global.css";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: JSX.Element) => JSX.Element;
@@ -25,11 +26,8 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
           content="A window-styled portfolio of Khang Nguyen Duy. Inspired by Microsoft's Windows."
         />
         <link rel="icon" href="/favicon.ico" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css" />
       </Head>
-      <GlobalProvider>
-        {getLayout(<Component {...pageProps} />)}
-      </GlobalProvider>
+      <GlobalProvider>{getLayout(<Component {...pageProps} />)}</GlobalProvider>
     </ThemeProvider>
   );
 }
