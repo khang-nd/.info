@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
+import { useContext } from "react";
 import { Flex } from "theme-ui";
 import { fade } from "../../animations/fade";
+import { GlobalContext } from "../../contexts/GlobalContext";
 import useInBreakpoint from "../../hooks/useInBreakpoint";
 import Button from "./Button";
 import ReactIcon from "./IconReact";
@@ -15,12 +17,13 @@ type NavigationPaneItemProps = {
 
 export default function NavigationPaneItem({ icon, text, isActive, onClick }: NavigationPaneItemProps) {
   const isMobile = useInBreakpoint(0);
+  const { enableAnimation } = useContext(GlobalContext);
 
   const Icon = ({ icon }: { icon: string }) => <ReactIcon iconName={icon} size={isMobile ? 24 : 32} />;
 
   const IconGroup = ({ icon }: { icon: string[] }) =>
     isActive ? (
-      <motion.span key="active" {...fade}>
+      <motion.span key="active" {...fade} transition={!enableAnimation.val ? { duration: 0 } : {}}>
         <Icon icon={icon[1]} />
       </motion.span>
     ) : (
@@ -40,6 +43,7 @@ export default function NavigationPaneItem({ icon, text, isActive, onClick }: Na
           <motion.span
             layoutId="navigation-indicator"
             {...fade}
+            transition={!enableAnimation.val ? { duration: 0 } : {}}
             sx={{
               bg: "background",
               position: "absolute",

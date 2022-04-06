@@ -1,3 +1,4 @@
+import { ForwardedRef, forwardRef } from "react";
 import Button from "../Button";
 import ReactIcon from "../IconReact";
 
@@ -6,9 +7,10 @@ type ToggleLinksProps = {
   onClick: () => void;
 };
 
-export default function SocialToggle({ isActive, onClick }: ToggleLinksProps) {
+const SocialToggle = ({ isActive, onClick }: ToggleLinksProps, ref: ForwardedRef<HTMLButtonElement>) => {
   return (
     <Button
+      ref={ref}
       unsetStyle
       aria-label="Connect with me"
       onClick={onClick}
@@ -26,4 +28,6 @@ export default function SocialToggle({ isActive, onClick }: ToggleLinksProps) {
       <ReactIcon iconName={isActive ? "CgClose" : "AiOutlineShareAlt"} size={24} />
     </Button>
   );
-}
+};
+
+export default forwardRef(SocialToggle);

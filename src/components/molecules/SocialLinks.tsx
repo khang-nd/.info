@@ -9,7 +9,13 @@ import SocialToggle from "../atoms/social/Toggle";
 export default function SocialLinks() {
   const [isActive, setIsActive] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
-  useClickAway(panelRef, () => setIsActive(false));
+  const toggleRef = useRef<HTMLButtonElement>(null);
+
+  useClickAway(panelRef, (event) => {
+    const isToggleButton = toggleRef.current?.contains(event.target as Node);
+    if (!isToggleButton) setIsActive(false);
+  });
+
   useKey("Escape", () => setIsActive(false));
 
   const containerStyle: ThemeUICSSObject = {
@@ -20,7 +26,7 @@ export default function SocialLinks() {
 
   return (
     <motion.div sx={containerStyle} custom="left" {...slideIn}>
-      <SocialToggle isActive={isActive} onClick={() => setIsActive(!isActive)} />
+      <SocialToggle ref={toggleRef} isActive={isActive} onClick={() => setIsActive(!isActive)} />
       <AnimatePresence>{isActive && <SocialPanel ref={panelRef} />}</AnimatePresence>
     </motion.div>
   );

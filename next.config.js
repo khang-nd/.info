@@ -8,6 +8,10 @@ const nextConfig = {
   images: {
     domains: ["gravatar.com"],
   },
+  i18n: {
+    locales: ["en"],
+    defaultLocale: "en",
+  },
 };
 
 module.exports = withBundleAnalyzer(nextConfig);
