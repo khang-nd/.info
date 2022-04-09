@@ -10,13 +10,20 @@ type IconProps = {
   iconName: IconName;
   size?: number;
   tag?: ElementType<any>;
-  sx?: ThemeUICSSObject;
+  style?: ThemeUICSSObject;
 };
 
-const IconWithRef = ({ iconName, size = 24, tag, sx }: IconProps, ref: Ref<HTMLDivElement>) => {
+const IconWithRef = ({ iconName, size = 24, tag, style }: IconProps, ref: Ref<HTMLDivElement>) => {
+  const icon = IconMap[iconName];
+
+  if (!icon) {
+    console.error(iconName + " is not recognized");
+    return null;
+  }
+
   return (
-    <Box as={tag} ref={ref} sx={{ size, ...sx }}>
-      <Image src={IconMap[iconName]} alt={iconName} layout="responsive" />
+    <Box as={tag} ref={ref} sx={{ size, ...style }}>
+      <Image src={icon} alt={iconName} layout="responsive" />
     </Box>
   );
 };

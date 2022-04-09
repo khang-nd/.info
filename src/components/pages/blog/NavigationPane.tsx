@@ -1,3 +1,4 @@
+import { ThemeUICSSObject } from "theme-ui";
 import { BlogPlatform } from "../../../misc/types";
 import { List } from "../../atoms/Container";
 import NavigationPaneItem from "../../atoms/NavigationPaneItem";
@@ -12,19 +13,22 @@ export default function NavigationPane({ activePlatform, onNavigate }: Navigatio
   const platforms = Object.values(BlogPlatform);
 
   return (
-    <div sx={{ minWidth: 180 }}>
-      <H3>Platform</H3>
-      <List sx={{ mb: 5, display: ["grid", null, "block"], gridTemplateColumns: "1fr 1fr 1fr" }}>
-        {platforms.map((platform) => (
-          <NavigationPaneItem
-            key={platform}
-            icon="RiBook2Fill"
-            text={platform}
-            isActive={activePlatform === platform}
-            onClick={() => onNavigate(platform)}
-          />
-        ))}
-      </List>
+    <div sx={{ minWidth: 200, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+      <div sx={{ position: "sticky", top: 0 }}>
+        <H3>Platform</H3>
+        <List sx={{ mb: 5, display: ["grid", null, "block"], gridTemplateColumns: "1fr 1fr 1fr" }}>
+          {platforms.map((platform) => (
+            <NavigationPaneItem
+              key={platform}
+              icon="RiBook2Fill"
+              text={platform}
+              isActive={activePlatform === platform}
+              onClick={() => onNavigate(platform)}
+            />
+          ))}
+        </List>
+      </div>
+      <div sx={{ position: "sticky", bottom: 0, fontSize: "85%" }}>Last updated: {new Date().toLocaleDateString()}</div>
     </div>
   );
 }

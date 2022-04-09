@@ -3,13 +3,15 @@ import { ReactNode } from "react";
 import { Flex, ThemeUICSSObject } from "theme-ui";
 import useInBreakpoint from "../../../hooks/useInBreakpoint";
 import useIsLandscape from "../../../hooks/useIsLandscape";
+import Help from "./Help";
 
 type WindowTitleProps = {
   children?: ReactNode;
+  help?: string;
   onFullscreen?: () => void;
 };
 
-export default function WindowTitle({ children, onFullscreen }: WindowTitleProps) {
+export default function WindowTitle({ children, help, onFullscreen }: WindowTitleProps) {
   const router = useRouter();
   const isLandscape = useIsLandscape();
   const isMobile = useInBreakpoint(0, isLandscape);
@@ -34,12 +36,13 @@ export default function WindowTitle({ children, onFullscreen }: WindowTitleProps
   const fullscrBtnStyle: ThemeUICSSObject = { bg: "green", mr: 2, ...btnStyle };
 
   return (
-    <h1 sx={titleStyle}>
+    <div sx={titleStyle}>
       <span>{children}</span>
       <Flex>
+        {help && <Help style={{ mr: 1 }}>{help}</Help>}
         <button aria-label="Fullscreen" onClick={onFullscreen} sx={fullscrBtnStyle} />
         <button aria-label="Close" onClick={() => router.push("/")} sx={closeBtnStyle} />
       </Flex>
-    </h1>
+    </div>
   );
 }

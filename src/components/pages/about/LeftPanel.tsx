@@ -15,7 +15,7 @@ export default function LeftPanel() {
 
   return (
     <Box sx={{ textAlign: "center", flexShrink: 0 }}>
-      <Image src={avatarUrl} alt="Avatar Khang" width={avatarSize} height={avatarSize} quality={100} />
+      <Image src={avatarUrl} alt="Avatar Khang" width={avatarSize} height={avatarSize} quality={100} priority />
       <Box>
         <StyledButton sx={buttonStyle} iconName="AiOutlineProfile" href="https://www.visualcv.com/khangnd">
           Resume

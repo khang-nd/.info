@@ -11,7 +11,6 @@ export default function Tag({ children }: TagProps) {
         px: "4px",
         py: "2px",
         mr: 2,
-        mb: 1,
         borderRadius: 3,
         display: "inline-block",
         bg: alpha("muted", 0.1),

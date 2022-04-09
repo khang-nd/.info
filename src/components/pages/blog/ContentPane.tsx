@@ -17,21 +17,11 @@ type ContentPaneProps = {
 export default function ContentPane({ articles, activePlatform }: ContentPaneProps) {
   const articleList = articles[activePlatform];
   return (
-    <div
-      sx={{
-        bg: "background",
-        p: 4,
-        flex: 1,
-        zIndex: 1,
-        display: "grid",
-        gridTemplateColumns: ["1fr ", null, null, "1fr 1fr"],
-        gap: 3,
-      }}
-    >
+    <div sx={{ bg: "background", p: 4, flex: 1 }}>
       <AnimatePresence exitBeforeEnter>
-        {articleList.map((article) => (
+        {articleList.map((article, i) => (
           <motion.div key={article.id} {...fade} transition={{ staggerChildren: 1 }}>
-            <ArticleCard article={article} />
+            <ArticleCard article={article} isLast={i === articleList.length - 1} />
           </motion.div>
         ))}
       </AnimatePresence>

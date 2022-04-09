@@ -13,9 +13,10 @@ import WindowTitle from "../atoms/window/Title";
 type WindowProps = {
   title?: ReactNode;
   children?: ReactNode;
+  help?: string;
 };
 
-export default function Window({ title, children }: WindowProps) {
+export default function Window({ title, children, help }: WindowProps) {
   const { enableAnimation } = useContext(GlobalContext);
   const [fullscreen, toggleFullscreen] = useToggle(false);
   const ref = useRef(null);
@@ -43,7 +44,9 @@ export default function Window({ title, children }: WindowProps) {
       initial={enableAnimation.val ? "initial" : "animate"}
       exit={enableAnimation.val ? "initial" : undefined}
     >
-      <WindowTitle onFullscreen={toggleFullscreen}>{isPresent && title}</WindowTitle>
+      <WindowTitle onFullscreen={toggleFullscreen} help={help}>
+        {isPresent && title}
+      </WindowTitle>
       <WindowBody>{children}</WindowBody>
     </MotionBox>
   );

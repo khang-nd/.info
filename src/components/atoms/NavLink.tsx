@@ -102,6 +102,7 @@ export default function NavLink({ data }: NavLinkProps) {
         variants={linkVariants}
         animate={isHomePage ? "main" : "sidebar"}
         initial={isHomePage || "sidebar"}
+        whileHover={isHomePage ? { scale: 0.95 } : undefined}
       >
         {isActive && <motion.span layoutId="indicator" sx={indicatorStyle} transition={spring} />}
         <MotionIcon

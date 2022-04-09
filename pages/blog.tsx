@@ -32,7 +32,7 @@ export default function Blog({ devtoArticles, vibloArticles }: PageProps): JSX.E
 
   return (
     <Window title={getRoute(asPath)?.title}>
-      <Flex sx={{ height: "100%", flexDirection: ["column", null, "row"] }}>
+      <Flex sx={{ flexDirection: ["column", null, "row"] }}>
         <NavigationPane activePlatform={activePlatform} onNavigate={(platform) => setActivePlatform(platform)} />
         <ContentPane activePlatform={activePlatform} articles={{ "Dev.to": devtoArticles, Viblo: vibloArticles }} />
       </Flex>

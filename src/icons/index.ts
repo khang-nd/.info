@@ -16,28 +16,37 @@ import LogoFandomDev from "./logo-fandomdev.webp";
 import LogoFandomUtils from "./logo-fandomutils.svg";
 import LogoLuckydraw from "./logo-luckydraw.webp";
 import LogoWin7 from "./logo-win7.webp";
-import LogoAndroidStd from "./skill-androidstd.svg";
-import LogoBalsamiq from "./skill-balsamiq.svg";
-import LogoBootstrap from "./skill-bootstrap.svg";
-import LogoCsharp from "./skill-csharp.svg";
-import LogoCss from "./skill-css.svg";
-import LogoEclipse from "./skill-eclipse.svg";
-import LogoHtml from "./skill-html.svg";
-import LogoJava from "./skill-java.svg";
-import LogoJquery from "./skill-jquery.svg";
-import LogoJs from "./skill-js.svg";
-import LogoOffice from "./skill-office.svg";
-import LogoPhotoshop from "./skill-photoshop.svg";
-import LogoReactjs from "./skill-reactjs.svg";
-import LogoSass from "./skill-sass.svg";
-import LogoVs from "./skill-vs.svg";
-import LogoVscode from "./skill-vscode.svg";
-import LogoVue from "./skill-vuejs.svg";
-import SocialDev from "./social-dev.svg";
-import SocialFandom from "./social-fandom.webp";
-import SocialGithub from "./social-github.svg";
-import SocialLinkedin from "./social-linkedin.svg";
-import SocialTwitter from "./social-twitter.svg";
+import Logoandroidstd from "./skill-androidstd.svg";
+import Logobalsamiq from "./skill-balsamiq.svg";
+import Logobitbucket from "./skill-bitbucket.svg";
+import Logobootstrap from "./skill-bootstrap.svg";
+import Logocrowdin from "./skill-crowdin.svg";
+import Logocss from "./skill-css.svg";
+import Logoeclipse from "./skill-eclipse.svg";
+import Logofigma from "./skill-figma.svg";
+import Logofirebase from "./skill-firebase.svg";
+import Logoframer from "./skill-framer.svg";
+import Logogit from "./skill-git.svg";
+import Logogithub from "./skill-github.svg";
+import Logogql from "./skill-gql.svg";
+import Logohtml from "./skill-html.svg";
+import Logojira from "./skill-jira.svg";
+import Logojquery from "./skill-jquery.svg";
+import Logojs from "./skill-js.svg";
+import Logonextjs from "./skill-nextjs.svg";
+import Logonodejs from "./skill-nodejs.svg";
+import Logooffice from "./skill-office.svg";
+import Logophotoshop from "./skill-photoshop.svg";
+import Logoreactjs from "./skill-reactjs.svg";
+import Logosass from "./skill-sass.svg";
+import Logostrapi from "./skill-strapi.svg";
+import Logosvelte from "./skill-svelte.svg";
+import Logots from "./skill-ts.svg";
+import Logovs from "./skill-vs.svg";
+import Logovscode from "./skill-vscode.svg";
+import Logovuejs from "./skill-vuejs.svg";
+import Logovuepress from "./skill-vuepress.png";
+import Logobulma from "./skill-bulma.svg";
 
 const Icon = {
   ClassicAbout,
@@ -58,28 +67,37 @@ const Icon = {
   LogoFandomUtils,
   LogoLuckydraw,
   LogoWin7,
-  LogoAndroidStd,
-  LogoBalsamiq,
-  LogoBootstrap,
-  LogoCsharp,
-  LogoCss,
-  LogoEclipse,
-  LogoHtml,
-  LogoJava,
-  LogoJquery,
-  LogoJs,
-  LogoOffice,
-  LogoPhotoshop,
-  LogoReactjs,
-  LogoSass,
-  LogoVs,
-  LogoVscode,
-  LogoVue,
-  SocialDev,
-  SocialFandom,
-  SocialGithub,
-  SocialLinkedin,
-  SocialTwitter,
+  Logoandroidstd,
+  Logobalsamiq,
+  Logobootstrap,
+  Logocss,
+  Logoeclipse,
+  Logoframer,
+  Logogql,
+  Logohtml,
+  Logojquery,
+  Logojs,
+  Logonextjs,
+  Logooffice,
+  Logophotoshop,
+  Logoreactjs,
+  Logosass,
+  Logots,
+  Logovs,
+  Logovscode,
+  Logovuejs,
+  Logobitbucket,
+  Logocrowdin,
+  Logofigma,
+  Logojira,
+  Logofirebase,
+  Logogit,
+  Logogithub,
+  Logonodejs,
+  Logostrapi,
+  Logosvelte,
+  Logovuepress,
+  Logobulma,
 };
 
 export default Icon;
