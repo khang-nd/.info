@@ -1,6 +1,5 @@
-import { ForwardedRef, forwardRef, useContext } from "react";
+import { ForwardedRef, forwardRef } from "react";
 import { ThemeUICSSObject } from "theme-ui";
-import { GlobalContext } from "../../../contexts/GlobalContext";
 import { sizes } from "../../../themes";
 import { MotionList } from "../Container";
 import SocialLink, { SocialLinkType } from "./Link";
@@ -13,7 +12,6 @@ const links: SocialLinkType[] = [
 ];
 
 const SocialPanelWithRef = ({}, ref: ForwardedRef<HTMLDivElement>) => {
-  const { enableAnimation } = useContext(GlobalContext);
 
   const containerSize = 250;
   const containerHalf = containerSize / 2;
@@ -42,7 +40,6 @@ const SocialPanelWithRef = ({}, ref: ForwardedRef<HTMLDivElement>) => {
       animate={{ scale: 1 }}
       initial={{ scale: 0 }}
       exit={{ scale: 0 }}
-      transition={enableAnimation.val ? {} : { duration: 0 }}
     >
       {links.map((link, i) => (
         <li key={i} style={{ position: "absolute", ...setIconPos(i) }}>

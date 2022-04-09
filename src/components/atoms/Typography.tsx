@@ -10,16 +10,17 @@ type SubTitleProps = CommonProps & {
   as?: ElementType<any>;
 };
 
-export const H3 = ({ children }: CommonProps) => {
-  const style: ThemeUICSSObject = {
+export const H3 = ({ children, style }: CommonProps) => {
+  const innerStyle: ThemeUICSSObject = {
     color: "primary",
     fontVariant: "small-caps",
     fontWeight: "bold",
     fontSize: 20,
     mb: 3,
+    ...style
   };
 
-  return <h3 sx={style}>{children}</h3>;
+  return <h3 sx={innerStyle}>{children}</h3>;
 };
 
 export const H2 = ({ children, style }: CommonProps) => {

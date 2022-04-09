@@ -4,13 +4,12 @@ import { useState } from "react";
 import { Flex } from "theme-ui";
 import { getArticles as getDevtoArticles } from "../services/devto";
 import { getArticles as getVibloArticles } from "../services/viblo";
-import { DevArticle, VibloArticle } from "../services/_type";
+import { BlogPlatform, DevArticle, VibloArticle } from "../services/_type";
 import Window from "../src/components/molecules/Window";
 import ContentPane from "../src/components/pages/blog/ContentPane";
 import NavigationPane from "../src/components/pages/blog/NavigationPane";
 import Layout from "../src/components/pages/Layout";
 import { getRoute } from "../src/misc/routes";
-import { BlogPlatform } from "../src/misc/types";
 
 type PageProps = {
   devtoArticles: DevArticle[];

@@ -12,5 +12,9 @@ export default function ReactIcon({ iconName, ...props }: ReactIconProps) {
     resolveComponent: (Component) => Component[iconName],
   });
 
-  return <ReactIcon {...props} />;
+  return (
+    <span sx={{ display: "inline-block", size: props.size || 16 }}>
+      <ReactIcon {...props} />
+    </span>
+  );
 }

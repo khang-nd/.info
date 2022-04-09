@@ -27,14 +27,14 @@ export default function ContentPane({ title }: { title?: string }) {
         <P style={{ fontStyle: "italic", mb: 5 }}>{job?.description}</P>
         {job?.remark && <P>{parseLinks(job.remark, job.links)}</P>}
         {job?.activities && (
-          <P>
-            My main activities include:
-            <ul sx={{ listStyle: "initial", ml: 5, mt: 3 }}>
+          <>
+            <P style={{ mt: 4, mb: 2 }}>My main activities include:</P>
+            <ul sx={{ listStyle: "initial", ml: 5, mb: 4 }}>
               {job.activities.map((act, i) => (
                 <li key={i}>{parseLinks(act, job.links)}</li>
               ))}
             </ul>
-          </P>
+          </>
         )}
         {job?.techs && <P>Techs used: {parseLinks(job.techs, job.links)}</P>}
       </MotionBox>

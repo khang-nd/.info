@@ -1,7 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { DevArticle, VibloArticle } from "../../../../services/_type";
+import { BlogPlatform, DevArticle, VibloArticle } from "../../../../services/_type";
 import { fade } from "../../../animations/fade";
-import { BlogPlatform } from "../../../misc/types";
 import ArticleCard from "./ArticleCard";
 
 type Articles = {

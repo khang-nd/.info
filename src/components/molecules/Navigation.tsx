@@ -1,7 +1,5 @@
 import { Variants } from "framer-motion";
-import { useContext } from "react";
 import { ThemeUICSSObject } from "theme-ui";
-import { GlobalContext } from "../../contexts/GlobalContext";
 import useHomepage from "../../hooks/useHomepage";
 import useInBreakpoint from "../../hooks/useInBreakpoint";
 import routes from "../../misc/routes";
@@ -10,7 +8,6 @@ import { MotionNav } from "../atoms/Container";
 import NavLink from "../atoms/NavLink";
 
 export default function Navigation() {
-  const { enableAnimation } = useContext(GlobalContext);
   const isHomePage = useHomepage();
   const isMobile = useInBreakpoint(0);
 
@@ -20,7 +17,7 @@ export default function Navigation() {
       top: "50%",
       left: "50%",
       display: isMobile && !isHomePage ? "none" : "grid",
-      transition: { duration: enableAnimation.val ? 0.8 : 0 },
+      transition: { duration: 0.8 },
     },
     sidebarInit: {
       ...translate(0),
@@ -32,7 +29,7 @@ export default function Navigation() {
       top: 0,
       left: 0,
       display: "block",
-      transition: { duration: enableAnimation.val ? 0.8 : 0, type: "spring" },
+      transition: { duration: 0.8, type: "spring" },
     },
   };
 

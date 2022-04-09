@@ -1,6 +1,5 @@
 import { Variants } from "framer-motion";
-import { ForwardedRef, forwardRef, MouseEventHandler, useContext } from "react";
-import { GlobalContext } from "../../contexts/GlobalContext";
+import { ForwardedRef, forwardRef, MouseEventHandler } from "react";
 import useInBreakpoint from "../../hooks/useInBreakpoint";
 import useIsLandscape from "../../hooks/useIsLandscape";
 import { MotionButton } from "../atoms/Button";
@@ -12,7 +11,6 @@ type ButtonConfigProps = {
 };
 
 const ButtonConfig = ({ isActive, onClick }: ButtonConfigProps, ref: ForwardedRef<HTMLElement>) => {
-  const { enableAnimation } = useContext(GlobalContext);
   const isLandscape = useIsLandscape();
   const isMobile = useInBreakpoint(0, isLandscape);
 
@@ -31,7 +29,6 @@ const ButtonConfig = ({ isActive, onClick }: ButtonConfigProps, ref: ForwardedRe
       focusStyle={{ borderRadius: "50%" }}
       variants={variants}
       animate={isActive ? "active" : "default"}
-      transition={enableAnimation.val ? undefined : { duration: 0 }}
       onClick={onClick}
       aria-label="Site config"
     >

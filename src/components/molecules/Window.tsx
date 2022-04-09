@@ -1,9 +1,8 @@
 import { useIsPresent } from "framer-motion";
-import { ReactNode, useContext, useRef } from "react";
-import { useToggle, useFullscreen } from "react-use";
+import { ReactNode, useRef } from "react";
+import { useFullscreen, useToggle } from "react-use";
 import { ThemeUICSSObject } from "theme-ui";
 import { fadeZoomIn } from "../../animations/fade";
-import { GlobalContext } from "../../contexts/GlobalContext";
 import { sizes } from "../../themes";
 import { zIndex } from "../../themes/common";
 import { MotionBox } from "../atoms/Container";
@@ -17,7 +16,6 @@ type WindowProps = {
 };
 
 export default function Window({ title, children, help }: WindowProps) {
-  const { enableAnimation } = useContext(GlobalContext);
   const [fullscreen, toggleFullscreen] = useToggle(false);
   const ref = useRef(null);
   const isPresent = useIsPresent();
@@ -36,14 +34,7 @@ export default function Window({ title, children, help }: WindowProps) {
   };
 
   return (
-    <MotionBox
-      ref={ref}
-      sx={style}
-      variants={fadeZoomIn}
-      animate={enableAnimation.val && "animate"}
-      initial={enableAnimation.val ? "initial" : "animate"}
-      exit={enableAnimation.val ? "initial" : undefined}
-    >
+    <MotionBox ref={ref} sx={style} {...fadeZoomIn}>
       <WindowTitle onFullscreen={toggleFullscreen} help={help}>
         {isPresent && title}
       </WindowTitle>

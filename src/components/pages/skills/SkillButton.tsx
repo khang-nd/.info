@@ -1,8 +1,7 @@
 import { alpha } from "@theme-ui/color";
 import { motion, Variants } from "framer-motion";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { ThemeUICSSObject } from "theme-ui";
-import { GlobalContext } from "../../../contexts/GlobalContext";
 import { Skill } from "../../../data/skills";
 import Button from "../../atoms/Button";
 import Icon, { IconName } from "../../atoms/Icon";
@@ -13,7 +12,6 @@ type SkillButtonProps = {
 
 export default function SkillButton({ skill }: SkillButtonProps) {
   const [isHovered, setIsHovered] = useState(false);
-  const { enableAnimation } = useContext(GlobalContext);
 
   const buttonStyle: ThemeUICSSObject = {
     textDecoration: "none",
@@ -61,7 +59,6 @@ export default function SkillButton({ skill }: SkillButtonProps) {
           variants={hoverVariants}
           animate={isHovered ? "hovered" : "default"}
           initial="default"
-          transition={enableAnimation.val ? undefined : { duration: 0 }}
         />
         <Icon iconName={iconName} tag="span" size={48} style={{ display: "block" }} />
       </span>

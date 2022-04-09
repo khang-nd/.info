@@ -1,8 +1,7 @@
 import { Variants } from "framer-motion";
 import Image from "next/image";
-import { ForwardedRef, forwardRef, useContext } from "react";
+import { ForwardedRef, forwardRef } from "react";
 import { ThemeUICSSObject } from "theme-ui";
-import { GlobalContext } from "../../contexts/GlobalContext";
 import { sizes } from "../../themes";
 import Button from "../atoms/Button";
 import { List, MotionBox } from "../atoms/Container";
@@ -13,7 +12,6 @@ type PanelConfigProps = {
 };
 
 const PanelConfig = ({ isVisible }: PanelConfigProps, ref: ForwardedRef<HTMLElement>) => {
-  const { enableAnimation } = useContext(GlobalContext);
   const activeX = sizes[2] + "px";
 
   const panelConfigStyle: ThemeUICSSObject = {
@@ -44,21 +42,18 @@ const PanelConfig = ({ isVisible }: PanelConfigProps, ref: ForwardedRef<HTMLElem
       variants={variants}
       initial="default"
       animate={isVisible ? "active" : "default"}
-      transition={enableAnimation.val ? undefined : { duration: 0 }}
     >
-      <h3>Theme</h3>
-      <List sx={{ display: "grid", gridTemplateColumns: "auto auto", gap: 3 }}>
+      <List sx={{ display: "grid", gridTemplateColumns: "auto auto", gap: 3, mb: 4 }}>
         <ThemePreview image="flat" />
         <ThemePreview image="neumorphism" />
         <ThemePreview image="classic" />
       </List>
-      <h3>Settings</h3>
-      <Toggle
+      {/* <Toggle
         id="toggle-enableAnimation"
         label="Enable animation"
         isChecked={enableAnimation.val}
         onChange={() => enableAnimation.set(!enableAnimation.val)}
-      />
+      /> */}
     </MotionBox>
   );
 };

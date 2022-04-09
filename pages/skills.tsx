@@ -1,19 +1,17 @@
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, ThemeUICSSObject } from "theme-ui";
 import { List } from "../src/components/atoms/Container";
 import Window from "../src/components/molecules/Window";
 import Layout from "../src/components/pages/Layout";
 import CategoryButton from "../src/components/pages/skills/CategoryButton";
 import SkillButton from "../src/components/pages/skills/SkillButton";
-import { GlobalContext } from "../src/contexts/GlobalContext";
 import skills from "../src/data/skills";
 import { getRoute } from "../src/misc/routes";
 
 export default function Skills(): JSX.Element {
   const { asPath } = useRouter();
-  const { enableAnimation } = useContext(GlobalContext);
   const [filters, setFilters] = useState<string[]>([]);
   const [filteredSkills, setFilteredSkills] = useState(skills);
   const helpText = `This is a non-exhaustive list of technical stuffs that I pretend to know,
@@ -60,7 +58,7 @@ export default function Skills(): JSX.Element {
       <Box sx={{ py: 4, px: [null, null, 6], minHeight: 400 }}>
         <List sx={listStyle}>
           {filteredSkills.map((skill) => (
-            <motion.li layout={enableAnimation.val} key={skill.name}>
+            <motion.li layout key={skill.name}>
               <SkillButton skill={skill} />
             </motion.li>
           ))}

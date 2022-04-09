@@ -1,5 +1,4 @@
-import { ForwardedRef, forwardRef, useContext } from "react";
-import { GlobalContext } from "../../../contexts/GlobalContext";
+import { ForwardedRef, forwardRef } from "react";
 import { MotionButton } from "../Button";
 import ReactIcon from "../IconReact";
 
@@ -9,7 +8,6 @@ type ToggleLinksProps = {
 };
 
 const SocialToggle = ({ isActive, onClick }: ToggleLinksProps, ref: ForwardedRef<HTMLButtonElement>) => {
-  const { enableAnimation } = useContext(GlobalContext);
 
   return (
     <MotionButton
@@ -27,7 +25,7 @@ const SocialToggle = ({ isActive, onClick }: ToggleLinksProps, ref: ForwardedRef
         justifyContent: "center",
       }}
       focusStyle={{ borderRadius: "50%" }}
-      whileTap={enableAnimation.val ? { scale: 0.85 } : undefined}
+      whileTap={{ scale: 0.85 }}
     >
       <ReactIcon iconName={isActive ? "CgClose" : "AiOutlineShareAlt"} size={24} />
     </MotionButton>

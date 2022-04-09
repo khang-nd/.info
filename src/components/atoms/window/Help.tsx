@@ -34,6 +34,7 @@ export default function Help({ children, style }: HelpProps) {
   return (
     <Box sx={{ position: "relative", ...style }}>
       <MotionButton
+        aria-label="Help"
         ref={buttonRef}
         unsetStyle
         focusStyle={{ borderRadius: "50%" }}

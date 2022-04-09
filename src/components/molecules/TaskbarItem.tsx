@@ -1,12 +1,10 @@
+import { darken } from "@theme-ui/color";
 import { ThemeUICSSObject } from "theme-ui";
-import { Route } from "../../misc/routes";
 import { slideIn } from "../../animations/slide";
+import useInBreakpoint from "../../hooks/useInBreakpoint";
+import { Route } from "../../misc/routes";
 import { MotionBox } from "../atoms/Container";
 import Icon from "../atoms/Icon";
-import { useContext } from "react";
-import { GlobalContext } from "../../contexts/GlobalContext";
-import useInBreakpoint from "../../hooks/useInBreakpoint";
-import { darken } from "@theme-ui/color";
 
 type TaskbarItemProps = {
   data: Route;
@@ -14,7 +12,6 @@ type TaskbarItemProps = {
 
 export default function TaskbarItem({ data }: TaskbarItemProps): JSX.Element {
   const isMobile = useInBreakpoint(0);
-  const { enableAnimation } = useContext(GlobalContext);
   const { icon, title } = data;
 
   const containerStyle: ThemeUICSSObject = {
@@ -37,14 +34,7 @@ export default function TaskbarItem({ data }: TaskbarItemProps): JSX.Element {
 
   return (
     <div sx={containerStyle}>
-      <MotionBox
-        sx={itemStyle}
-        custom="right"
-        variants={slideIn}
-        animate={enableAnimation.val && "animate"}
-        initial={enableAnimation.val ? "initial" : "animate"}
-        exit={enableAnimation.val ? "initial" : undefined}
-      >
+      <MotionBox sx={itemStyle} custom="right" {...slideIn}>
         <Icon iconName={icon} size={32} />
         {!isMobile && <span sx={{ ml: 3 }}>{title}</span>}
       </MotionBox>

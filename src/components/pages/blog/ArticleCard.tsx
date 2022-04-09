@@ -60,8 +60,8 @@ export default function ArticleCard({ article, isLast }: ArticleCardProps) {
           </div>
           {!isMobile && (
             <div sx={{ display: "flex", alignItems: "center" }}>
-              <ReactIcon iconName="BsEye" sx={{ mr: 2 }} />
-              <span>{viewCount}</span>
+              <ReactIcon iconName="BsEye" />
+              <span sx={{ ml: 2 }}>{viewCount}</span>
             </div>
           )}
         </div>

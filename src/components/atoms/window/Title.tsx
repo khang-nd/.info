@@ -39,7 +39,7 @@ export default function WindowTitle({ children, help, onFullscreen }: WindowTitl
     <div sx={titleStyle}>
       <span>{children}</span>
       <Flex>
-        {help && <Help style={{ mr: 1 }}>{help}</Help>}
+        {help && <Help style={{ mr: 2 }}>{help}</Help>}
         <button aria-label="Fullscreen" onClick={onFullscreen} sx={fullscrBtnStyle} />
         <button aria-label="Close" onClick={() => router.push("/")} sx={closeBtnStyle} />
       </Flex>

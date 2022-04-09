@@ -1,5 +1,4 @@
-import { ThemeUICSSObject } from "theme-ui";
-import { BlogPlatform } from "../../../misc/types";
+import { BlogPlatform } from "../../../../services/_type";
 import { List } from "../../atoms/Container";
 import NavigationPaneItem from "../../atoms/NavigationPaneItem";
 import { H3 } from "../../atoms/Typography";
