@@ -8,7 +8,7 @@ import SocialToggle from "../atoms/social/Toggle";
 
 export default function SocialLinks() {
   const [isActive, setIsActive] = useState(false);
-  const panelRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLUListElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
 
   useClickAway(panelRef, (event) => {
