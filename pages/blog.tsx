@@ -14,6 +14,7 @@ import { getRoute } from "../src/misc/routes";
 type PageProps = {
   devtoArticles: DevArticle[];
   vibloArticles: VibloArticle[];
+  lastUpdated?: string;
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
@@ -21,18 +22,26 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
 
   return {
     revalidate: 604800,
-    props: { vibloArticles, devtoArticles },
+    props: {
+      vibloArticles,
+      devtoArticles,
+      lastUpdated: new Date().toLocaleDateString(), // this prop shall update per revalidation time met
+    },
   };
 };
 
-export default function Blog({ devtoArticles, vibloArticles }: PageProps): JSX.Element {
+export default function Blog({ devtoArticles, vibloArticles, lastUpdated }: PageProps): JSX.Element {
   const { asPath } = useRouter();
   const [activePlatform, setActivePlatform] = useState<BlogPlatform>(BlogPlatform.Devto);
 
   return (
     <Window title={getRoute(asPath)?.title}>
       <Flex sx={{ flexDirection: ["column", null, "row"] }}>
-        <NavigationPane activePlatform={activePlatform} onNavigate={(platform) => setActivePlatform(platform)} />
+        <NavigationPane
+          activePlatform={activePlatform}
+          lastUpdated={lastUpdated}
+          onNavigate={(p) => setActivePlatform(p)}
+        />
         <ContentPane activePlatform={activePlatform} articles={{ "Dev.to": devtoArticles, Viblo: vibloArticles }} />
       </Flex>
     </Window>

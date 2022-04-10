@@ -5,6 +5,7 @@ import { ThemeUICSSObject } from "theme-ui";
 import useHomepage from "../../hooks/useHomepage";
 import useInBreakpoint from "../../hooks/useInBreakpoint";
 import useIsLandscape from "../../hooks/useIsLandscape";
+import useReduceMotion from "../../hooks/useReduceMotion";
 import { Route } from "../../misc/routes";
 import { sizes } from "../../themes";
 import { MotionIcon } from "./Icon";
@@ -27,13 +28,14 @@ export default function NavLink({ data }: NavLinkProps) {
       height: defaultSize,
       opacity: 1,
       margin: sizes[isMobile && isLandscape ? 2 : 3],
-      transition: { duration: 0.6, delay: 0.3 },
+      transition: useReduceMotion({ duration: 0.6, delay: 0.3 }),
     },
     sidebar: {
       width: sidebarSize,
       height: sidebarSize,
       opacity: 1,
       margin: sizes[2],
+      transition: useReduceMotion(),
     },
   };
 
@@ -41,11 +43,12 @@ export default function NavLink({ data }: NavLinkProps) {
     main: {
       width: sidebarSize,
       height: sidebarSize,
-      transition: { duration: 1 },
+      transition: useReduceMotion({ duration: 1 }),
     },
     sidebar: {
       width: sidebarSize / 2,
       height: sidebarSize / 2,
+      transition: useReduceMotion(),
     },
   };
 
@@ -54,12 +57,13 @@ export default function NavLink({ data }: NavLinkProps) {
       height: "auto",
       opacity: 1,
       marginTop: sizes[3],
-      transition: { duration: 1 },
+      transition: useReduceMotion({ duration: 1 }),
     },
     sidebar: {
       height: 0,
       opacity: 0,
       margin: 0,
+      transition: useReduceMotion(),
     },
   };
 

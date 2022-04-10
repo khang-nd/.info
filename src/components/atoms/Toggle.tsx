@@ -1,8 +1,10 @@
 import { alpha, darken, getColor } from "@theme-ui/color";
 import { motion, Variants } from "framer-motion";
-import { ChangeEventHandler } from "react";
+import { ChangeEventHandler, useRef } from "react";
 import { ThemeUICSSObject } from "theme-ui";
+import { useIsFocused } from "../../hooks/useIsFocused";
 import theme from "../../themes";
+import { focus } from "../../themes/common";
 
 type ToggleProps = {
   id: string;
@@ -13,6 +15,9 @@ type ToggleProps = {
 };
 
 export default function Toggle({ id, label, isChecked, onChange, style }: ToggleProps) {
+  const ref = useRef<HTMLInputElement>(null);
+  const isFocused = useIsFocused(ref);
+
   const bgStyle: ThemeUICSSObject = {
     mr: 2,
     width: 40,
@@ -48,14 +53,13 @@ export default function Toggle({ id, label, isChecked, onChange, style }: Toggle
   };
 
   return (
-    <div sx={style}>
-      <input type="checkbox" id={id} sx={{ display: "none" }} checked={isChecked} onChange={handleChange} />
-      <label sx={{ display: "flex", alignItems: "center" }} htmlFor={id}>
-        <span sx={bgStyle}>
-          <motion.span sx={thumbStyle} variants={variants} animate={isChecked ? "on" : "off"} />
-        </span>
-        <span sx={{ cursor: "pointer" }}>{label}</span>
-      </label>
-    </div>
+    <label sx={{ display: "flex", alignItems: "center", ...style }} htmlFor={id}>
+      <input type="checkbox" id={id} ref={ref} sx={{ size: 0, m: 0 }} checked={isChecked} onChange={handleChange} />
+      <span sx={bgStyle}>
+        <motion.span sx={thumbStyle} variants={variants} animate={isChecked ? "on" : "off"} />
+        {isFocused && <span sx={{ ...focus, borderRadius: 2 }} />}
+      </span>
+      <span sx={{ cursor: "pointer" }}>{label}</span>
+    </label>
   );
 }

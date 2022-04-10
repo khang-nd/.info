@@ -12,7 +12,7 @@ import {
 } from "react";
 import { ThemeUICSSObject } from "theme-ui";
 import { useIsFocused } from "../../hooks/useIsFocused";
-import { zIndex } from "../../themes/common";
+import { focus, zIndex } from "../../themes/common";
 
 export type ButtonProps = DOMAttributes<HTMLAnchorElement | HTMLButtonElement> &
   AriaAttributes & {
@@ -46,15 +46,8 @@ const Button = forwardRef((props: ButtonProps, ref: ButtonRef): JSX.Element => {
   };
 
   const innerButtonStyle: ThemeUICSSObject = {
-    boxShadow: "0 0 0 1px black, 0 0 1px 3px white",
+    ...focus,
     borderRadius: 3,
-    pointerEvents: "none",
-    position: "absolute",
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
-    zIndex: zIndex.focusbox,
     ...focusStyle,
   };
 

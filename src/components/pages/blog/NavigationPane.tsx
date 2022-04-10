@@ -5,10 +5,11 @@ import { H3 } from "../../atoms/Typography";
 
 type NavigationPaneProps = {
   activePlatform?: BlogPlatform;
+  lastUpdated?: string;
   onNavigate: (platform: BlogPlatform) => void;
 };
 
-export default function NavigationPane({ activePlatform, onNavigate }: NavigationPaneProps) {
+export default function NavigationPane({ activePlatform, lastUpdated, onNavigate }: NavigationPaneProps) {
   const platforms = Object.values(BlogPlatform);
 
   return (
@@ -27,7 +28,7 @@ export default function NavigationPane({ activePlatform, onNavigate }: Navigatio
           ))}
         </List>
       </div>
-      <div sx={{ position: "sticky", bottom: 0, fontSize: "85%" }}>Last updated: {new Date().toLocaleDateString()}</div>
+      <div sx={{ position: "sticky", bottom: 0, fontSize: "85%" }}>Last updated: {lastUpdated}</div>
     </div>
   );
 }

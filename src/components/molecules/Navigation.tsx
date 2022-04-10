@@ -2,6 +2,7 @@ import { Variants } from "framer-motion";
 import { ThemeUICSSObject } from "theme-ui";
 import useHomepage from "../../hooks/useHomepage";
 import useInBreakpoint from "../../hooks/useInBreakpoint";
+import useReduceMotion from "../../hooks/useReduceMotion";
 import routes from "../../misc/routes";
 import { translate } from "../../misc/utils";
 import { MotionNav } from "../atoms/Container";
@@ -17,7 +18,7 @@ export default function Navigation() {
       top: "50%",
       left: "50%",
       display: isMobile && !isHomePage ? "none" : "grid",
-      transition: { duration: 0.8 },
+      transition: useReduceMotion({ duration: 0.8 }),
     },
     sidebarInit: {
       ...translate(0),
@@ -29,7 +30,7 @@ export default function Navigation() {
       top: 0,
       left: 0,
       display: "block",
-      transition: { duration: 0.8, type: "spring" },
+      transition: useReduceMotion({ duration: 0.8, type: "spring" }),
     },
   };
 

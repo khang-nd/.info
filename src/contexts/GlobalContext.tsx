@@ -7,7 +7,7 @@ type Context<T = boolean> = {
 };
 
 type GlobalContextType = {
-  reduceAnim: Context;
+  reduceMotion: Context;
   hideTaskbar: Context;
 };
 
@@ -16,13 +16,15 @@ type GlobalProviderProps = {
 };
 
 export const GlobalContext = createContext<GlobalContextType>({
-  reduceAnim: { val: false, set: () => {} },
+  reduceMotion: { val: false, set: () => {} },
   hideTaskbar: { val: false, set: () => {} },
 });
 
 export const GlobalProvider = ({ children }: GlobalProviderProps): JSX.Element => {
-  const [_reduceAnim, _setReduceAnim] = useLocalStorage("reduceAnimation", false);
-  const [reduceAnim, setReduceAnim] = useState(false);
+  // need these `useState` intermediaries to resolve the problem
+  // using localStorage with Next's Static Generation
+  const [_reduceAnim, _setReduceAnim] = useLocalStorage("reduceMotion", false);
+  const [reduceMotion, setReduceAnim] = useState(false);
 
   const [_hideTaskbar, _setHideTaskbar] = useLocalStorage("hideTaskbar", false);
   const [hideTaskbar, setHideTaskbar] = useState(false);
@@ -31,8 +33,8 @@ export const GlobalProvider = ({ children }: GlobalProviderProps): JSX.Element =
   useEffect(() => setHideTaskbar(_hideTaskbar as boolean), [_hideTaskbar]);
 
   const context: GlobalContextType = {
-    reduceAnim: {
-      val: reduceAnim,
+    reduceMotion: {
+      val: reduceMotion,
       set: _setReduceAnim as Dispatch<SetStateAction<boolean>>,
     },
     hideTaskbar: {

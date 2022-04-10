@@ -1,9 +1,11 @@
 import { darken } from "@theme-ui/color";
+import { useContext } from "react";
 import { ThemeUICSSObject } from "theme-ui";
 import { slideIn } from "../../animations/slide";
+import { GlobalContext } from "../../contexts/GlobalContext";
 import useInBreakpoint from "../../hooks/useInBreakpoint";
 import { Route } from "../../misc/routes";
-import { MotionBox } from "../atoms/Container";
+import { Box, MotionBox } from "../atoms/Container";
 import Icon from "../atoms/Icon";
 
 type TaskbarItemProps = {
@@ -11,8 +13,11 @@ type TaskbarItemProps = {
 };
 
 export default function TaskbarItem({ data }: TaskbarItemProps): JSX.Element {
+  const { reduceMotion } = useContext(GlobalContext);
   const isMobile = useInBreakpoint(0);
   const { icon, title } = data;
+
+  const BoxContainer = reduceMotion.val ? Box : MotionBox;
 
   const containerStyle: ThemeUICSSObject = {
     height: "100%",
@@ -34,10 +39,10 @@ export default function TaskbarItem({ data }: TaskbarItemProps): JSX.Element {
 
   return (
     <div sx={containerStyle}>
-      <MotionBox sx={itemStyle} custom="right" {...slideIn}>
+      <BoxContainer sx={itemStyle} custom="right" {...slideIn}>
         <Icon iconName={icon} size={32} />
         {!isMobile && <span sx={{ ml: 3 }}>{title}</span>}
-      </MotionBox>
+      </BoxContainer>
     </div>
   );
 }

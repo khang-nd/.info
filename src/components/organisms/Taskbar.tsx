@@ -57,7 +57,6 @@ export default function Taskbar() {
 
   return (
     <>
-      <PanelConfig isVisible={isConfigActive} ref={panelRef} />
       <AnimatePresence>
         {hideTaskbar.val ? (
           <MotionBox key="config" sx={configStyle} {...fadeInUp}>
@@ -71,6 +70,7 @@ export default function Taskbar() {
           </MotionSection>
         )}
       </AnimatePresence>
+      <PanelConfig isVisible={isConfigActive} ref={panelRef} />
     </>
   );
 }

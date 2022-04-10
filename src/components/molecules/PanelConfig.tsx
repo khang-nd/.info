@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ForwardedRef, forwardRef, useContext } from "react";
 import { ThemeUICSSObject } from "theme-ui";
 import { GlobalContext } from "../../contexts/GlobalContext";
+import useReduceMotion from "../../hooks/useReduceMotion";
 import useTaskbarHeight from "../../hooks/useTaskbarHeight";
 import { sizes } from "../../themes";
 import Button from "../atoms/Button";
@@ -14,7 +15,7 @@ type PanelConfigProps = {
 };
 
 const PanelConfig = ({ isVisible }: PanelConfigProps, ref: ForwardedRef<HTMLElement>) => {
-  const { reduceAnim, hideTaskbar } = useContext(GlobalContext);
+  const { reduceMotion, hideTaskbar } = useContext(GlobalContext);
 
   const panelConfigStyle: ThemeUICSSObject = {
     p: 4,
@@ -45,6 +46,7 @@ const PanelConfig = ({ isVisible }: PanelConfigProps, ref: ForwardedRef<HTMLElem
       variants={variants}
       initial="default"
       animate={isVisible ? "active" : "default"}
+      transition={useReduceMotion()}
     >
       <List sx={{ display: "grid", gridTemplateColumns: "auto auto", gap: 3, mb: 4 }}>
         <ThemePreview image="flat" />
@@ -52,10 +54,10 @@ const PanelConfig = ({ isVisible }: PanelConfigProps, ref: ForwardedRef<HTMLElem
         <ThemePreview image="classic" />
       </List>
       <Toggle
-        id="toggle-reduceAnimation"
-        label="Reduce animation"
-        isChecked={reduceAnim.val}
-        onChange={() => reduceAnim.set(!reduceAnim.val)}
+        id="toggle-reduceMotion"
+        label="Reduce motion"
+        isChecked={reduceMotion.val}
+        onChange={() => reduceMotion.set(!reduceMotion.val)}
         style={{ mb: 2 }}
       />
       <Toggle
