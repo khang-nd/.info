@@ -1,21 +1,21 @@
 import { AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { useClickAway, useKey } from "react-use";
 import { ThemeUICSSObject } from "theme-ui";
 import { fadeInUp } from "../../animations/fade";
-import useInBreakpoint from "../../hooks/useInBreakpoint";
+import { GlobalContext } from "../../contexts/GlobalContext";
 import useTaskbarHeight from "../../hooks/useTaskbarHeight";
 import { getRoute } from "../../misc/routes";
 import { zIndex } from "../../themes/common";
-import { MotionSection } from "../atoms/Container";
+import { MotionBox, MotionSection } from "../atoms/Container";
 import ButtonConfig from "../molecules/ButtonConfig";
 import PanelConfig from "../molecules/PanelConfig";
 import TaskbarItem from "../molecules/TaskbarItem";
 
 export default function Taskbar() {
+  const { hideTaskbar } = useContext(GlobalContext);
   const [isConfigActive, setIsConfigActive] = useState(false);
-  const isMobile = useInBreakpoint(0);
   const taskbarHeight = useTaskbarHeight();
   const panelRef = useRef<HTMLElement>(null);
   const buttonRef = useRef<HTMLElement>(null);
@@ -42,18 +42,35 @@ export default function Taskbar() {
     zIndex: zIndex.taskbar,
   };
 
-  const copyrightStyle: ThemeUICSSObject = {
-    ml: "auto",
-    color: "mutedReverse",
-    whiteSpace: "nowrap",
+  const configStyle: ThemeUICSSObject = {
+    bg: "primary",
+    position: "absolute",
+    left: 2,
+    bottom: 2,
+    p: 2,
+    borderRadius: "50%",
   };
 
+  const _ButtonConfig = (
+    <ButtonConfig isActive={isConfigActive} ref={buttonRef} onClick={() => setIsConfigActive(!isConfigActive)} />
+  );
+
   return (
-    <MotionSection sx={taskbarStyle} {...fadeInUp}>
-      <ButtonConfig isActive={isConfigActive} ref={buttonRef} onClick={() => setIsConfigActive(!isConfigActive)} />
+    <>
       <PanelConfig isVisible={isConfigActive} ref={panelRef} />
-      <AnimatePresence exitBeforeEnter>{route && <TaskbarItem key={route.title} data={route} />}</AnimatePresence>
-      <div sx={copyrightStyle}>{!isMobile && <>Copyright </>}&copy; 2020 KhangND</div>
-    </MotionSection>
+      <AnimatePresence>
+        {hideTaskbar.val ? (
+          <MotionBox key="config" sx={configStyle} {...fadeInUp}>
+            {_ButtonConfig}
+          </MotionBox>
+        ) : (
+          <MotionSection key="taskbar" sx={taskbarStyle} {...fadeInUp}>
+            {_ButtonConfig}
+            <AnimatePresence exitBeforeEnter>{route && <TaskbarItem key={route.title} data={route} />}</AnimatePresence>
+            <div sx={{ ml: "auto", color: "mutedReverse" }}>Crafted with ❤ in 2022</div>
+          </MotionSection>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

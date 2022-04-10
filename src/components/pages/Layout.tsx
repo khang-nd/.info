@@ -13,6 +13,7 @@ type LayoutProps = {
 
 export default function Layout({ children }: LayoutProps): JSX.Element {
   const containerStyle: ThemeUICSSObject = {
+    position: "relative",
     background: "secondary",
     height: "100vh",
     overflow: "hidden",

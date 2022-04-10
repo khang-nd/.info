@@ -1,7 +1,9 @@
 import { Variants } from "framer-motion";
 import Image from "next/image";
-import { ForwardedRef, forwardRef } from "react";
+import { ForwardedRef, forwardRef, useContext } from "react";
 import { ThemeUICSSObject } from "theme-ui";
+import { GlobalContext } from "../../contexts/GlobalContext";
+import useTaskbarHeight from "../../hooks/useTaskbarHeight";
 import { sizes } from "../../themes";
 import Button from "../atoms/Button";
 import { List, MotionBox } from "../atoms/Container";
@@ -12,14 +14,15 @@ type PanelConfigProps = {
 };
 
 const PanelConfig = ({ isVisible }: PanelConfigProps, ref: ForwardedRef<HTMLElement>) => {
-  const activeX = sizes[2] + "px";
+  const { reduceAnim, hideTaskbar } = useContext(GlobalContext);
 
   const panelConfigStyle: ThemeUICSSObject = {
-    background: "primary",
     p: 4,
+    bg: "primary",
+    color: "textReverse",
     position: "absolute",
-    left: activeX,
-    bottom: `calc(100% + ${activeX})`,
+    left: 2,
+    bottom: useTaskbarHeight() + sizes[2],
   };
 
   const variants: Variants = {
@@ -48,12 +51,19 @@ const PanelConfig = ({ isVisible }: PanelConfigProps, ref: ForwardedRef<HTMLElem
         <ThemePreview image="neumorphism" />
         <ThemePreview image="classic" />
       </List>
-      {/* <Toggle
-        id="toggle-enableAnimation"
-        label="Enable animation"
-        isChecked={enableAnimation.val}
-        onChange={() => enableAnimation.set(!enableAnimation.val)}
-      /> */}
+      <Toggle
+        id="toggle-reduceAnimation"
+        label="Reduce animation"
+        isChecked={reduceAnim.val}
+        onChange={() => reduceAnim.set(!reduceAnim.val)}
+        style={{ mb: 2 }}
+      />
+      <Toggle
+        id="toggle-hideTaskbar"
+        label="Hide taskbar"
+        isChecked={hideTaskbar.val}
+        onChange={() => hideTaskbar.set(!hideTaskbar.val)}
+      />
     </MotionBox>
   );
 };

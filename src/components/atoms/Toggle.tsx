@@ -1,6 +1,6 @@
 import { alpha, darken, getColor } from "@theme-ui/color";
 import { motion, Variants } from "framer-motion";
-import { ChangeEventHandler, useState } from "react";
+import { ChangeEventHandler } from "react";
 import { ThemeUICSSObject } from "theme-ui";
 import theme from "../../themes";
 
@@ -13,8 +13,6 @@ type ToggleProps = {
 };
 
 export default function Toggle({ id, label, isChecked, onChange, style }: ToggleProps) {
-  const [inputChecked, setInputChecked] = useState(isChecked);
-
   const bgStyle: ThemeUICSSObject = {
     mr: 2,
     width: 40,
@@ -46,16 +44,15 @@ export default function Toggle({ id, label, isChecked, onChange, style }: Toggle
   };
 
   const handleChange = (e: any) => {
-    setInputChecked(!isChecked);
     onChange && onChange(e);
   };
 
   return (
     <div sx={style}>
-      <input type="checkbox" id={id} sx={{ display: "none" }} checked={inputChecked} onChange={handleChange} />
+      <input type="checkbox" id={id} sx={{ display: "none" }} checked={isChecked} onChange={handleChange} />
       <label sx={{ display: "flex", alignItems: "center" }} htmlFor={id}>
         <span sx={bgStyle}>
-          <motion.span sx={thumbStyle} variants={variants} animate={inputChecked ? "on" : "off"} />
+          <motion.span sx={thumbStyle} variants={variants} animate={isChecked ? "on" : "off"} />
         </span>
         <span sx={{ cursor: "pointer" }}>{label}</span>
       </label>

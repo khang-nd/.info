@@ -17,11 +17,11 @@ export default function TaskbarItem({ data }: TaskbarItemProps): JSX.Element {
   const containerStyle: ThemeUICSSObject = {
     height: "100%",
     overflow: "hidden",
+    ml: 3,
   };
 
   const itemStyle: ThemeUICSSObject = {
     px: 5,
-    mr: 3,
     bg: darken("primary", 0.08),
     cursor: "default",
     borderBottom: "2px solid",
