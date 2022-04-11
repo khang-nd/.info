@@ -44,6 +44,12 @@ export default function NavigationPaneItem({ icon, text, isActive, onClick }: Na
       borderRadius: "0 20px 20px 0",
       boxShadow: (theme) => `inset -1px 1px 0 1px #fff, 1px 1px 3px ${theme.colors?.shadow}`,
     }),
+
+    ...(useMatchTheme(ThemeMode.Classic) && {
+      bg: "primary",
+      borderRadius: 6,
+      boxShadow: "inset 0 0 0 2px #000",
+    }),
   };
 
   return (

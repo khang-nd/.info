@@ -27,6 +27,8 @@ export default function TaskbarItem({ data }: TaskbarItemProps): JSX.Element {
     ml: 3,
 
     ...(useMatchTheme(ThemeMode.Soft) && { height: "85%" }),
+
+    ...(useMatchTheme(ThemeMode.Classic) && { height: "80%" }),
   };
 
   const itemStyle: ThemeUICSSObject = {
@@ -44,6 +46,12 @@ export default function TaskbarItem({ data }: TaskbarItemProps): JSX.Element {
       bg: "transparent",
       borderRadius: 10,
       boxShadow: (theme) => `inset 2px 2px 2px ${theme.colors?.shadow}, inset -2px -2px 1px #fff`,
+    }),
+
+    ...(useMatchTheme(ThemeMode.Classic) && {
+      borderRadius: 8,
+      boxShadow: "inset 0 0 0 2px #000",
+      fontWeight: 600,
     }),
   };
 

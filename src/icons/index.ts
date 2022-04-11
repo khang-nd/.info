@@ -1,8 +1,3 @@
-import ClassicAbout from "./classic-about.svg";
-import ClassicEdu from "./classic-edu.svg";
-import ClassicSettings from "./classic-settings.svg";
-import ClassicSkills from "./classic-skills.svg";
-import ClassicWork from "./classic-work.svg";
 import FlatAbout from "./flat-about.svg";
 import FlatEdu from "./flat-edu.svg";
 import FlatSettings from "./flat-settings.svg";
@@ -49,11 +44,6 @@ import Logovuepress from "./skill-vuepress.png";
 import Logobulma from "./skill-bulma.svg";
 
 const Icon = {
-  ClassicAbout,
-  ClassicEdu,
-  ClassicSettings,
-  ClassicSkills,
-  ClassicWork,
   FlatAbout,
   FlatEdu,
   FlatSettings,

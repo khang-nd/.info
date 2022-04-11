@@ -29,6 +29,7 @@ export default function NavLink({ data }: NavLinkProps) {
       height: defaultSize,
       opacity: 1,
       margin: sizes[isMobile && isLandscape ? 2 : 3],
+      fontSize: "2px", // a trick to manipulate box-shadow size
       transition: useReduceMotion({ duration: 0.6, delay: 0.3 }),
     },
     sidebar: {
@@ -70,7 +71,7 @@ export default function NavLink({ data }: NavLinkProps) {
   };
 
   const linkStyle: ThemeUICSSObject = {
-    background: "primary",
+    bg: "primary",
     color: "textReverse",
     display: "flex",
     flexDirection: "column",
@@ -80,24 +81,28 @@ export default function NavLink({ data }: NavLinkProps) {
     textDecoration: "none",
     size: defaultSize,
     position: "relative",
-    fontSize: "2px", // a trick to manipulate box-shadow size
 
     ...(useMatchTheme(ThemeMode.Soft) && {
       borderRadius: "10%",
       boxShadow: (theme) => `inset 3em 3em 3em rgba(255, 255, 255, 0.5), 1em 1em 4em 3em ${theme.colors?.shadow}`,
     }),
+
+    ...(useMatchTheme(ThemeMode.Classic) && {
+      borderRadius: "8%",
+      boxShadow: "inset 0 0 0 2em #000, 3em 3em 0 #000",
+    }),
   };
 
   const indicatorStyle: ThemeUICSSObject = {
     size: sidebarSize / 9,
-    bg: "secondary",
+    bg: "highlight",
     borderRadius: "50%",
     position: "absolute",
     top: 2,
     right: 2,
 
-    ...(useMatchTheme(ThemeMode.Soft) && {
-      bg: "highlight",
+    ...(useMatchTheme(ThemeMode.Classic) && {
+      boxShadow: "0 0 0 2px #000",
     }),
   };
 

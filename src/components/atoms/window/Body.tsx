@@ -14,9 +14,7 @@ export default function WindowBody({ children }: WindowBodyProps) {
     flex: 1,
     overflow: "auto",
 
-    ...(useMatchTheme(ThemeMode.Soft) && {
-      bg: "background",
-    }),
+    ...(!useMatchTheme(ThemeMode.Flat) && { bg: "background" }),
   };
 
   return <div sx={bodyStyle}>{children}</div>;

@@ -36,12 +36,18 @@ export default function Window({ title, children, help }: WindowProps) {
     display: "flex",
     flexDirection: "column",
     zIndex: zIndex.window,
+    overflow: "hidden",
 
     ...(useMatchTheme(ThemeMode.Soft) && {
       bg: "primary",
       borderRadius: 20,
-      overflow: "hidden",
       boxShadow: (theme) => `0 -1px 1px #fff, 4px 4px 6px 4px ${theme.colors?.shadow}`,
+    }),
+
+    ...(useMatchTheme(ThemeMode.Classic) && {
+      bg: "background",
+      borderRadius: 20,
+      boxShadow: "0 0 0 3px #000, 6px 4px 0 2px #000",
     }),
   };
 

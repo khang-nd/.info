@@ -42,6 +42,7 @@ export default function ArticleCard({ article, isLast }: ArticleCardProps) {
     ".views": { transition: "0.4s" },
     ...(useMatchTheme(ThemeMode.Flat) && hoverStyle(darken("secondary", 0.05))),
     ...(useMatchTheme(ThemeMode.Soft) && hoverStyle(darken("highlight", 0.1))),
+    ...(useMatchTheme(ThemeMode.Classic) && hoverStyle(darken("highlight", 0.1))),
   };
 
   const lineStyle: ThemeUICSSObject = {

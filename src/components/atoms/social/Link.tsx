@@ -28,6 +28,11 @@ export default function SocialLink({ link, size }: SocialLinkProps) {
       color: "text",
       boxShadow: (theme) => `inset 2px 2px 4px #fff, 2px 2px 4px ${theme.colors?.shadow}`,
     }),
+
+    ...(useMatchTheme(ThemeMode.Classic) && {
+      boxShadow: "inset 0 0 0 2px #000",
+      color: "text",
+    }),
   };
 
   return (

@@ -33,6 +33,12 @@ const PanelConfig = ({ isVisible }: PanelConfigProps, ref: ForwardedRef<HTMLElem
       borderRadius: "5%",
       boxShadow: (theme) => `inset 2px 2px 4px rgba(255, 255, 255, 0.8), 1px 1px 4px ${theme.colors?.shadow}`,
     }),
+
+    ...(useMatchTheme(ThemeMode.Classic) && {
+      bg: "background",
+      borderRadius: "6%",
+      boxShadow: "inset 0 0 0 3px #000, 4px 4px 0 #000",
+    }),
   };
 
   const variants: Variants = {

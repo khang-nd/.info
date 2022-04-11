@@ -46,6 +46,10 @@ export default function Taskbar() {
     ...(useMatchTheme(ThemeMode.Soft) && {
       boxShadow: "inset 4px 4px 4px #fff",
     }),
+
+    ...(useMatchTheme(ThemeMode.Classic) && {
+      boxShadow: "inset 0 3px #000",
+    }),
   };
 
   const configStyle: ThemeUICSSObject = {
@@ -58,6 +62,10 @@ export default function Taskbar() {
 
     ...(useMatchTheme(ThemeMode.Soft) && {
       boxShadow: (theme) => `inset 2px 2px 6px #fff, 2px 2px 4px ${theme.colors?.highlight}`,
+    }),
+
+    ...(useMatchTheme(ThemeMode.Classic) && {
+      boxShadow: "inset 0 0 0 2px #000",
     }),
   };
 

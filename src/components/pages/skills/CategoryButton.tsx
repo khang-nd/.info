@@ -1,6 +1,8 @@
 import { alpha } from "@theme-ui/color";
 import { Variants } from "framer-motion";
 import { ThemeUICSSObject } from "theme-ui";
+import useMatchTheme from "../../../hooks/useMatchTheme";
+import { ThemeMode } from "../../../themes";
 import { MotionButton } from "../../atoms/Button";
 
 type CategoryButtonProps = {
@@ -26,6 +28,11 @@ export default function CategoryButton({ children, isActive, onClick }: Category
     active: {
       backgroundColor: "var(--theme-ui-colors-primary)",
       color: "var(--theme-ui-colors-textReverse)",
+
+      ...(useMatchTheme(ThemeMode.Classic) && {
+        borderRadius: 6,
+        boxShadow: "0 0 0 2px #000",
+      }),
     },
   };
 

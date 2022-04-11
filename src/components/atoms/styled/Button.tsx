@@ -31,6 +31,12 @@ export default function StyledButton({ iconName, children, ...props }: StyledBut
       borderRadius: 6,
       boxShadow: (theme) => `inset 2px 2px 2px #fff, 2px 2px 2px ${theme.colors?.shadow}`,
     }),
+
+    ...(useMatchTheme(ThemeMode.Classic) && {
+      borderRadius: 6,
+      boxShadow: "0 0 0 2px #000",
+      "&:hover, &:focus": { bg: "primary", color: "text" },
+    }),
   };
 
   const iconStyle: ThemeUICSSObject = {

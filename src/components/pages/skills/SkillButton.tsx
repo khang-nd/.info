@@ -35,6 +35,10 @@ export default function SkillButton({ skill }: SkillButtonProps) {
       bg: "transparent",
       boxShadow: (theme) => `inset 1px 1px 4px #fff, 1px 1px 4px 1px ${theme.colors?.shadow}`,
     }),
+
+    ...(useMatchTheme(ThemeMode.Classic) && {
+      boxShadow: "inset 0 0 0 2px #000, 3px 3px #000",
+    }),
   };
 
   const hoverStyle: ThemeUICSSObject = {
@@ -45,9 +49,7 @@ export default function SkillButton({ skill }: SkillButtonProps) {
     size: "100%",
     bg: alpha(skill.color, 0.2),
 
-    ...(useMatchTheme(ThemeMode.Soft) && {
-      bg: "transparent",
-    }),
+    ...(!useMatchTheme(ThemeMode.Flat) && { bg: "transparent" }),
   };
 
   const hoverVariants: Variants = {

@@ -24,16 +24,25 @@ export default function WindowTitle({ children, help, onFullscreen }: WindowTitl
     p: isMobile && isLandscape ? 2 : 3,
     alignItems: "center",
     justifyContent: "space-between",
+
+    ...(useMatchTheme(ThemeMode.Classic) && {
+      boxShadow: "inset 0 -2px #000",
+      fontWeight: 600,
+    }),
   };
 
   const btnStyle: ThemeUICSSObject = {
     border: 0,
-    color: "textReverse",
     size: 5,
     cursor: "pointer",
 
     ...(useMatchTheme(ThemeMode.Soft) && {
       borderRadius: "50%",
+    }),
+
+    ...(useMatchTheme(ThemeMode.Classic) && {
+      borderRadius: "50%",
+      boxShadow: "inset 0 0 0 2.5px #000",
     }),
   };
 

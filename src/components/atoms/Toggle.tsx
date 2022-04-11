@@ -33,6 +33,13 @@ export default function Toggle({ id, label, isChecked, onChange, style }: Toggle
       borderRadius: 10,
       boxShadow: (theme) => `inset -1px -1px 1px #fff, inset 1px 1px 1px ${theme.colors?.shadow}`,
     }),
+
+    ...(useMatchTheme(ThemeMode.Classic) && {
+      bg: "primary",
+      height: 20,
+      border: "2px solid #000",
+      borderRadius: 10,
+    }),
   };
 
   const thumbStyle: ThemeUICSSObject = {
@@ -47,6 +54,14 @@ export default function Toggle({ id, label, isChecked, onChange, style }: Toggle
       left: "10%",
       width: "40%",
       height: "80%",
+    }),
+
+    ...(useMatchTheme(ThemeMode.Classic) && {
+      borderRadius: "50%",
+      top: "5%",
+      left: "5%",
+      width: "45%",
+      height: "90%",
     }),
   };
 
@@ -63,6 +78,11 @@ export default function Toggle({ id, label, isChecked, onChange, style }: Toggle
         background: "var(--theme-ui-colors-shadow)",
         boxShadow: "inset 1px 0 1px #fff, 1px 0 2px var(--theme-ui-colors-highlight)",
       }),
+
+      ...(useMatchTheme(ThemeMode.Classic) && {
+        background: "#000",
+        boxshadow: "none",
+      }),
     },
     on: {
       x: "100%",
@@ -75,6 +95,11 @@ export default function Toggle({ id, label, isChecked, onChange, style }: Toggle
       ...(useMatchTheme(ThemeMode.Soft) && {
         background: "var(--theme-ui-colors-highlight)",
         boxShadow: "inset 1px 0 1px var(--theme-ui-colors-background)",
+      }),
+
+      ...(useMatchTheme(ThemeMode.Classic) && {
+        background: "#000",
+        boxshadow: "none",
       }),
     },
   };

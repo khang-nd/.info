@@ -14,7 +14,7 @@ type SubTitleProps = CommonProps & {
 
 export const H3 = ({ children, style }: CommonProps) => {
   const innerStyle: ThemeUICSSObject = {
-    color: useMatchTheme(ThemeMode.Soft) ? "text" : "primary",
+    color: !useMatchTheme(ThemeMode.Flat) ? "text" : "primary",
     fontVariant: "small-caps",
     fontWeight: "bold",
     fontSize: 20,
