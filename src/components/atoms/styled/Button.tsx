@@ -1,5 +1,7 @@
 import { alpha } from "@theme-ui/color";
 import { ThemeUICSSObject } from "theme-ui";
+import useMatchTheme from "../../../hooks/useMatchTheme";
+import { ThemeMode } from "../../../themes";
 import Button, { ButtonProps } from "../Button";
 import ReactIcon from "../IconReact";
 
@@ -20,10 +22,15 @@ export default function StyledButton({ iconName, children, ...props }: StyledBut
 
     "&:hover, &:focus": {
       bg: "primary",
-      color: "textReverse"
+      color: "textReverse",
     },
 
     "& > span": { display: "flex" },
+
+    ...(useMatchTheme(ThemeMode.Soft) && {
+      borderRadius: 6,
+      boxShadow: (theme) => `inset 2px 2px 2px #fff, 2px 2px 2px ${theme.colors?.shadow}`,
+    }),
   };
 
   const iconStyle: ThemeUICSSObject = {

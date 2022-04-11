@@ -5,9 +5,10 @@ import { ThemeUICSSObject } from "theme-ui";
 import useHomepage from "../../hooks/useHomepage";
 import useInBreakpoint from "../../hooks/useInBreakpoint";
 import useIsLandscape from "../../hooks/useIsLandscape";
+import useMatchTheme from "../../hooks/useMatchTheme";
 import useReduceMotion from "../../hooks/useReduceMotion";
 import { Route } from "../../misc/routes";
-import { sizes } from "../../themes";
+import { sizes, ThemeMode } from "../../themes";
 import { MotionIcon } from "./Icon";
 
 type NavLinkProps = {
@@ -35,6 +36,7 @@ export default function NavLink({ data }: NavLinkProps) {
       height: sidebarSize,
       opacity: 1,
       margin: sizes[2],
+      fontSize: "1px",
       transition: useReduceMotion(),
     },
   };
@@ -78,6 +80,12 @@ export default function NavLink({ data }: NavLinkProps) {
     textDecoration: "none",
     size: defaultSize,
     position: "relative",
+    fontSize: "2px", // a trick to manipulate box-shadow size
+
+    ...(useMatchTheme(ThemeMode.Soft) && {
+      borderRadius: "10%",
+      boxShadow: (theme) => `inset 3em 3em 3em rgba(255, 255, 255, 0.5), 1em 1em 4em 3em ${theme.colors?.shadow}`,
+    }),
   };
 
   const indicatorStyle: ThemeUICSSObject = {
@@ -87,6 +95,10 @@ export default function NavLink({ data }: NavLinkProps) {
     position: "absolute",
     top: 2,
     right: 2,
+
+    ...(useMatchTheme(ThemeMode.Soft) && {
+      bg: "highlight",
+    }),
   };
 
   const spring: Transition = { type: "spring", duration: 0.5 };

@@ -1,5 +1,7 @@
 import { ReactNode } from "react";
 import { ThemeUICSSObject } from "theme-ui";
+import useMatchTheme from "../../../hooks/useMatchTheme";
+import { ThemeMode } from "../../../themes";
 
 type WindowBodyProps = {
   children: ReactNode;
@@ -11,6 +13,10 @@ export default function WindowBody({ children }: WindowBodyProps) {
     p: 4,
     flex: 1,
     overflow: "auto",
+
+    ...(useMatchTheme(ThemeMode.Soft) && {
+      bg: "background",
+    }),
   };
 
   return <div sx={bodyStyle}>{children}</div>;

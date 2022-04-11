@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
-import { Flex } from "theme-ui";
+import { Flex, ThemeUICSSObject } from "theme-ui";
 import { fade } from "../../animations/fade";
 import useInBreakpoint from "../../hooks/useInBreakpoint";
+import useMatchTheme from "../../hooks/useMatchTheme";
+import { ThemeMode } from "../../themes";
 import Button from "./Button";
 import ReactIcon from "./IconReact";
 
@@ -29,6 +31,21 @@ export default function NavigationPaneItem({ icon, text, isActive, onClick }: Na
       </motion.span>
     );
 
+  const hoverStyle: ThemeUICSSObject = {
+    bg: "background",
+    position: "absolute",
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    zIndex: 0,
+
+    ...(useMatchTheme(ThemeMode.Soft) && {
+      borderRadius: "0 20px 20px 0",
+      boxShadow: (theme) => `inset -1px 1px 0 1px #fff, 1px 1px 3px ${theme.colors?.shadow}`,
+    }),
+  };
+
   return (
     <li>
       <Button unsetStyle sx={{ py: 1, px: 1, pr: 4 }} onClick={onClick}>
@@ -36,21 +53,7 @@ export default function NavigationPaneItem({ icon, text, isActive, onClick }: Na
           {typeof icon === "string" ? <Icon icon={icon} /> : <IconGroup icon={icon} />}
           <span sx={{ flex: 1, ml: [2, null, 3], fontSize: [14, null, "initial"] }}>{text}</span>
         </Flex>
-        {isActive && (
-          <motion.span
-            layoutId="navigation-indicator"
-            {...fade}
-            sx={{
-              bg: "background",
-              position: "absolute",
-              top: 0,
-              left: 0,
-              bottom: 0,
-              right: 0,
-              zIndex: 0,
-            }}
-          />
-        )}
+        {isActive && <motion.span layoutId="navigation-indicator" {...fade} sx={hoverStyle} />}
       </Button>
     </li>
   );

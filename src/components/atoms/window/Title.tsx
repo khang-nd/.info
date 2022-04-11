@@ -3,6 +3,8 @@ import { ReactNode } from "react";
 import { Flex, ThemeUICSSObject } from "theme-ui";
 import useInBreakpoint from "../../../hooks/useInBreakpoint";
 import useIsLandscape from "../../../hooks/useIsLandscape";
+import useMatchTheme from "../../../hooks/useMatchTheme";
+import { ThemeMode } from "../../../themes";
 import Help from "./Help";
 
 type WindowTitleProps = {
@@ -20,7 +22,6 @@ export default function WindowTitle({ children, help, onFullscreen }: WindowTitl
     bg: "primary",
     color: "textReverse",
     p: isMobile && isLandscape ? 2 : 3,
-    display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
   };
@@ -30,19 +31,23 @@ export default function WindowTitle({ children, help, onFullscreen }: WindowTitl
     color: "textReverse",
     size: 5,
     cursor: "pointer",
+
+    ...(useMatchTheme(ThemeMode.Soft) && {
+      borderRadius: "50%",
+    }),
   };
 
   const closeBtnStyle: ThemeUICSSObject = { bg: "red", ...btnStyle };
   const fullscrBtnStyle: ThemeUICSSObject = { bg: "green", mr: 2, ...btnStyle };
 
   return (
-    <div sx={titleStyle}>
+    <Flex sx={titleStyle}>
       <span>{children}</span>
       <Flex>
         {help && <Help style={{ mr: 2 }}>{help}</Help>}
         <button aria-label="Fullscreen" onClick={onFullscreen} sx={fullscrBtnStyle} />
         <button aria-label="Close" onClick={() => router.push("/")} sx={closeBtnStyle} />
       </Flex>
-    </div>
+    </Flex>
   );
 }

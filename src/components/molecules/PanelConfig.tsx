@@ -1,13 +1,15 @@
+import { lighten } from "@theme-ui/color";
 import { Variants } from "framer-motion";
-import Image from "next/image";
 import { ForwardedRef, forwardRef, useContext } from "react";
 import { ThemeUICSSObject } from "theme-ui";
 import { GlobalContext } from "../../contexts/GlobalContext";
+import useMatchTheme from "../../hooks/useMatchTheme";
 import useReduceMotion from "../../hooks/useReduceMotion";
 import useTaskbarHeight from "../../hooks/useTaskbarHeight";
-import { sizes } from "../../themes";
-import Button from "../atoms/Button";
+import { sizes, ThemeMode } from "../../themes";
+import { zIndex } from "../../themes/common";
 import { List, MotionBox } from "../atoms/Container";
+import ThemeButton from "../atoms/ThemeButton";
 import Toggle from "../atoms/Toggle";
 
 type PanelConfigProps = {
@@ -24,20 +26,19 @@ const PanelConfig = ({ isVisible }: PanelConfigProps, ref: ForwardedRef<HTMLElem
     position: "absolute",
     left: 2,
     bottom: useTaskbarHeight() + sizes[2],
+    zIndex: zIndex.taskbar,
+
+    ...(useMatchTheme(ThemeMode.Soft) && {
+      bg: lighten("primary", 0.02),
+      borderRadius: "5%",
+      boxShadow: (theme) => `inset 2px 2px 4px rgba(255, 255, 255, 0.8), 1px 1px 4px ${theme.colors?.shadow}`,
+    }),
   };
 
   const variants: Variants = {
     default: { x: "-105%", transitionEnd: { display: "none" } },
     active: { x: 0, display: "block" },
   };
-
-  const ThemePreview = ({ image }: { image: string }) => (
-    <li>
-      <Button unsetStyle>
-        <Image src={`/images/theme-${image}.webp`} alt={`Theme ${image}`} layout="fixed" width={140} height={84} />
-      </Button>
-    </li>
-  );
 
   return (
     <MotionBox
@@ -49,16 +50,22 @@ const PanelConfig = ({ isVisible }: PanelConfigProps, ref: ForwardedRef<HTMLElem
       transition={useReduceMotion()}
     >
       <List sx={{ display: "grid", gridTemplateColumns: "auto auto", gap: 3, mb: 4 }}>
-        <ThemePreview image="flat" />
-        <ThemePreview image="neumorphism" />
-        <ThemePreview image="classic" />
+        <li>
+          <ThemeButton theme="flat" />
+        </li>
+        <li>
+          <ThemeButton theme="soft" />
+        </li>
+        <li>
+          <ThemeButton theme="classic" />
+        </li>
       </List>
       <Toggle
         id="toggle-reduceMotion"
         label="Reduce motion"
         isChecked={reduceMotion.val}
         onChange={() => reduceMotion.set(!reduceMotion.val)}
-        style={{ mb: 2 }}
+        style={{ mb: 3 }}
       />
       <Toggle
         id="toggle-hideTaskbar"

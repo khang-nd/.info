@@ -3,7 +3,8 @@ import { motion, Variants } from "framer-motion";
 import { ChangeEventHandler, useRef } from "react";
 import { ThemeUICSSObject } from "theme-ui";
 import { useIsFocused } from "../../hooks/useIsFocused";
-import theme from "../../themes";
+import useMatchTheme from "../../hooks/useMatchTheme";
+import theme, { ThemeMode } from "../../themes";
 import { focus } from "../../themes/common";
 
 type ToggleProps = {
@@ -25,6 +26,13 @@ export default function Toggle({ id, label, isChecked, onChange, style }: Toggle
     bg: alpha("secondary", 0.2),
     position: "relative",
     cursor: "pointer",
+
+    ...(useMatchTheme(ThemeMode.Soft) && {
+      bg: "background",
+      height: 20,
+      borderRadius: 10,
+      boxShadow: (theme) => `inset -1px -1px 1px #fff, inset 1px 1px 1px ${theme.colors?.shadow}`,
+    }),
   };
 
   const thumbStyle: ThemeUICSSObject = {
@@ -32,19 +40,42 @@ export default function Toggle({ id, label, isChecked, onChange, style }: Toggle
     top: "-2px",
     width: "50%",
     height: "100%",
+
+    ...(useMatchTheme(ThemeMode.Soft) && {
+      borderRadius: "50%",
+      top: "10%",
+      left: "10%",
+      width: "40%",
+      height: "80%",
+    }),
   };
 
   const variants: Variants = {
     off: {
       x: 0,
-      background: darken("secondary", 0.13)(theme),
-      boxShadow: "0 4px " + darken("secondary", 0.2)(theme),
-      transition: { type: "tween" },
+
+      ...(useMatchTheme(ThemeMode.Flat) && {
+        background: darken("secondary", 0.13)(theme),
+        boxShadow: "0 4px " + darken("secondary", 0.2)(theme),
+      }),
+
+      ...(useMatchTheme(ThemeMode.Soft) && {
+        background: "var(--theme-ui-colors-shadow)",
+        boxShadow: "inset 1px 0 1px #fff, 1px 0 2px var(--theme-ui-colors-highlight)",
+      }),
     },
     on: {
       x: "100%",
-      background: getColor(theme, "secondary"),
-      boxShadow: "0 4px " + darken("secondary", 0.1)(theme),
+
+      ...(useMatchTheme(ThemeMode.Flat) && {
+        background: getColor(theme, "secondary"),
+        boxShadow: "0 4px " + darken("secondary", 0.1)(theme),
+      }),
+
+      ...(useMatchTheme(ThemeMode.Soft) && {
+        background: "var(--theme-ui-colors-highlight)",
+        boxShadow: "inset 1px 0 1px var(--theme-ui-colors-background)",
+      }),
     },
   };
 
@@ -54,7 +85,14 @@ export default function Toggle({ id, label, isChecked, onChange, style }: Toggle
 
   return (
     <label sx={{ display: "flex", alignItems: "center", ...style }} htmlFor={id}>
-      <input type="checkbox" id={id} ref={ref} sx={{ size: 0, m: 0 }} checked={isChecked} onChange={handleChange} />
+      <input
+        type="checkbox"
+        id={id}
+        ref={ref}
+        sx={{ size: 0, m: 0, opacity: 0 }}
+        checked={isChecked}
+        onChange={handleChange}
+      />
       <span sx={bgStyle}>
         <motion.span sx={thumbStyle} variants={variants} animate={isChecked ? "on" : "off"} />
         {isFocused && <span sx={{ ...focus, borderRadius: 2 }} />}

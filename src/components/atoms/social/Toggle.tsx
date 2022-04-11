@@ -1,4 +1,7 @@
 import { ForwardedRef, forwardRef } from "react";
+import { ThemeUICSSObject } from "theme-ui";
+import useMatchTheme from "../../../hooks/useMatchTheme";
+import { ThemeMode } from "../../../themes";
 import { MotionButton } from "../Button";
 import ReactIcon from "../IconReact";
 
@@ -8,6 +11,19 @@ type ToggleLinksProps = {
 };
 
 const SocialToggle = ({ isActive, onClick }: ToggleLinksProps, ref: ForwardedRef<HTMLButtonElement>) => {
+  const style: ThemeUICSSObject = {
+    bg: "primary",
+    color: "textReverse",
+    borderRadius: "50%",
+    size: 56,
+    zIndex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+
+    ...(useMatchTheme(ThemeMode.Soft) && {
+      boxShadow: (theme) => `inset 2px 2px 6px #fff, 2px 2px 4px ${theme.colors?.highlight}`,
+    }),
+  };
 
   return (
     <MotionButton
@@ -15,15 +31,7 @@ const SocialToggle = ({ isActive, onClick }: ToggleLinksProps, ref: ForwardedRef
       unsetStyle
       aria-label="Connect with me"
       onClick={onClick}
-      sx={{
-        bg: "primary",
-        color: "textReverse",
-        borderRadius: "50%",
-        size: 56,
-        zIndex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-      }}
+      sx={style}
       focusStyle={{ borderRadius: "50%" }}
       whileTap={{ scale: 0.85 }}
     >

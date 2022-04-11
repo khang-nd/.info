@@ -3,6 +3,8 @@ import { motion, Variants } from "framer-motion";
 import { useState } from "react";
 import { ThemeUICSSObject } from "theme-ui";
 import { Skill } from "../../../data/skills";
+import useMatchTheme from "../../../hooks/useMatchTheme";
+import { ThemeMode } from "../../../themes";
 import Button from "../../atoms/Button";
 import Icon, { IconName } from "../../atoms/Icon";
 
@@ -28,6 +30,11 @@ export default function SkillButton({ skill }: SkillButtonProps) {
     bg: alpha(skill.color, 0.08),
     p: [5, null, 6],
     mb: 1,
+
+    ...(useMatchTheme(ThemeMode.Soft) && {
+      bg: "transparent",
+      boxShadow: (theme) => `inset 1px 1px 4px #fff, 1px 1px 4px 1px ${theme.colors?.shadow}`,
+    }),
   };
 
   const hoverStyle: ThemeUICSSObject = {
@@ -37,11 +44,22 @@ export default function SkillButton({ skill }: SkillButtonProps) {
     left: 0,
     size: "100%",
     bg: alpha(skill.color, 0.2),
+
+    ...(useMatchTheme(ThemeMode.Soft) && {
+      bg: "transparent",
+    }),
   };
 
   const hoverVariants: Variants = {
-    default: { scale: 0 },
-    hovered: { scale: 1 },
+    ...(useMatchTheme(ThemeMode.Flat) && {
+      default: { scale: 0 },
+      hovered: { scale: 1 },
+    }),
+
+    ...(useMatchTheme(ThemeMode.Soft) && {
+      default: {},
+      hovered: { boxShadow: `inset 0 0 0 1px ${skill.color}` },
+    }),
   };
 
   const iconName = ("Logo" + skill.name) as IconName;

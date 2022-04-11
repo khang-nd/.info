@@ -4,7 +4,8 @@ import { useFullscreen, useToggle } from "react-use";
 import { ThemeUICSSObject } from "theme-ui";
 import { fadeZoomIn } from "../../animations/fade";
 import { GlobalContext } from "../../contexts/GlobalContext";
-import { sizes } from "../../themes";
+import useMatchTheme from "../../hooks/useMatchTheme";
+import { sizes, ThemeMode } from "../../themes";
 import { zIndex } from "../../themes/common";
 import { Box, MotionBox } from "../atoms/Container";
 import WindowBody from "../atoms/window/Body";
@@ -35,6 +36,13 @@ export default function Window({ title, children, help }: WindowProps) {
     display: "flex",
     flexDirection: "column",
     zIndex: zIndex.window,
+
+    ...(useMatchTheme(ThemeMode.Soft) && {
+      bg: "primary",
+      borderRadius: 20,
+      overflow: "hidden",
+      boxShadow: (theme) => `0 -1px 1px #fff, 4px 4px 6px 4px ${theme.colors?.shadow}`,
+    }),
   };
 
   return (

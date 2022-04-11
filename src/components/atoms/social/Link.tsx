@@ -1,5 +1,6 @@
 import { ThemeUICSSObject } from "theme-ui";
-import { sizes } from "../../../themes";
+import useMatchTheme from "../../../hooks/useMatchTheme";
+import { sizes, ThemeMode } from "../../../themes";
 import { MotionButton } from "../Button";
 import ReactIcon from "../IconReact";
 
@@ -22,6 +23,11 @@ export default function SocialLink({ link, size }: SocialLinkProps) {
     borderRadius: "50%",
     alignItems: "center",
     justifyContent: "center",
+
+    ...(useMatchTheme(ThemeMode.Soft) && {
+      color: "text",
+      boxShadow: (theme) => `inset 2px 2px 4px #fff, 2px 2px 4px ${theme.colors?.shadow}`,
+    }),
   };
 
   return (

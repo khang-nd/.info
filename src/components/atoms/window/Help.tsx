@@ -24,7 +24,7 @@ export default function Help({ children, style }: HelpProps) {
     right: 0,
     width: 250,
     p: 4,
-    bg: "white",
+    bg: "background",
     color: "text",
     boxShadow: "0 1px 3px rgba(0, 0, 0, 0.3)",
     textAlign: "justify",

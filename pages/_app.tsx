@@ -1,7 +1,7 @@
-import { ThemeProvider } from "@emotion/react";
 import { NextPage } from "next";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import { ThemeProvider } from "theme-ui";
 import { GlobalProvider } from "../src/contexts/GlobalContext";
 import theme from "../src/themes";
 import "../src/themes/global.css";

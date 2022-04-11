@@ -5,8 +5,10 @@ import { useClickAway, useKey } from "react-use";
 import { ThemeUICSSObject } from "theme-ui";
 import { fadeInUp } from "../../animations/fade";
 import { GlobalContext } from "../../contexts/GlobalContext";
+import useMatchTheme from "../../hooks/useMatchTheme";
 import useTaskbarHeight from "../../hooks/useTaskbarHeight";
 import { getRoute } from "../../misc/routes";
+import { ThemeMode } from "../../themes";
 import { zIndex } from "../../themes/common";
 import { MotionBox, MotionSection } from "../atoms/Container";
 import ButtonConfig from "../molecules/ButtonConfig";
@@ -37,9 +39,13 @@ export default function Taskbar() {
     height: taskbarHeight + "px",
     display: "flex",
     alignItems: "center",
-    position: "fixed",
+    position: "absolute",
     px: 3,
     zIndex: zIndex.taskbar,
+
+    ...(useMatchTheme(ThemeMode.Soft) && {
+      boxShadow: "inset 4px 4px 4px #fff",
+    }),
   };
 
   const configStyle: ThemeUICSSObject = {
@@ -49,6 +55,10 @@ export default function Taskbar() {
     bottom: 2,
     p: 2,
     borderRadius: "50%",
+
+    ...(useMatchTheme(ThemeMode.Soft) && {
+      boxShadow: (theme) => `inset 2px 2px 6px #fff, 2px 2px 4px ${theme.colors?.highlight}`,
+    }),
   };
 
   const _ButtonConfig = (

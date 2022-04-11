@@ -1,7 +1,6 @@
-import { alpha, getColor } from "@theme-ui/color";
+import { alpha } from "@theme-ui/color";
 import { Variants } from "framer-motion";
 import { ThemeUICSSObject } from "theme-ui";
-import theme from "../../../themes";
 import { MotionButton } from "../../atoms/Button";
 
 type CategoryButtonProps = {
@@ -25,8 +24,8 @@ export default function CategoryButton({ children, isActive, onClick }: Category
   const variants: Variants = {
     default: {},
     active: {
-      backgroundColor: getColor(theme, "primary"),
-      color: getColor(theme, "textReverse"),
+      backgroundColor: "var(--theme-ui-colors-primary)",
+      color: "var(--theme-ui-colors-textReverse)",
     },
   };
 

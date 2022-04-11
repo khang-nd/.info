@@ -1,5 +1,7 @@
 import { ElementType, ReactNode } from "react";
 import { Text, ThemeUICSSObject } from "theme-ui";
+import useMatchTheme from "../../hooks/useMatchTheme";
+import { ThemeMode } from "../../themes";
 
 type CommonProps = {
   children: ReactNode;
@@ -12,12 +14,12 @@ type SubTitleProps = CommonProps & {
 
 export const H3 = ({ children, style }: CommonProps) => {
   const innerStyle: ThemeUICSSObject = {
-    color: "primary",
+    color: useMatchTheme(ThemeMode.Soft) ? "text" : "primary",
     fontVariant: "small-caps",
     fontWeight: "bold",
     fontSize: 20,
     mb: 3,
-    ...style
+    ...style,
   };
 
   return <h3 sx={innerStyle}>{children}</h3>;
