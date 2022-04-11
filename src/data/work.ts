@@ -4,7 +4,7 @@ type Job = {
   description: string;
   remark?: string;
   activities?: string[];
-  techs?: string;
+  techs?: string | string[];
   links?: any;
 };
 
@@ -112,14 +112,14 @@ const work: Record<string, Job[]> = {
       timeline: "2020/2022",
       description: "A window-styled, multi-theming portfolio",
       remark:
-        "This very site you are viewing is my first website portfolio. The core design is inspired by Microsoft's Windows, with icons provided by $1 and $2. I built two versions in $4 and $5 respectively, with the whole codebase rewritten from scratch using different tech stacks while retaining the core design. Feel free to check out the source code I made publicly available on $3, and do not hesitate to put a star if you like it.",
-      techs: "HTML, Sass, JS, ReactJS, React Router",
+        "This very site you are viewing is my first website portfolio. The core design is inspired by Microsoft's Windows, with icons provided by $1 and $2. I built the $4 in 2020 out of fun and to practice a little bit into React's basic concepts. After 2 years, I came back to it and rewrote the whole thing from scratch using the same tech stacks as in my current job demand. It was a great experience building the $5 and realized how my skills had improved over the time. Feel free to check out the source code I made publicly available on $3, and do not hesitate to put a star if you like it.",
+      techs: ["v1 - HTML, Sass, JS, ReactJS, React Router", "v2 - NextJS, TypeScript, Framer Motion, Theme UI"],
       links: {
         $1: ["Freepik", "https://www.freepik.com/"],
         $2: ["React Icons", "https://react-icons.github.io/react-icons"],
         $3: ["Github", "https://github.com/khang-nd/khang-nd.github.io"],
-        $4: ["2020", "https://khang-nd.github.io"],
-        $5: ["2022", "https://khang-nd.vercel.app"],
+        $4: ["first version", "https://khang-nd.github.io"],
+        $5: ["second version", "https://khang-nd.vercel.app"],
       },
     },
     {

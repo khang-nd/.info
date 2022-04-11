@@ -8,6 +8,7 @@ import { H2, P, SubTitle } from "../../atoms/Typography";
 
 export default function ContentPane({ title }: { title?: string }) {
   const alignment: ThemeUICSSObject = { textAlign: ["center", null, "unset"] };
+  const listStyle: ThemeUICSSObject = { listStyle: "initial", ml: 5 };
 
   let content = (
     <MotionBox {...fade} sx={{ color: "muted", textAlign: "center" }}>
@@ -29,14 +30,26 @@ export default function ContentPane({ title }: { title?: string }) {
         {job?.activities && (
           <>
             <P style={{ mt: 4, mb: 2 }}>My main activities include:</P>
-            <ul sx={{ listStyle: "initial", ml: 5, mb: 4 }}>
+            <ul sx={{ ...listStyle, mb: 4 }}>
               {job.activities.map((act, i) => (
                 <li key={i}>{parseLinks(act, job.links)}</li>
               ))}
             </ul>
           </>
         )}
-        {job?.techs && <P>Techs used: {parseLinks(job.techs, job.links)}</P>}
+        {job?.techs &&
+          (typeof job.techs === "string" ? (
+            <P>Techs used: {parseLinks(job.techs, job.links)}</P>
+          ) : (
+            <>
+              <P>Techs used: </P>
+              <ul sx={listStyle}>
+                {job.techs.map((tech, i) => (
+                  <li key={i}>{parseLinks(tech, job.links)}</li>
+                ))}
+              </ul>
+            </>
+          ))}
       </MotionBox>
     );
   }

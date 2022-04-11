@@ -35,13 +35,6 @@ export const GlobalProvider = ({ children }: GlobalProviderProps): JSX.Element =
   const [_hideTaskbar, _setHideTaskbar] = useLocalStorage("hideTaskbar", false);
   const [hideTaskbar, setHideTaskbar] = useState(false);
 
-  useEffect(() => {
-    // ThemeUI automatically sets color mode to user preference,
-    // which is `light` in most cases, altering that...
-    theme === ThemeMode.None && setTheme(ThemeMode.Flat);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   useEffect(() => setReduceAnim(_reduceAnim as boolean), [_reduceAnim]);
   useEffect(() => setHideTaskbar(_hideTaskbar as boolean), [_hideTaskbar]);
 

@@ -5,7 +5,6 @@ export const sizes: number[] = [0, 4, 8, 12, 16, 24, 32, 48, 64, 96, 128, 256, 5
 export const breakpoints = ["480px", "768px", "1024px"];
 
 export enum ThemeMode {
-  None = "light", // ThemeUI's default mode is fixed to light
   Flat = "flat",
   Soft = "soft",
   Classic = "classic",

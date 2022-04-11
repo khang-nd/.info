@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ThemeUICSSObject } from "theme-ui";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import { ThemeMode } from "../../themes";
@@ -13,7 +13,15 @@ type ThemeButtonProps = {
 
 export default function ThemeButton({ theme }: ThemeButtonProps) {
   const { theme: cachedTheme } = useContext(GlobalContext);
-  const isActive = cachedTheme.val === theme;
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    // workaround for Theme UI's color mode being default to user preference,
+    // which is light/dark, altering that to match site's default
+    const loadedTheme = cachedTheme.val as string;
+    const isDefaultMode = (loadedTheme === "light" || loadedTheme === "dark") && theme === ThemeMode.Flat;
+    setIsActive(isDefaultMode || cachedTheme.val === theme);
+  }, [cachedTheme.val, theme]);
 
   const maskStyle: ThemeUICSSObject = {
     background: "rgba(0, 0, 0, 0.7)",
@@ -29,11 +37,7 @@ export default function ThemeButton({ theme }: ThemeButtonProps) {
   };
 
   return (
-    <MotionButton
-      unsetStyle
-      whileHover={{ scale: isActive ? 1 : 0.95 }}
-      onClick={() => cachedTheme.set(theme as ThemeMode)}
-    >
+    <MotionButton unsetStyle whileHover={{ scale: isActive ? 1 : 0.95 }} onClick={() => cachedTheme.set(theme)}>
       <Image src={`/images/theme-${theme}.webp`} alt={`Theme ${theme}`} layout="fixed" width={140} height={84} />
       {isActive && (
         <motion.span sx={maskStyle} animate={{ opacity: 1 }} initial={{ opacity: 0 }} transition={{ duration: 0.2 }}>
