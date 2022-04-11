@@ -8,7 +8,7 @@ import { MotionButton } from "./Button";
 import ReactIcon from "./IconReact";
 
 type ThemeButtonProps = {
-  theme: `${ThemeMode}`;
+  theme: ThemeMode;
 };
 
 export default function ThemeButton({ theme }: ThemeButtonProps) {

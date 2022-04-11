@@ -51,13 +51,13 @@ const PanelConfig = ({ isVisible }: PanelConfigProps, ref: ForwardedRef<HTMLElem
     >
       <List sx={{ display: "grid", gridTemplateColumns: "auto auto", gap: 3, mb: 4 }}>
         <li>
-          <ThemeButton theme="flat" />
+          <ThemeButton theme={ThemeMode.Flat} />
         </li>
         <li>
-          <ThemeButton theme="soft" />
+          <ThemeButton theme={ThemeMode.Soft} />
         </li>
         <li>
-          <ThemeButton theme="classic" />
+          <ThemeButton theme={ThemeMode.Classic} />
         </li>
       </List>
       <Toggle
