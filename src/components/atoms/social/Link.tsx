@@ -33,6 +33,10 @@ export default function SocialLink({ link, size }: SocialLinkProps) {
       boxShadow: "inset 0 0 0 2px #000",
       color: "text",
     }),
+
+    ...(useMatchTheme(ThemeMode.Tron) && {
+      boxShadow: (theme) => `inset 0 0 0 2px ${theme.colors?.shadow}`,
+    }),
   };
 
   return (

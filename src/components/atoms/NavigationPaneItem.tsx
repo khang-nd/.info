@@ -50,6 +50,11 @@ export default function NavigationPaneItem({ icon, text, isActive, onClick }: Na
       borderRadius: 6,
       boxShadow: "inset 0 0 0 2px #000",
     }),
+
+    ...(useMatchTheme(ThemeMode.Tron) && {
+      bg: "green",
+      boxShadow: (theme) => `0 0 0 1.5px ${theme.colors?.shadow}`,
+    }),
   };
 
   return (

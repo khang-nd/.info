@@ -49,6 +49,10 @@ export default function Window({ title, children, help }: WindowProps) {
       borderRadius: 20,
       boxShadow: "0 0 0 3px #000, 6px 4px 0 2px #000",
     }),
+
+    ...(useMatchTheme(ThemeMode.Tron) && {
+      boxShadow: (theme) => `0 0 0 2px ${theme.colors?.shadow}`,
+    }),
   };
 
   return (

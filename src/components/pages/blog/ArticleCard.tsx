@@ -1,4 +1,4 @@
-import { darken } from "@theme-ui/color";
+import { darken, lighten } from "@theme-ui/color";
 import Link from "next/link";
 import { ThemeUICSSObject } from "theme-ui";
 import { DevArticle, VibloArticle } from "../../../../services/_type";
@@ -42,12 +42,15 @@ export default function ArticleCard({ article, isLast }: ArticleCardProps) {
     ".views": { transition: "0.4s" },
     ...(useMatchTheme(ThemeMode.Flat) && hoverStyle(darken("secondary", 0.05))),
     ...(useMatchTheme(ThemeMode.Soft) && hoverStyle(darken("highlight", 0.1))),
+    ...(useMatchTheme(ThemeMode.Tron) && hoverStyle(lighten("red", 0.1))),
     ...(useMatchTheme(ThemeMode.Classic) && hoverStyle(darken("highlight", 0.1))),
   };
 
   const lineStyle: ThemeUICSSObject = {
     mx: 3,
-    borderColor: "rgba(0, 0, 0, 0.05)",
+    border: 0,
+    borderBottom: "1px solid",
+    borderColor: useMatchTheme(ThemeMode.Tron) ? "shadow" : "rgba(0, 0, 0, 0.1)",
   };
 
   return (

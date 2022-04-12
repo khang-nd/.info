@@ -40,7 +40,7 @@ export default function StyledLink({ href, children }: StyledLinkProps) {
       unsetFocus
       inline
       href={href}
-      sx={{ fontWeight: 500 }}
+      sx={{ fontWeight: 500, color: "var(--theme-ui-colors-text)" }}
       whileHover="hovered"
       whileFocus="hovered"
     >

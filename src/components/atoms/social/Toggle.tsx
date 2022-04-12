@@ -27,6 +27,10 @@ const SocialToggle = ({ isActive, onClick }: ToggleLinksProps, ref: ForwardedRef
     ...(useMatchTheme(ThemeMode.Classic) && {
       boxShadow: "inset 0 0 0 2px #000",
     }),
+
+    ...(useMatchTheme(ThemeMode.Tron) && {
+      boxShadow: (theme) => `inset 0 0 0 2px ${theme.colors?.shadow}`,
+    }),
   };
 
   return (

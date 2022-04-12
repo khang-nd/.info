@@ -1,6 +1,8 @@
 import { ThemeUICSSObject } from "theme-ui";
 import about from "../../../data/about";
+import useMatchTheme from "../../../hooks/useMatchTheme";
 import { parseLinks } from "../../../misc/utils";
+import { ThemeMode } from "../../../themes";
 import { H2, H3, SubTitle } from "../../atoms/Typography";
 
 export default function RightPanel() {
@@ -10,6 +12,10 @@ export default function RightPanel() {
     mt: [4, null, 0],
     ml: [null, null, 4],
     textAlign: "justify",
+
+    ...(useMatchTheme(ThemeMode.Tron) && {
+      bg: "transparent",
+    }),
   };
 
   const listStyle: ThemeUICSSObject = {

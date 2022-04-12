@@ -25,6 +25,14 @@ export default function Skills(): JSX.Element {
     rowGap: 6,
   };
 
+  const categoryStyle: ThemeUICSSObject = {
+    px: [null, null, 4],
+    mb: 4,
+    display: ["grid", null, "flex"],
+    gridTemplateColumns: "1fr 1fr",
+    justifyContent: "center",
+  };
+
   const uniqueCategories = new Set(skills.map((skill) => skill.category).filter((category) => !!category));
   const categories = [...Array.from(uniqueCategories), "Misc"] as string[];
 
@@ -50,7 +58,7 @@ export default function Skills(): JSX.Element {
 
   return (
     <Window title={getRoute(asPath)?.title} help={helpText}>
-      <Box sx={{ px: 4, mb: 4, display: "flex", justifyContent: "center", flexWrap: "wrap", position: "relative" }}>
+      <Box sx={categoryStyle}>
         {categories.map((category) => (
           <CategoryButton key={category} onClick={handleClick(category)} isActive={filters.includes(category)}>
             {category}

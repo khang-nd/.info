@@ -7,6 +7,7 @@ export const breakpoints = ["480px", "768px", "1024px"];
 export enum ThemeMode {
   Flat = "flat",
   Soft = "soft",
+  Tron = "tron",
   Classic = "classic",
 }
 
@@ -54,6 +55,21 @@ const theme: Theme = {
         white: "#fff",
         red: "#f8c3c5",
         green: "#cbe7c5",
+      },
+
+      tron: {
+        background: "#0a1d20",
+        primary: "#001d23",
+        secondary: "#0a1d20",
+        highlight: "#043236",
+        shadow: "#288e9f",
+        text: "#fff",
+        textReverse: "#adeaeb",
+        muted: "rgba(255, 255, 255, 0.6)",
+        mutedReverse: "rgba(255, 255, 255, 0.6)",
+        white: "#fff",
+        red: "#166775",
+        green: "#0b363d",
       },
     },
   },

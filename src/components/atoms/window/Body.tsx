@@ -1,3 +1,4 @@
+import { lighten } from "@theme-ui/color";
 import { ReactNode } from "react";
 import { ThemeUICSSObject } from "theme-ui";
 import useMatchTheme from "../../../hooks/useMatchTheme";
@@ -15,6 +16,11 @@ export default function WindowBody({ children }: WindowBodyProps) {
     overflow: "auto",
 
     ...(!useMatchTheme(ThemeMode.Flat) && { bg: "background" }),
+
+    ...(useMatchTheme(ThemeMode.Tron) && {
+      background: (theme) =>
+        `linear-gradient(135deg, ${theme.colors?.background} 10%, ${lighten("background", 0.1)(theme)})`,
+    }),
   };
 
   return <div sx={bodyStyle}>{children}</div>;

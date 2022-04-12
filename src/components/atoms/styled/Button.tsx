@@ -14,8 +14,6 @@ export default function StyledButton({ iconName, children, ...props }: StyledBut
   const buttonStyle: ThemeUICSSObject = {
     bg: alpha("primary", 0.06),
     color: "text",
-    borderBottom: "4px solid",
-    borderBottomColor: alpha("primary", 0.1),
     transition: "0.2s ease",
     alignItems: "center",
     minWidth: 150,
@@ -27,6 +25,11 @@ export default function StyledButton({ iconName, children, ...props }: StyledBut
 
     "& > span": { display: "flex" },
 
+    ...(useMatchTheme(ThemeMode.Flat) && {
+      borderBottom: "4px solid",
+      borderBottomColor: alpha("primary", 0.1),
+    }),
+
     ...(useMatchTheme(ThemeMode.Soft) && {
       borderRadius: 6,
       boxShadow: (theme) => `inset 2px 2px 2px #fff, 2px 2px 2px ${theme.colors?.shadow}`,
@@ -36,6 +39,12 @@ export default function StyledButton({ iconName, children, ...props }: StyledBut
       borderRadius: 6,
       boxShadow: "0 0 0 2px #000",
       "&:hover, &:focus": { bg: "primary", color: "text" },
+    }),
+
+    ...(useMatchTheme(ThemeMode.Tron) && {
+      boxShadow: (theme) => `0 0 0 1px ${theme.colors?.shadow}`,
+      color: "textReverse",
+      "&:hover, &:focus": { bg: "green", color: "text" },
     }),
   };
 

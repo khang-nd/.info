@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ThemeUICSSObject } from "theme-ui";
 import { Skill } from "../../../data/skills";
 import useMatchTheme from "../../../hooks/useMatchTheme";
-import { ThemeMode } from "../../../themes";
+import theme, { ThemeMode } from "../../../themes";
 import Button from "../../atoms/Button";
 import Icon, { IconName } from "../../atoms/Icon";
 
@@ -39,6 +39,10 @@ export default function SkillButton({ skill }: SkillButtonProps) {
     ...(useMatchTheme(ThemeMode.Classic) && {
       boxShadow: "inset 0 0 0 2px #000, 3px 3px #000",
     }),
+
+    ...(useMatchTheme(ThemeMode.Tron) && {
+      boxShadow: (theme) => `0 0 0 1.5px ${theme.colors?.shadow}`,
+    }),
   };
 
   const hoverStyle: ThemeUICSSObject = {
@@ -47,21 +51,18 @@ export default function SkillButton({ skill }: SkillButtonProps) {
     top: 0,
     left: 0,
     size: "100%",
-    bg: alpha(skill.color, 0.2),
-
-    ...(!useMatchTheme(ThemeMode.Flat) && { bg: "transparent" }),
   };
 
   const hoverVariants: Variants = {
-    ...(useMatchTheme(ThemeMode.Flat) && {
-      default: { scale: 0 },
-      hovered: { scale: 1 },
-    }),
-
-    ...(useMatchTheme(ThemeMode.Soft) && {
-      default: {},
-      hovered: { boxShadow: `inset 0 0 0 1px ${skill.color}` },
-    }),
+    default: {
+      ...(useMatchTheme(ThemeMode.Flat) && { scale: 0, backgroundColor: "transparent" }),
+      ...(useMatchTheme(ThemeMode.Tron) && { backgroundColor: "var(--theme-ui-colors-green)" }),
+    },
+    hovered: {
+      ...(useMatchTheme(ThemeMode.Flat) && { scale: 1, backgroundColor: alpha(skill.color, 0.2)(theme) }),
+      ...(useMatchTheme(ThemeMode.Soft) && { boxShadow: `inset 0 0 0 1px ${skill.color}` }),
+      ...(useMatchTheme(ThemeMode.Tron) && { backgroundColor: "var(--theme-ui-colors-red)" }),
+    },
   };
 
   const iconName = ("Logo" + skill.name) as IconName;
@@ -74,12 +75,7 @@ export default function SkillButton({ skill }: SkillButtonProps) {
       onMouseLeave={() => setIsHovered(false)}
     >
       <span sx={iconWrapperStyle}>
-        <motion.span
-          sx={hoverStyle}
-          variants={hoverVariants}
-          animate={isHovered ? "hovered" : "default"}
-          initial="default"
-        />
+        <motion.span sx={hoverStyle} variants={hoverVariants} animate={isHovered ? "hovered" : "default"} />
         <Icon iconName={iconName} tag="span" size={48} style={{ display: "block" }} />
       </span>
       <span>{skill.label}</span>

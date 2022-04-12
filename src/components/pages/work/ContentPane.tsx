@@ -2,7 +2,9 @@ import { AnimatePresence } from "framer-motion";
 import { ThemeUICSSObject } from "theme-ui";
 import { fade } from "../../../animations/fade";
 import work from "../../../data/work";
+import useMatchTheme from "../../../hooks/useMatchTheme";
 import { parseLinks } from "../../../misc/utils";
+import { ThemeMode } from "../../../themes";
 import { MotionBox } from "../../atoms/Container";
 import { H2, P, SubTitle } from "../../atoms/Typography";
 
@@ -55,7 +57,15 @@ export default function ContentPane({ title }: { title?: string }) {
   }
 
   return (
-    <div sx={{ bg: "background", px: 5, py: 4, flex: 1, zIndex: 1 }}>
+    <div
+      sx={{
+        bg: useMatchTheme(ThemeMode.Tron) ? "transparent" : "background",
+        px: 5,
+        py: 4,
+        flex: 1,
+        zIndex: 1,
+      }}
+    >
       <AnimatePresence exitBeforeEnter>{content}</AnimatePresence>
     </div>
   );

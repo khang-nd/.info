@@ -29,6 +29,10 @@ export default function WindowTitle({ children, help, onFullscreen }: WindowTitl
       boxShadow: "inset 0 -2px #000",
       fontWeight: 600,
     }),
+
+    ...(useMatchTheme(ThemeMode.Tron) && {
+      boxShadow: (theme) => `inset 0 -1px ${theme.colors?.shadow}`,
+    }),
   };
 
   const btnStyle: ThemeUICSSObject = {
@@ -43,6 +47,10 @@ export default function WindowTitle({ children, help, onFullscreen }: WindowTitl
     ...(useMatchTheme(ThemeMode.Classic) && {
       borderRadius: "50%",
       boxShadow: "inset 0 0 0 2.5px #000",
+    }),
+
+    ...(useMatchTheme(ThemeMode.Tron) && {
+      boxShadow: (theme) => `inset 0 0 0 1.5px ${theme.colors?.shadow}`,
     }),
   };
 

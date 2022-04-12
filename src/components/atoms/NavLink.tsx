@@ -29,7 +29,6 @@ export default function NavLink({ data }: NavLinkProps) {
       height: defaultSize,
       opacity: 1,
       margin: sizes[isMobile && isLandscape ? 2 : 3],
-      fontSize: "2px", // a trick to manipulate box-shadow size
       transition: useReduceMotion({ duration: 0.6, delay: 0.3 }),
     },
     sidebar: {
@@ -37,7 +36,6 @@ export default function NavLink({ data }: NavLinkProps) {
       height: sidebarSize,
       opacity: 1,
       margin: sizes[2],
-      fontSize: "1px",
       transition: useReduceMotion(),
     },
   };
@@ -83,13 +81,20 @@ export default function NavLink({ data }: NavLinkProps) {
     position: "relative",
 
     ...(useMatchTheme(ThemeMode.Soft) && {
+      fontSize: isHomePage ? "2px" : "1px",
       borderRadius: "10%",
       boxShadow: (theme) => `inset 3em 3em 3em rgba(255, 255, 255, 0.5), 1em 1em 4em 3em ${theme.colors?.shadow}`,
     }),
 
     ...(useMatchTheme(ThemeMode.Classic) && {
+      fontSize: isHomePage ? "2px" : "1px",
       borderRadius: "8%",
       boxShadow: "inset 0 0 0 2em #000, 3em 3em 0 #000",
+    }),
+
+    ...(useMatchTheme(ThemeMode.Tron) && {
+      bg: "highlight",
+      boxShadow: (theme) => `inset 0 0 0 2px ${theme.colors?.shadow}`,
     }),
   };
 
@@ -103,6 +108,11 @@ export default function NavLink({ data }: NavLinkProps) {
 
     ...(useMatchTheme(ThemeMode.Classic) && {
       boxShadow: "0 0 0 2px #000",
+    }),
+
+    ...(useMatchTheme(ThemeMode.Tron) && {
+      bg: "red",
+      boxShadow: (theme) => `0 0 0 1.5px ${theme.colors?.shadow}`,
     }),
   };
 

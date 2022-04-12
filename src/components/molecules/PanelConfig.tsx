@@ -39,6 +39,10 @@ const PanelConfig = ({ isVisible }: PanelConfigProps, ref: ForwardedRef<HTMLElem
       borderRadius: "6%",
       boxShadow: "inset 0 0 0 3px #000, 4px 4px 0 #000",
     }),
+
+    ...(useMatchTheme(ThemeMode.Tron) && {
+      boxShadow: "inset 0 0 0 2px var(--theme-ui-colors-shadow)",
+    }),
   };
 
   const variants: Variants = {
@@ -61,6 +65,9 @@ const PanelConfig = ({ isVisible }: PanelConfigProps, ref: ForwardedRef<HTMLElem
         </li>
         <li>
           <ThemeButton theme={ThemeMode.Soft} />
+        </li>
+        <li>
+          <ThemeButton theme={ThemeMode.Tron} />
         </li>
         <li>
           <ThemeButton theme={ThemeMode.Classic} />

@@ -40,6 +40,11 @@ export default function Toggle({ id, label, isChecked, onChange, style }: Toggle
       border: "2px solid #000",
       borderRadius: 10,
     }),
+
+    ...(useMatchTheme(ThemeMode.Tron) && {
+      height: 20,
+      boxShadow: (theme) => `0 0 0 1.5px ${theme.colors?.shadow}`,
+    }),
   };
 
   const thumbStyle: ThemeUICSSObject = {
@@ -63,16 +68,20 @@ export default function Toggle({ id, label, isChecked, onChange, style }: Toggle
       width: "45%",
       height: "90%",
     }),
+
+    ...(useMatchTheme(ThemeMode.Tron) && {
+      top: "10%",
+      left: "5%",
+      width: "45%",
+      height: "80%",
+    }),
   };
 
   const variants: Variants = {
     off: {
       x: 0,
-
-      ...(useMatchTheme(ThemeMode.Flat) && {
-        background: darken("secondary", 0.13)(theme),
-        boxShadow: "0 4px " + darken("secondary", 0.2)(theme),
-      }),
+      background: darken("secondary", 0.13)(theme),
+      boxShadow: "0 4px " + darken("secondary", 0.2)(theme),
 
       ...(useMatchTheme(ThemeMode.Soft) && {
         background: "var(--theme-ui-colors-shadow)",
@@ -81,16 +90,17 @@ export default function Toggle({ id, label, isChecked, onChange, style }: Toggle
 
       ...(useMatchTheme(ThemeMode.Classic) && {
         background: "#000",
-        boxshadow: "none",
+        boxShadow: "none",
+      }),
+
+      ...(useMatchTheme(ThemeMode.Tron) && {
+        boxShadow: "none",
       }),
     },
     on: {
       x: "100%",
-
-      ...(useMatchTheme(ThemeMode.Flat) && {
-        background: getColor(theme, "secondary"),
-        boxShadow: "0 4px " + darken("secondary", 0.1)(theme),
-      }),
+      background: getColor(theme, "secondary"),
+      boxShadow: "0 4px " + darken("secondary", 0.1)(theme),
 
       ...(useMatchTheme(ThemeMode.Soft) && {
         background: "var(--theme-ui-colors-highlight)",
@@ -99,7 +109,11 @@ export default function Toggle({ id, label, isChecked, onChange, style }: Toggle
 
       ...(useMatchTheme(ThemeMode.Classic) && {
         background: "#000",
-        boxshadow: "none",
+        boxShadow: "none",
+      }),
+
+      ...(useMatchTheme(ThemeMode.Tron) && {
+        boxShadow: "none",
       }),
     },
   };
