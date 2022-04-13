@@ -90,11 +90,11 @@ export default function Toggle({ id, label, isChecked, onChange, style }: Toggle
 
       ...(useMatchTheme(ThemeMode.Classic) && {
         background: "#000",
-        boxShadow: "none",
+        boxShadow: "0 0 transparent",
       }),
 
       ...(useMatchTheme(ThemeMode.Tron) && {
-        boxShadow: "none",
+        boxShadow: "0 0 transparent",
       }),
     },
     on: {
@@ -109,11 +109,11 @@ export default function Toggle({ id, label, isChecked, onChange, style }: Toggle
 
       ...(useMatchTheme(ThemeMode.Classic) && {
         background: "#000",
-        boxShadow: "none",
+        boxShadow: "0 0 transparent",
       }),
 
       ...(useMatchTheme(ThemeMode.Tron) && {
-        boxShadow: "none",
+        boxShadow: "0 0 transparent",
       }),
     },
   };
