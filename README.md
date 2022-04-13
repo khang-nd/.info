@@ -1,6 +1,6 @@
 # Winport
 
-<p><center>My window-styled portfolio</center></p>
+<p align="center">My window-styled portfolio</p>
 
 |![Theme Flat](./public/images/theme-flat.png)|![Theme Soft](./public/images/theme-soft.png)|![Theme Tron](./public/images/theme-tron.png)|![Theme Classic](./public/images/theme-classic.png)
 |----|----|----|----|
