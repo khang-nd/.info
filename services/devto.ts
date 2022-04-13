@@ -11,6 +11,9 @@ export async function getArticles() {
   if (response.ok) {
     return (await response.json()) as DevArticle[];
   }
+
+  if (response.status === 401) console.error("Missing DEV_API_KEY from environement");
+
   throw {
     status: response.status,
     error: response.statusText,

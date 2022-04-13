@@ -73,6 +73,7 @@ const theme: Theme = {
       },
     },
   },
+  fonts: { heading: "inherit" },
   breakpoints,
   sizes,
   space: sizes,

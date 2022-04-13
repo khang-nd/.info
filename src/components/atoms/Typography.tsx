@@ -1,5 +1,5 @@
 import { ElementType, ReactNode } from "react";
-import { Text, ThemeUICSSObject } from "theme-ui";
+import { Heading, Text, ThemeUICSSObject } from "theme-ui";
 import useMatchTheme from "../../hooks/useMatchTheme";
 import { ThemeMode } from "../../themes";
 
@@ -8,11 +8,11 @@ type CommonProps = {
   style?: ThemeUICSSObject;
 };
 
-type SubTitleProps = CommonProps & {
+type HeadingProps = CommonProps & {
   as?: ElementType<any>;
 };
 
-export const H3 = ({ children, style }: CommonProps) => {
+export const H3 = ({ as = "h3", children, style }: HeadingProps) => {
   const innerStyle: ThemeUICSSObject = {
     color: !useMatchTheme(ThemeMode.Flat) ? "text" : "primary",
     fontVariant: "small-caps",
@@ -22,14 +22,18 @@ export const H3 = ({ children, style }: CommonProps) => {
     ...style,
   };
 
-  return <h3 sx={innerStyle}>{children}</h3>;
+  return (
+    <Heading as={as} sx={innerStyle}>
+      {children}
+    </Heading>
+  );
 };
 
-export const H2 = ({ children, style }: CommonProps) => {
-  return <h2 sx={{ fontSize: 32, ...style }}>{children}</h2>;
+export const H2 = ({ children, style }: HeadingProps) => {
+  return <Heading sx={{ fontSize: 32, ...style }}>{children}</Heading>;
 };
 
-export const SubTitle = ({ as = "p", children, style }: SubTitleProps) => {
+export const SubTitle = ({ as = "p", children, style }: HeadingProps) => {
   return (
     <Text as={as} sx={{ color: "muted", mb: 5, ...style }}>
       {children}

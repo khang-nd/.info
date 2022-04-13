@@ -1,7 +1,8 @@
-import { AnimatePresence } from "framer-motion";
 import { ReactNode, useRef, useState } from "react";
 import { useClickAway } from "react-use";
 import { ThemeUICSSObject } from "theme-ui";
+import useMatchTheme from "../../../hooks/useMatchTheme";
+import { ThemeMode } from "../../../themes";
 import { zIndex } from "../../../themes/common";
 import { MotionButton } from "../Button";
 import { Box, MotionBox } from "../Container";
@@ -27,14 +28,25 @@ export default function Help({ children, style }: HelpProps) {
     bg: "background",
     color: "text",
     boxShadow: "0 1px 3px rgba(0, 0, 0, 0.3)",
-    textAlign: "justify",
     zIndex: zIndex.focusbox,
+
+    ...(useMatchTheme(ThemeMode.Classic) && {
+      borderRadius: 10,
+      boxShadow: "0 0 0 2px #000, 4px 4px 0 2px #000",
+    }),
+
+    ...(useMatchTheme(ThemeMode.Tron) && {
+      bg: "green",
+      boxShadow: (theme) => `inset 0 0 0 1.5px ${theme.colors?.shadow}`,
+    }),
   };
 
   return (
     <Box sx={{ position: "relative", ...style }}>
       <MotionButton
         aria-label="Help"
+        aria-controls="popup-help"
+        aria-expanded={showHelp}
         ref={buttonRef}
         unsetStyle
         focusStyle={{ borderRadius: "50%" }}
@@ -43,13 +55,13 @@ export default function Help({ children, style }: HelpProps) {
       >
         <ReactIcon iconName="MdHelpOutline" size={24} />
       </MotionButton>
-      <AnimatePresence>
-        {showHelp && (
-          <MotionBox sx={dropdownStyle} animate={{ opacity: 1 }} initial={{ opacity: 0 }} exit={{ opacity: 0 }}>
-            {children}
-          </MotionBox>
-        )}
-      </AnimatePresence>
+      <MotionBox
+        id="popup-help"
+        sx={dropdownStyle}
+        animate={showHelp ? { opacity: 1, display: "block" } : { opacity: 0, transitionEnd: { display: "none" } }}
+      >
+        {children}
+      </MotionBox>
     </Box>
   );
 }

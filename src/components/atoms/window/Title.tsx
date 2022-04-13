@@ -19,6 +19,7 @@ export default function WindowTitle({ children, help, onFullscreen }: WindowTitl
   const isMobile = useInBreakpoint(0, isLandscape);
 
   const titleStyle: ThemeUICSSObject = {
+    display: "flex",
     bg: "primary",
     color: "textReverse",
     p: isMobile && isLandscape ? 2 : 3,
@@ -58,13 +59,13 @@ export default function WindowTitle({ children, help, onFullscreen }: WindowTitl
   const fullscrBtnStyle: ThemeUICSSObject = { bg: "green", mr: 2, ...btnStyle };
 
   return (
-    <Flex sx={titleStyle}>
+    <h1 sx={titleStyle}>
       <span>{children}</span>
       <Flex>
         {help && <Help style={{ mr: 2 }}>{help}</Help>}
         <button aria-label="Fullscreen" onClick={onFullscreen} sx={fullscrBtnStyle} />
         <button aria-label="Close" onClick={() => router.push("/")} sx={closeBtnStyle} />
       </Flex>
-    </Flex>
+    </h1>
   );
 }

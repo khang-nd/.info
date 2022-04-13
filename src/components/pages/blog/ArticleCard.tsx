@@ -8,6 +8,7 @@ import { format } from "../../../misc/utils";
 import { ThemeMode } from "../../../themes";
 import ReactIcon from "../../atoms/IconReact";
 import Tag from "../../atoms/Tag";
+import { H3 } from "../../atoms/Typography";
 
 type ArticleCardProps = {
   article: DevArticle | VibloArticle;
@@ -27,7 +28,7 @@ export default function ArticleCard({ article, isLast }: ArticleCardProps) {
   const viewCount = isDevArticle ? (article as DevArticle).page_views_count : (article as VibloArticle).views_count;
 
   const hoverStyle = (color: any): ThemeUICSSObject => ({
-    "&:hover": { h4: { color }, ".views": { color } },
+    "&:hover": { h3: { color }, ".views": { color } },
   });
 
   const linkStyle: ThemeUICSSObject = {
@@ -38,7 +39,7 @@ export default function ArticleCard({ article, isLast }: ArticleCardProps) {
     flexDirection: "column",
     justifyContent: "space-between",
     height: "100%",
-    h4: { transition: "0.4s" },
+    h3: { transition: "0.4s" },
     ".views": { transition: "0.4s" },
     ...(useMatchTheme(ThemeMode.Flat) && hoverStyle(darken("secondary", 0.05))),
     ...(useMatchTheme(ThemeMode.Soft) && hoverStyle(darken("highlight", 0.1))),
@@ -58,7 +59,7 @@ export default function ArticleCard({ article, isLast }: ArticleCardProps) {
       <Link href={article.url as string} passHref>
         <a sx={linkStyle} target="_blank">
           <div sx={{ mb: 6 }}>
-            <h4 sx={{ fontWeight: 600, fontSize: 18, mb: 2 }}>{article.title}</h4>
+            <H3 style={{ fontVariant: "initial", fontWeight: 600, fontSize: 18, mb: 2 }}>{article.title}</H3>
             <span>
               {publishedAt} - <i>{readMinutes} min read</i>
             </span>

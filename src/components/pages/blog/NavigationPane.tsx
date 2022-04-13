@@ -15,7 +15,7 @@ export default function NavigationPane({ activePlatform, lastUpdated, onNavigate
   return (
     <div sx={{ minWidth: 200, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
       <div sx={{ position: "sticky", top: 0 }}>
-        <H3>Platform</H3>
+        <H3 as="h2">Platform</H3>
         <List sx={{ mb: 5, display: ["grid", null, "block"], gridTemplateColumns: "1fr 1fr 1fr" }}>
           {platforms.map((platform) => (
             <NavigationPaneItem
