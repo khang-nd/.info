@@ -1,8 +1,11 @@
-
 # Winport
 
+<h2 align="center"><a href="https://khang-nd.github.io/">Check it out</a></h2>
+
 <p align="center">
-  <img src="src/assets/theme-flat.webp" />
+  <a href="https://khang-nd.github.io/">
+    <img src="src/assets/theme-flat.webp" />
+  </a>
 </p>
 
 A window-styled portfolio (hence the name _Winport_) built with ReactJS, fully responsive, and followed the Mobile First Design's principles.
