@@ -1,6 +1,15 @@
 export default function NotFound() {
   return (
-    <div sx={{ bg: "#106faa", py: [8], pl: [5, null, 8, "20vw"], pr: [5, null, 4, 0], minHeight: "100vh" }}>
+    <div
+      sx={{
+        bg: "#106faa",
+        color: "#fff",
+        py: [8],
+        pl: [5, null, 8, "20vw"],
+        pr: [5, null, 4, 0],
+        minHeight: "100vh",
+      }}
+    >
       <div sx={{ maxWidth: [null, null, 700] }}>
         <h1 sx={{ fontSize: [120, null, 150], mb: 4 }}>:(</h1>
         <p sx={{ fontSize: [20, null, 24], mb: 4 }}>
