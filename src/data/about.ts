@@ -12,7 +12,7 @@ const about = {
     "Three words to describe my living goal: Family and friends.",
   ],
   trivias: [
-    "Baseketball is my favorite sport.",
+    "Basketball is my favorite sport.",
     "I love winter, but only on screen. I can hardly handle the cold in actuality.",
     "I served the country in a local militia for 2 years.",
     `There is this video game franchise that has a major impact on my life called
