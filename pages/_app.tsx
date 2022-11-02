@@ -1,7 +1,7 @@
+import { Analytics } from "@vercel/analytics/react";
 import { NextPage } from "next";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import Script from "next/script";
 import { ThemeProvider } from "theme-ui";
 import { GlobalProvider } from "../src/contexts/GlobalContext";
 import meta from "../src/data/meta";
@@ -39,16 +39,13 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
         <meta property="twitter:description" content={meta.description} />
         <meta property="twitter:image" content={meta.image} />
       </Head>
-      <Script src="https://www.googletagmanager.com/gtag/js?id=UA-165934858-2" strategy="afterInteractive" />
-      <Script id="gg-analytics" strategy="afterInteractive">
-        {`window.dataLayer = window.dataLayer || [];
-          function gtag() { dataLayer.push(arguments); }
-          gtag('js', new Date());
 
-          gtag('config', 'UA-165934858-2');`}
-      </Script>
-
-      <GlobalProvider>{getLayout(<Component {...pageProps} />)}</GlobalProvider>
+      <GlobalProvider>
+        <>
+          {getLayout(<Component {...pageProps} />)}
+          <Analytics />
+        </>
+      </GlobalProvider>
     </ThemeProvider>
   );
 }
