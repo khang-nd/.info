@@ -15,7 +15,7 @@
 
 ## Improvements from previous version
 
-> For the first version, check out the [v1](https://github.com/khang-nd/khang-nd.github.io/tree/v1) branch.
+> For the first version, check out the [v1](https://github.com/khang-nd/.info/tree/v1) branch.
 
 * [x] Overall visual appearance improved.
 * [x] Accessibility (focusable elements, keyboard events, zoom controls).
